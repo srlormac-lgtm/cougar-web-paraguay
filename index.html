@@ -1,0 +1,1069 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cougar Suspension — High Performance Suspensions | Paraguay</title>
+  <meta name="description" content="High performance suspensions with home installation throughout Paraguay. Get a quote on WhatsApp.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;500;600;700&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Rajdhani', Arial, Helvetica, sans-serif;
+      background: #050505;
+      color: #e8e8e8;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { text-decoration: none; color: inherit; }
+    img { max-width: 100%; display: block; }
+
+    :root {
+      --black: #050505;
+      --orange: #F07020;
+      --orange-dark: #c95a15;
+      --red-dark: #8B1A00;
+      --white: #e8e8e8;
+      --gray: #444;
+      --font-display: 'Barlow Condensed', Impact, 'Arial Narrow', Arial, sans-serif;
+      --font-body: 'Rajdhani', Arial, Helvetica, sans-serif;
+    }
+
+    /* ═══ BLOBS ═══ */
+    .blob {
+      position: absolute;
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 1;
+    }
+    .blob--orange-1 {
+      width: 500px; height: 500px;
+      background: radial-gradient(circle, rgba(240,112,32,0.4) 0%, transparent 70%);
+      filter: blur(100px);
+      top: 20%; left: -10%;
+      animation: blobFloat1 10s ease-in-out infinite;
+    }
+    .blob--red-1 {
+      width: 400px; height: 400px;
+      background: radial-gradient(circle, rgba(139,26,0,0.45) 0%, transparent 70%);
+      filter: blur(90px);
+      top: 40%; right: -8%;
+      animation: blobFloat2 12s ease-in-out infinite;
+    }
+    .blob--orange-2 {
+      width: 350px; height: 350px;
+      background: radial-gradient(circle, rgba(240,112,32,0.3) 0%, transparent 70%);
+      filter: blur(110px);
+      bottom: 10%; left: 30%;
+      animation: blobFloat3 9s ease-in-out infinite;
+    }
+    .blob--red-2 {
+      width: 450px; height: 450px;
+      background: radial-gradient(circle, rgba(139,26,0,0.35) 0%, transparent 70%);
+      filter: blur(120px);
+      top: 10%; right: 20%;
+      animation: blobFloat1 11s ease-in-out infinite reverse;
+    }
+    .blob--orange-3 {
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, rgba(240,112,32,0.5) 0%, transparent 65%);
+      filter: blur(100px);
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      animation: blobPulse 8s ease-in-out infinite;
+    }
+    .blob--feat-1 {
+      width: 400px; height: 400px;
+      background: radial-gradient(circle, rgba(240,112,32,0.25) 0%, transparent 70%);
+      filter: blur(100px);
+      top: -10%; right: -5%;
+      animation: blobFloat2 10s ease-in-out infinite;
+    }
+    .blob--feat-2 {
+      width: 350px; height: 350px;
+      background: radial-gradient(circle, rgba(139,26,0,0.3) 0%, transparent 70%);
+      filter: blur(90px);
+      bottom: -10%; left: -5%;
+      animation: blobFloat3 11s ease-in-out infinite;
+    }
+
+    @keyframes blobFloat1 {
+      0%, 100% { transform: translate(0, 0) scale(1); }
+      33% { transform: translate(30px, -20px) scale(1.05); }
+      66% { transform: translate(-20px, 15px) scale(0.95); }
+    }
+    @keyframes blobFloat2 {
+      0%, 100% { transform: translate(0, 0) scale(1); }
+      33% { transform: translate(-25px, 25px) scale(1.08); }
+      66% { transform: translate(20px, -15px) scale(0.92); }
+    }
+    @keyframes blobFloat3 {
+      0%, 100% { transform: translate(0, 0) scale(1); }
+      50% { transform: translate(15px, -30px) scale(1.1); }
+    }
+    @keyframes blobPulse {
+      0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.5; }
+      50% { transform: translate(-50%, -50%) scale(1.15); opacity: 0.7; }
+    }
+
+    /* ═══ NAVBAR ═══ */
+    .navbar {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.75rem 2.5rem;
+      background: rgba(5,5,5,0.6);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(240,112,32,0.15);
+      transition: background 0.4s;
+    }
+    .navbar.scrolled {
+      background: rgba(5,5,5,0.9);
+      border-bottom-color: rgba(240,112,32,0.3);
+    }
+    .navbar__logo img {
+      height: 38px;
+      width: auto;
+      object-fit: contain;
+      filter: drop-shadow(0 0 10px rgba(240,112,32,0.3));
+    }
+    .navbar__center {
+      display: flex;
+      align-items: center;
+      gap: 2.5rem;
+      list-style: none;
+    }
+    .navbar__center a {
+      font-family: var(--font-body);
+      font-weight: 600;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: rgba(232,232,232,0.7);
+      transition: color 0.3s;
+      position: relative;
+    }
+    .navbar__center a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px; left: 0;
+      width: 0; height: 1px;
+      background: var(--orange);
+      transition: width 0.3s;
+    }
+    .navbar__center a:hover { color: #fff; }
+    .navbar__center a:hover::after { width: 100%; }
+    .btn-nav {
+      background: transparent;
+      color: var(--orange);
+      font-family: var(--font-body);
+      font-weight: 700;
+      font-size: 0.85rem;
+      padding: 0.5rem 1.4rem;
+      border-radius: 4px;
+      border: 1.5px solid var(--orange);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      transition: all 0.3s ease;
+    }
+    .btn-nav:hover {
+      background: var(--orange);
+      color: #000;
+      box-shadow: 0 0 20px rgba(240,112,32,0.4);
+    }
+    .btn-nav::after { display: none; }
+    .nav-wa-mobile { display: none; }
+    @media (max-width: 768px) {
+      .nav-wa-mobile { display: list-item; }
+    }
+
+    /* Mobile menu */
+    .navbar__toggle {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      flex-direction: column;
+      gap: 5px;
+      z-index: 1001;
+    }
+    .navbar__toggle span {
+      display: block;
+      width: 26px; height: 2px;
+      background: var(--white);
+      border-radius: 2px;
+      transition: transform 0.3s, opacity 0.3s;
+    }
+    .navbar__toggle.active span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .navbar__toggle.active span:nth-child(2) { opacity: 0; }
+    .navbar__toggle.active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    @media (max-width: 768px) {
+      .navbar { padding: 0.75rem 1rem; }
+      .navbar__logo img { height: 32px; }
+      .navbar__toggle { display: flex; }
+      .navbar__center {
+        position: fixed;
+        top: 0; right: -100%;
+        width: 75%; height: 100vh;
+        flex-direction: column;
+        justify-content: center;
+        background: rgba(5,5,5,0.97);
+        backdrop-filter: blur(20px);
+        transition: right 0.4s ease;
+        gap: 2rem;
+      }
+      .navbar__center.open { right: 0; }
+      .navbar__center a { font-size: 1rem; min-height: 44px; display: flex; align-items: center; }
+      .navbar__center .btn-nav { min-height: 44px; display: inline-flex; align-items: center; justify-content: center; }
+      .navbar__right { display: none; }
+    }
+
+    /* ═══ HERO ═══ */
+    .hero {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+      min-height: 600px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .hero__video {
+      position: absolute;
+      top: 50%; left: 50%;
+      min-width: 100%; min-height: 100%;
+      width: auto; height: auto;
+      transform: translate(-50%, -50%);
+      object-fit: cover;
+      z-index: 0;
+    }
+    .hero__fallback {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, #0a0a0a 0%, #050505 50%, #1a0f05 100%);
+      z-index: 0;
+    }
+    .hero__overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to top,
+        rgba(5,5,5,0.85) 0%,
+        rgba(5,5,5,0.4) 40%,
+        rgba(5,5,5,0.5) 100%
+      );
+      z-index: 1;
+    }
+    .hero__blobs {
+      position: absolute;
+      inset: 0;
+      z-index: 2;
+      overflow: hidden;
+      pointer-events: none;
+    }
+    .hero__content {
+      position: relative;
+      z-index: 3;
+      text-align: center;
+      padding: 0 1.5rem;
+      max-width: 950px;
+    }
+    .hero__title {
+      font-family: var(--font-display);
+      font-weight: 400;
+      font-size: clamp(3rem, 8vw, 6rem);
+      line-height: 1.02;
+      text-transform: uppercase;
+      color: #fff;
+      margin-bottom: 1.2rem;
+      text-shadow: 0 4px 40px rgba(0,0,0,0.8);
+    }
+    .hero__title span { color: var(--orange); }
+    .hero__subtitle {
+      font-family: var(--font-body);
+      font-size: clamp(1rem, 2.5vw, 1.3rem);
+      font-weight: 500;
+      color: rgba(200,200,200,0.7);
+      margin-bottom: 2.8rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+    .hero__subtitle em {
+      font-style: normal;
+      color: rgba(240,112,32,0.7);
+    }
+    .btn-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      background: var(--orange);
+      color: #000;
+      font-family: var(--font-display);
+      font-weight: 500;
+      font-size: 1.5rem;
+      letter-spacing: 0.08em;
+      padding: 1rem 2.8rem;
+      border: none;
+      border-radius: 5px;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 30px rgba(240,112,32,0.5), 0 0 60px rgba(240,112,32,0.2);
+    }
+    .btn-cta:hover {
+      background: #ff8533;
+      transform: translateY(-3px);
+      box-shadow: 0 0 40px rgba(240,112,32,0.7), 0 0 80px rgba(240,112,32,0.3);
+    }
+    .hero__scroll {
+      position: absolute;
+      bottom: 2rem; left: 50%;
+      transform: translateX(-50%);
+      z-index: 3;
+      animation: bounce 2s infinite;
+    }
+    .hero__scroll svg { width: 28px; height: 28px; fill: #fff; opacity: 0.35; }
+    @keyframes bounce {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50% { transform: translateX(-50%) translateY(10px); }
+    }
+
+    /* ═══ SECTIONS COMMON ═══ */
+    section { padding: 6rem 2rem; position: relative; overflow: hidden; }
+    .container { max-width: 1100px; margin: 0 auto; position: relative; z-index: 2; }
+    .section-tag {
+      font-family: var(--font-body);
+      font-weight: 700;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.25em;
+      color: var(--orange);
+      margin-bottom: 0.75rem;
+    }
+    .section-title {
+      font-family: var(--font-display);
+      font-weight: 400;
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      text-transform: uppercase;
+      line-height: 1.1;
+      margin-bottom: 1.5rem;
+      color: #fff;
+    }
+    .separator {
+      width: 80px; height: 2px;
+      background: linear-gradient(to right, var(--orange), transparent);
+      margin-bottom: 2rem;
+      border-radius: 2px;
+    }
+    .separator--center { margin-left: auto; margin-right: auto; background: linear-gradient(to right, transparent, var(--orange), transparent); }
+
+    /* ═══ REVEAL ═══ */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-d1 { transition-delay: 0.1s; }
+    .reveal-d2 { transition-delay: 0.2s; }
+    .reveal-d3 { transition-delay: 0.3s; }
+    .reveal-d4 { transition-delay: 0.4s; }
+    .reveal-d5 { transition-delay: 0.5s; }
+
+    /* ═══ ABOUT ═══ */
+    .about { background: var(--black); }
+    .about__grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+    .about__text p {
+      font-size: 1.15rem;
+      line-height: 1.75;
+      color: rgba(232,232,232,0.75);
+      margin-bottom: 2rem;
+    }
+    .about__badges { display: flex; gap: 1.5rem; flex-wrap: wrap; }
+    .badge {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(240,112,32,0.08);
+      border: 1px solid rgba(240,112,32,0.25);
+      padding: 0.6rem 1.2rem;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      color: var(--orange);
+      transition: all 0.3s ease;
+    }
+    .badge:hover {
+      border-color: var(--orange);
+      box-shadow: 0 0 15px rgba(240,112,32,0.15);
+    }
+    .about__visual {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .about__logo-deco {
+      width: 260px;
+      opacity: 0.9;
+      filter: drop-shadow(0 0 60px rgba(240,112,32,0.3));
+      transition: filter 0.5s ease;
+    }
+    .about__logo-deco:hover {
+      filter: drop-shadow(0 0 80px rgba(240,112,32,0.5));
+    }
+    @media (max-width: 768px) {
+      .about__grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      .about__visual { order: -1; }
+      .about__logo-deco { width: 180px; }
+    }
+
+    /* ═══ FEATURES ═══ */
+    .features {
+      background: var(--black);
+      position: relative;
+    }
+    .features__grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+      position: relative;
+      z-index: 2;
+    }
+    .feature-card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(240,112,32,0.15);
+      border-radius: 12px;
+      padding: 2.5rem 2rem;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    .feature-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: radial-gradient(circle at top right, rgba(240,112,32,0.05) 0%, transparent 60%);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    .feature-card:hover {
+      border-color: rgba(240,112,32,0.6);
+      transform: translateY(-4px);
+      box-shadow: 0 8px 40px rgba(240,112,32,0.1), 0 0 20px rgba(240,112,32,0.05);
+    }
+    .feature-card:hover::before { opacity: 1; }
+    .feature-card__icon { font-size: 2.2rem; margin-bottom: 1rem; display: block; position: relative; z-index: 1; }
+    .feature-card__title {
+      font-family: var(--font-display);
+      font-weight: 500;
+      font-size: 1.5rem;
+      text-transform: uppercase;
+      margin-bottom: 0.75rem;
+      color: #fff;
+      position: relative;
+      z-index: 1;
+    }
+    .feature-card__desc {
+      font-size: 1rem;
+      line-height: 1.6;
+      color: rgba(232,232,232,0.55);
+      position: relative;
+      z-index: 1;
+    }
+    @media (max-width: 768px) {
+      .features__grid { grid-template-columns: 1fr; }
+    }
+
+    /* ═══ PRODUCTS ═══ */
+    .products {
+      background: var(--black);
+      position: relative;
+      overflow: hidden;
+    }
+    .products__grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      position: relative;
+      z-index: 2;
+    }
+    .product-card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(240,112,32,0.25);
+      border-radius: 16px;
+      overflow: hidden;
+      transition: all 0.3s ease;
+    }
+    .product-card:hover {
+      border-color: rgba(240,112,32,0.7);
+      transform: translateY(-6px);
+      box-shadow: 0 12px 50px rgba(240,112,32,0.12), 0 0 25px rgba(240,112,32,0.06);
+    }
+    .product-card__img-wrap {
+      position: relative;
+      width: 100%;
+      height: 280px;
+      overflow: hidden;
+    }
+    .product-card__img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+    .product-card:hover .product-card__img-wrap img {
+      transform: scale(1.04);
+    }
+    .product-card__img-overlay {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 50%;
+      background: linear-gradient(to top, rgba(5,5,5,1) 0%, transparent 100%);
+      pointer-events: none;
+    }
+    .product-card__body {
+      padding: 1.8rem 2rem 2.2rem;
+    }
+    .product-card__badge {
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-style: italic;
+      font-size: 1.3rem;
+      color: var(--orange);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 0.6rem;
+    }
+    .product-card__title {
+      font-family: var(--font-body);
+      font-weight: 700;
+      font-size: 1.15rem;
+      line-height: 1.5;
+      color: #fff;
+      margin-bottom: 0.8rem;
+    }
+    .product-card__flag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: rgba(232,232,232,0.5);
+      margin-bottom: 1rem;
+    }
+    .product-card__desc {
+      font-size: 0.95rem;
+      line-height: 1.7;
+      color: rgba(232,232,232,0.5);
+      margin-bottom: 1.8rem;
+    }
+    .product-card__btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--orange);
+      color: #000;
+      font-family: var(--font-body);
+      font-weight: 700;
+      font-size: 0.95rem;
+      padding: 0.75rem 1.8rem;
+      border-radius: 8px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 0 rgba(240,112,32,0);
+    }
+    .product-card__btn:hover {
+      background: #ff8533;
+      transform: translateY(-2px);
+      box-shadow: 0 0 25px rgba(240,112,32,0.5);
+    }
+    .blob--prod-1 {
+      width: 400px; height: 400px;
+      background: radial-gradient(circle, rgba(240,112,32,0.2) 0%, transparent 70%);
+      filter: blur(100px);
+      top: -5%; left: -8%;
+      animation: blobFloat1 11s ease-in-out infinite;
+    }
+    .blob--prod-2 {
+      width: 350px; height: 350px;
+      background: radial-gradient(circle, rgba(139,26,0,0.25) 0%, transparent 70%);
+      filter: blur(90px);
+      bottom: -5%; right: -5%;
+      animation: blobFloat2 9s ease-in-out infinite;
+    }
+    @media (max-width: 1024px) {
+      .products__grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 640px) {
+      .products__grid { grid-template-columns: 1fr; }
+      .product-card__img-wrap { height: 220px; }
+    }
+
+    /* ═══ CONTACT ═══ */
+    .contact {
+      background: var(--black);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .contact .section-tag { color: rgba(240,112,32,0.6); }
+    .contact .section-title { color: #fff; }
+    .contact .separator { background: linear-gradient(to right, transparent, var(--orange), transparent); }
+    .contact__subtitle {
+      font-size: 1.15rem;
+      color: rgba(232,232,232,0.5);
+      max-width: 500px;
+      margin: 0 auto 3rem;
+    }
+    .contact__buttons {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+      max-width: 800px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 2;
+    }
+    .contact-btn {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.6rem;
+      background: rgba(255,255,255,0.06);
+      color: var(--white);
+      padding: 2rem 1rem;
+      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,0.1);
+      font-family: var(--font-body);
+      font-weight: 700;
+      font-size: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      transition: all 0.3s ease;
+    }
+    .contact-btn:hover {
+      transform: translateY(-5px);
+      background: rgba(240,112,32,0.2);
+      border-color: rgba(240,112,32,0.5);
+      box-shadow: 0 10px 30px rgba(240,112,32,0.15);
+    }
+    .contact-btn__icon { font-size: 2rem; display: flex; align-items: center; justify-content: center; }
+    @media (max-width: 600px) {
+      .contact__buttons { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    /* ═══ FOOTER ═══ */
+    .footer {
+      background: var(--black);
+      border-top: 1px solid rgba(255,255,255,0.04);
+      padding: 3rem 2rem;
+      text-align: center;
+    }
+    .footer__logo img {
+      height: 32px;
+      margin: 0 auto 1rem;
+      opacity: 0.7;
+      object-fit: contain;
+    }
+    .footer__copy { font-size: 0.85rem; color: var(--gray); }
+
+    /* ═══ WA FLOAT ═══ */
+    .wa-float {
+      position: fixed;
+      bottom: 1.5rem; right: 1.5rem;
+      z-index: 999;
+      width: 60px; height: 60px;
+      background: var(--orange);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.3s, box-shadow 0.3s;
+      animation: pulse-wa 2.5s infinite;
+    }
+    .wa-float:hover {
+      transform: scale(1.1);
+    }
+    .wa-float svg { width: 30px; height: 30px; fill: #fff; }
+    @keyframes pulse-wa {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(240,112,32,0.5), 0 4px 15px rgba(240,112,32,0.4); }
+      50% { box-shadow: 0 0 0 12px rgba(240,112,32,0), 0 4px 25px rgba(240,112,32,0.6); }
+    }
+
+    /* ═══ MOBILE RESPONSIVE (480px and below) ═══ */
+    @media (max-width: 480px) {
+      body { font-size: 14px; }
+      section { padding: 3.5rem 1rem; }
+      .container { padding: 0 0.5rem; }
+      .hero { min-height: 500px; }
+      .hero__title { font-size: 2.5rem; line-height: 1.05; }
+      .hero__subtitle { font-size: 0.9rem; margin-bottom: 1.5rem; letter-spacing: 0.08em; }
+      .hero__content { padding: 0 1rem; }
+      .about__grid { gap: 2rem; }
+      .about__text p { font-size: 1rem; }
+      .about__logo-deco { width: 150px; }
+      .badge { font-size: 0.85rem; padding: 0.5rem 1rem; min-height: 44px; }
+      .feature-card { padding: 1.8rem 1.5rem; }
+      .feature-card__title { font-size: 1.3rem; }
+      .feature-card__desc { font-size: 0.9rem; }
+      .product-card__img-wrap { height: 200px; }
+      .product-card__body { padding: 1.4rem 1.2rem 1.8rem; }
+      .product-card__badge { font-size: 1.1rem; }
+      .product-card__title { font-size: 1rem; }
+      .product-card__desc { font-size: 0.85rem; margin-bottom: 1.4rem; }
+      .product-card__btn { width: 100%; justify-content: center; min-height: 48px; font-size: 0.9rem; padding: 0.75rem 1rem; }
+      .contact__buttons { grid-template-columns: 1fr; gap: 0.8rem; }
+      .contact-btn { flex-direction: row; gap: 0.8rem; padding: 1rem 1.2rem; min-height: 52px; }
+      .contact-btn__icon { font-size: 1.5rem; }
+      .contact__subtitle { font-size: 1rem; margin-bottom: 2rem; }
+      .section-title { font-size: 1.8rem; }
+      .section-tag { font-size: 0.75rem; }
+      .footer { padding: 2rem 1rem; }
+      .footer__logo img { height: 28px; }
+      .footer__copy { font-size: 0.8rem; }
+      .wa-float { bottom: 1rem; right: 1rem; width: 56px; height: 56px; }
+      .wa-float svg { width: 28px; height: 28px; }
+      .blob { display: none; }
+    }
+
+    /* ═══ TABLET (481px - 768px) ═══ */
+    @media (min-width: 481px) and (max-width: 768px) {
+      section { padding: 4.5rem 1.5rem; }
+      .hero__title { font-size: 3rem; }
+      .contact__buttons { grid-template-columns: repeat(2, 1fr); }
+      .contact-btn { min-height: 48px; }
+      .product-card__btn { min-height: 44px; }
+      .wa-float { bottom: 1rem; right: 1rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ═══ NAVBAR ═══ -->
+  <nav class="navbar" id="navbar">
+    <a href="#hero" class="navbar__logo">
+      <img src="./assets/logo.png" alt="Cougar Suspension">
+    </a>
+    <button class="navbar__toggle" id="navToggle" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="navbar__center" id="navLinks">
+      <li><a href="#nosotros">About</a></li>
+      <li><a href="#caracteristicas">Features</a></li>
+      <li><a href="#productos">Products</a></li>
+      <li><a href="#contacto">Contact</a></li>
+      <li class="nav-wa-mobile"><a href="https://wa.me/595985743913" target="_blank" rel="noopener" class="btn-nav">WhatsApp</a></li>
+    </ul>
+    <div class="navbar__right">
+      <a href="https://wa.me/595985743913" target="_blank" rel="noopener" class="btn-nav">WhatsApp</a>
+    </div>
+  </nav>
+
+  <!-- ═══ HERO ═══ -->
+  <section class="hero" id="hero">
+    <div class="hero__fallback"></div>
+    <video class="hero__video" autoplay muted loop playsinline preload="auto" poster="./assets/poster.jpg">
+      <source src="./assets/video2.mp4" type="video/mp4">
+    </video>
+    <div class="hero__overlay"></div>
+    <div class="hero__blobs">
+      <div class="blob blob--orange-1"></div>
+      <div class="blob blob--red-1"></div>
+      <div class="blob blob--orange-2"></div>
+    </div>
+    <div class="hero__content">
+      <h1 class="hero__title reveal">Suspensions that <span>dominate</span> any terrain</h1>
+      <p class="hero__subtitle reveal reveal-d1">
+        Home installation <em>·</em> All Paraguay <em>·</em> No additional cost
+      </p>
+    </div>
+    <div class="hero__scroll">
+      <svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z"/></svg>
+    </div>
+  </section>
+
+  <!-- ═══ ABOUT ═══ -->
+  <section class="about" id="nosotros">
+    <div class="container">
+      <div class="about__grid">
+        <div class="about__text">
+          <p class="section-tag reveal">About Us</p>
+          <div class="separator reveal reveal-d1"></div>
+          <h2 class="section-title reveal reveal-d1">Power delivered to you</h2>
+          <p class="reveal reveal-d2">
+            Cougar Suspension is a 100% online company specialized in high-performance suspensions. We perform home installations throughout Paraguay at no additional cost. We bring quality directly to you, wherever you are.
+          </p>
+          <div class="about__badges reveal reveal-d3">
+            <div class="badge">🇵🇾 All Paraguay</div>
+            <div class="badge">🔧 Installation included</div>
+          </div>
+        </div>
+        <div class="about__visual reveal reveal-d2">
+          <img src="./assets/logo.png" alt="Cougar Suspension" class="about__logo-deco" loading="lazy">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ FEATURES ═══ -->
+  <section class="features" id="caracteristicas">
+    <div class="blob blob--feat-1"></div>
+    <div class="blob blob--feat-2"></div>
+    <div class="container">
+      <div style="text-align:center; margin-bottom:3.5rem;">
+        <p class="section-tag reveal">Why choose us</p>
+        <div class="separator separator--center reveal reveal-d1"></div>
+        <h2 class="section-title reveal reveal-d1">Our Features</h2>
+        <p class="reveal reveal-d2" style="color:rgba(232,232,232,0.5); font-size:1.1rem; letter-spacing:0.08em; text-transform:uppercase;">American technology, proven performance</p>
+      </div>
+      <div class="features__grid">
+        <div class="feature-card reveal">
+          <span class="feature-card__icon">🛻</span>
+          <h3 class="feature-card__title">High Performance</h3>
+          <p class="feature-card__desc">Suspensions designed for extreme terrain, asphalt and off-road</p>
+        </div>
+        <div class="feature-card reveal reveal-d1">
+          <span class="feature-card__icon">🔧</span>
+          <h3 class="feature-card__title">Home Installation</h3>
+          <p class="feature-card__desc">Specialized technicians go to wherever you are, throughout Paraguay</p>
+        </div>
+        <div class="feature-card reveal reveal-d2">
+          <span class="feature-card__icon">📦</span>
+          <h3 class="feature-card__title">100% Online Service</h3>
+          <p class="feature-card__desc">The entire process from your phone or computer, no paperwork</p>
+        </div>
+        <div class="feature-card reveal reveal-d3">
+          <span class="feature-card__icon">⚡</span>
+          <h3 class="feature-card__title">Fast Response</h3>
+          <p class="feature-card__desc">Immediate quote via WhatsApp, no waiting</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ PRODUCTS ═══ -->
+  <section class="products" id="productos">
+    <div class="blob blob--prod-1"></div>
+    <div class="blob blob--prod-2"></div>
+    <div class="container">
+      <div style="text-align:center; margin-bottom:3.5rem;">
+        <p class="section-tag reveal">Products</p>
+        <div class="separator separator--center reveal reveal-d1"></div>
+        <h2 class="section-title reveal reveal-d1">Our Products</h2>
+        <p class="reveal reveal-d2" style="color:rgba(232,232,232,0.5); font-size:1.1rem; letter-spacing:0.08em; text-transform:uppercase;">American technology, proven performance</p>
+      </div>
+      <div class="products__grid">
+        <div class="product-card reveal">
+          <div class="product-card__img-wrap">
+            <img src="./assets/c1.jpg" alt="Cougar C1" loading="lazy">
+            <div class="product-card__img-overlay"></div>
+          </div>
+          <div class="product-card__body">
+            <p class="product-card__badge">Cougar C1</p>
+            <h3 class="product-card__title">High-strength urethane, 5 years of tough, reliable performance.</h3>
+            <p class="product-card__flag">🇺🇸 AMERICAN TECHNOLOGY</p>
+            <p class="product-card__desc">Premium urethane shock absorbers designed to absorb every impact without losing firmness. 5-year guaranteed durability.</p>
+            <a href="https://wa.me/595985743913?text=Hola!%20Me%20interesa%20el%20Cougar%20C1" target="_blank" rel="noopener" class="product-card__btn">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+              Get a Quote on WhatsApp
+            </a>
+          </div>
+        </div>
+        <div class="product-card reveal reveal-d1">
+          <div class="product-card__img-wrap">
+            <img src="./assets/c2.jpg" alt="Cougar C2" loading="lazy">
+            <div class="product-card__img-overlay"></div>
+          </div>
+          <div class="product-card__body">
+            <p class="product-card__badge">Cougar C2</p>
+            <h3 class="product-card__title">Conquer curves, brakes, puddles and hills with total confidence.</h3>
+            <p class="product-card__flag">🇺🇸 AMERICAN TECHNOLOGY</p>
+            <p class="product-card__desc">Complete high-performance suspension for drivers who demand total control in any road condition.</p>
+            <a href="https://wa.me/595985743913?text=Hola!%20Me%20interesa%20el%20Cougar%20C2" target="_blank" rel="noopener" class="product-card__btn">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+              Get a Quote on WhatsApp
+            </a>
+          </div>
+        </div>
+        <div class="product-card reveal reveal-d2">
+          <div class="product-card__img-wrap">
+            <img src="./assets/extreme.jpg" alt="Cougar Extreme" loading="lazy">
+            <div class="product-card__img-overlay"></div>
+          </div>
+          <div class="product-card__body">
+            <p class="product-card__badge">Cougar Extreme</p>
+            <h3 class="product-card__title">Take your suspension to the next level with Cougar Extreme.</h3>
+            <p class="product-card__flag">🇺🇸 AMERICAN TECHNOLOGY</p>
+            <p class="product-card__desc">Supports 1,200 lbs, eliminates rear sag and smooths out the roughest rides. For those who demand maximum performance.</p>
+            <a href="https://wa.me/595985743913?text=Hola!%20Me%20interesa%20el%20Cougar%20Extreme" target="_blank" rel="noopener" class="product-card__btn">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+              Get a Quote on WhatsApp
+            </a>
+          </div>
+        </div>
+        <div class="product-card reveal reveal-d3">
+          <div class="product-card__img-wrap">
+            <img src="./assets/extreme-confort.jpg" alt="Extreme Confort" loading="lazy">
+            <div class="product-card__img-overlay"></div>
+          </div>
+          <div class="product-card__body">
+            <p class="product-card__badge">Extreme Confort</p>
+            <h3 class="product-card__title">Built for everyday driving, engineered to handle up to 450 kg of extra load.</h3>
+            <p class="product-card__flag">🇺🇸 AMERICAN TECHNOLOGY</p>
+            <p class="product-card__desc">The perfect combination of comfort and load capacity. Ideal for trucks and work vehicles.</p>
+            <a href="https://wa.me/595985743913?text=Hola!%20Me%20interesa%20el%20Extreme%20Confort" target="_blank" rel="noopener" class="product-card__btn">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+              Get a Quote on WhatsApp
+            </a>
+          </div>
+        </div>
+        <div class="product-card reveal reveal-d4">
+          <div class="product-card__img-wrap">
+            <img src="./assets/shackle.jpg" alt="Cougar Shackle" loading="lazy">
+            <div class="product-card__img-overlay"></div>
+          </div>
+          <div class="product-card__body">
+            <p class="product-card__badge">Cougar Shackle</p>
+            <h3 class="product-card__title">Comfort and flexibility for your vehicle's bodywork.</h3>
+            <p class="product-card__flag">🇺🇸 AMERICAN TECHNOLOGY</p>
+            <p class="product-card__desc">High-strength steel suspension shackles that improve rear suspension travel and response.</p>
+            <a href="https://wa.me/595985743913?text=Hola!%20Me%20interesa%20el%20Cougar%20Shackle" target="_blank" rel="noopener" class="product-card__btn">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+              Get a Quote on WhatsApp
+            </a>
+          </div>
+        </div>
+        <div class="product-card reveal reveal-d5">
+          <div class="product-card__img-wrap">
+            <img src="./assets/wheel-spacers.jpg" alt="Cougar Wheel Spacers" loading="lazy">
+            <div class="product-card__img-overlay"></div>
+          </div>
+          <div class="product-card__body">
+            <p class="product-card__badge">Cougar Wheel Spacers</p>
+            <h3 class="product-card__title">Wider stance, better grip, more clearance. Strong. Precise.</h3>
+            <p class="product-card__flag">🇺🇸 AMERICAN TECHNOLOGY</p>
+            <p class="product-card__desc">Forged aluminum CNC wheel spacers to widen the track, improve stability and achieve the perfect stance.</p>
+            <a href="https://wa.me/595985743913?text=Hola!%20Me%20interesa%20el%20Cougar%20Wheel%20Spacers" target="_blank" rel="noopener" class="product-card__btn">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+              Get a Quote on WhatsApp
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ CONTACT ═══ -->
+  <section class="contact" id="contacto">
+    <div class="blob blob--orange-3"></div>
+    <div class="blob blob--red-2"></div>
+    <div class="container">
+      <p class="section-tag reveal">Contact</p>
+      <div class="separator separator--center reveal reveal-d1"></div>
+      <h2 class="section-title reveal reveal-d1">Ready to dominate the terrain?</h2>
+      <p class="contact__subtitle reveal reveal-d2">Write us and receive your quote in minutes. We cover all of Paraguay.</p>
+      <div class="contact__buttons reveal reveal-d3">
+        <a href="https://wa.me/595985743913" target="_blank" rel="noopener" class="contact-btn">
+          <span class="contact-btn__icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></span>
+          WhatsApp
+        </a>
+        <a href="https://maps.google.com/?q=Asuncion,Paraguay" target="_blank" rel="noopener" class="contact-btn">
+          <span class="contact-btn__icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="#EA4335"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 010-5 2.5 2.5 0 010 5z"/></svg></span>
+          Location
+        </a>
+        <a href="https://www.instagram.com/cougarsuspensionparaguay?igsh=MXMzN3FzNGw5OHM4Zw==" target="_blank" rel="noopener" class="contact-btn">
+          <span class="contact-btn__icon"><svg width="24" height="24" viewBox="0 0 24 24"><defs><linearGradient id="ig" x1="0%" y1="100%" x2="100%" y2="0%"><stop offset="0%" stop-color="#f09433"/><stop offset="25%" stop-color="#e6683c"/><stop offset="50%" stop-color="#dc2743"/><stop offset="75%" stop-color="#cc2366"/><stop offset="100%" stop-color="#bc1888"/></linearGradient></defs><path fill="url(#ig)" d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4a5.8 5.8 0 01-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8A5.8 5.8 0 017.8 2zm-.2 2A3.6 3.6 0 004 7.6v8.8C4 18.39 5.61 20 7.6 20h8.8a3.6 3.6 0 003.6-3.6V7.6C20 5.61 18.39 4 16.4 4H7.6zm9.65 1.5a1.25 1.25 0 110 2.5 1.25 1.25 0 010-2.5zM12 7a5 5 0 110 10 5 5 0 010-10zm0 2a3 3 0 100 6 3 3 0 000-6z"/></svg></span>
+          Instagram
+        </a>
+        <a href="https://www.tiktok.com/@cougarpy?_r=1&_t=ZS-95oJRdRRura" target="_blank" rel="noopener" class="contact-btn">
+          <span class="contact-btn__icon"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#25F4EE" d="M16.6 5.82A4.278 4.278 0 0115.54 3h-3.09v12.4a2.592 2.592 0 01-2.59 2.5c-1.42 0-2.6-1.16-2.6-2.6 0-1.72 1.66-3.01 3.37-2.48V9.66c-3.45-.46-6.47 2.22-6.47 5.64 0 3.33 2.76 5.7 5.69 5.7 3.14 0 5.69-2.55 5.69-5.7V9.01a7.35 7.35 0 004.3 1.38V7.3s-1.88.09-3.24-1.48z"/><path fill="#FE2C55" d="M17.6 6.82A4.278 4.278 0 0016.54 4h-3.09v12.4a2.592 2.592 0 01-2.59 2.5c-1.42 0-2.6-1.16-2.6-2.6 0-1.72 1.66-3.01 3.37-2.48V10.66c-3.45-.46-6.47 2.22-6.47 5.64 0 3.33 2.76 5.7 5.69 5.7 3.14 0 5.69-2.55 5.69-5.7V10.01a7.35 7.35 0 004.3 1.38V8.3s-1.88.09-3.24-1.48z"/><path fill="#fff" d="M17.1 6.32A4.278 4.278 0 0016.04 3.5h-3.09v12.4a2.592 2.592 0 01-2.59 2.5c-1.42 0-2.6-1.16-2.6-2.6 0-1.72 1.66-3.01 3.37-2.48V10.16c-3.45-.46-6.47 2.22-6.47 5.64 0 3.33 2.76 5.7 5.69 5.7 3.14 0 5.69-2.55 5.69-5.7V9.51a7.35 7.35 0 004.3 1.38V7.8s-1.88.09-3.24-1.48z"/></svg></span>
+          TikTok
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ FOOTER ═══ -->
+  <footer class="footer">
+    <div class="footer__logo">
+      <img src="./assets/logo.png" alt="Cougar Suspension" loading="lazy">
+    </div>
+    <p class="footer__copy">© 2025 Cougar Suspension — Paraguay. All rights reserved.</p>
+  </footer>
+
+  <!-- ═══ WHATSAPP FLOTANTE ═══ -->
+  <a href="https://wa.me/595985743913" target="_blank" rel="noopener" class="wa-float" aria-label="WhatsApp">
+    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  </a>
+
+  <script>
+    // ═══ NAVBAR SCROLL ═══
+    var navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', function() {
+      navbar.classList.toggle('scrolled', window.scrollY > 60);
+    }, { passive: true });
+
+    // ═══ MOBILE MENU ═══
+    var navToggle = document.getElementById('navToggle');
+    var navLinks = document.getElementById('navLinks');
+    navToggle.addEventListener('click', function() {
+      navToggle.classList.toggle('active');
+      navLinks.classList.toggle('open');
+    });
+    navLinks.querySelectorAll('a').forEach(function(link) {
+      link.addEventListener('click', function() {
+        navToggle.classList.remove('active');
+        navLinks.classList.remove('open');
+      });
+    });
+
+    // ═══ SCROLL REVEAL ═══
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('.reveal').forEach(function(el) { observer.observe(el); });
+
+    // ═══ VIDEO FALLBACK ═══
+    var video = document.querySelector('.hero__video');
+    if (video) {
+      video.addEventListener('playing', function() {
+        var fb = document.querySelector('.hero__fallback');
+        if (fb) fb.style.display = 'none';
+      });
+      try {
+        video.play().catch(function() {
+          document.addEventListener('click', function() { video.play(); }, { once: true });
+        });
+      } catch (e) {
+        document.addEventListener('click', function() { video.play(); }, { once: true });
+      }
+    }
+  </script>
+
+</body>
+</html>
