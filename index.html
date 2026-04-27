@@ -146,9 +146,10 @@
 
     /* LANG SWITCHER */
     .lang{display:flex;gap:2px;margin-right:.5rem}
-    .lang button{background:none;border:1px solid var(--border);color:var(--muted);padding:4px 8px;font-size:.65rem;font-weight:600;letter-spacing:.05em;cursor:pointer;transition:all .2s;font-family:var(--font-body)}
-    .lang button.active{background:var(--orange);color:#000;border-color:var(--orange)}
+    .lang button{background:none;border:1px solid var(--border);color:var(--muted);padding:5px 8px;font-size:.65rem;font-weight:600;cursor:pointer;transition:all .2s;font-family:var(--font-body);line-height:1}
+    .lang button.active{border-color:var(--orange);box-shadow:0 0 6px rgba(240,112,32,0.3)}
     .lang button:hover{border-color:var(--orange)}
+    .lang button img{display:block}
 
     /* CATEGORY FILTER */
     .cat-btn{background:var(--card);border:1px solid var(--border);color:var(--muted);padding:.5rem 1.2rem;font-family:var(--font-display);font-size:.75rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;transition:all .2s}
@@ -190,9 +191,9 @@
       <a href="#contact" data-i18n="nav_contact">Contact</a>
     </div>
     <div class="lang">
-      <button onclick="setLang('en')" class="active" id="lang-en">EN</button>
-      <button onclick="setLang('es')" id="lang-es">ES</button>
-      <button onclick="setLang('pt')" id="lang-pt">PT</button>
+      <button onclick="setLang('en')" class="active" id="lang-en"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 60 30'%3E%3Cpath fill='%23012169' d='M0 0h60v30H0z'/%3E%3Cpath stroke='%23fff' stroke-width='6' d='M0 0l60 30m0-30L0 30'/%3E%3Cpath stroke='%23C8102E' stroke-width='4' d='M0 0l60 30m0-30L0 30' clip-path='url(%23a)'/%3E%3Cpath stroke='%23fff' stroke-width='10' d='M30 0v30M0 15h60'/%3E%3Cpath stroke='%23C8102E' stroke-width='6' d='M30 0v30M0 15h60'/%3E%3C/svg%3E" alt="EN" style="width:20px;height:12px;vertical-align:middle"></button>
+      <button onclick="setLang('es')" id="lang-es"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 750 500'%3E%3Cpath fill='%23c60b1e' d='M0 0h750v500H0z'/%3E%3Cpath fill='%23ffc400' d='M0 125h750v250H0z'/%3E%3C/svg%3E" alt="ES" style="width:20px;height:12px;vertical-align:middle"></button>
+      <button onclick="setLang('pt')" id="lang-pt"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 720 504'%3E%3Cpath fill='%23009b3a' d='M0 0h720v504H0z'/%3E%3Cpath fill='%23fedf00' d='M360 72l-324 180 324 180 324-180z'/%3E%3Ccircle fill='%23002776' cx='360' cy='252' r='115'/%3E%3C/svg%3E" alt="PT" style="width:20px;height:12px;vertical-align:middle"></button>
     </div>
     <a href="#contact" class="nav__cta" data-i18n="nav_quote">Get a Quote</a>
     <div class="hamburger" id="navToggle">
@@ -722,27 +723,27 @@
         dist_cta_t:"Ready to Partner with Cougar?",dist_cta_btn:"Apply for Distribution",
         contact_tag:"Contact Us",contact_title:"Get in Touch"},
       es:{nav_about:"Nosotros",nav_products:"Productos",nav_tech:"Tecnologia",nav_dist:"Distribuidores",nav_contact:"Contacto",nav_quote:"Cotizar",
-        hero_title:"Sistemas de<br><span>Suspension</span> Completos",hero_sub:"Brazos de control, estabilizadores, grilletes, kits de elevacion, espaciadores y soporte de carga — todo lo que tu camioneta necesita.",hero_btn:"Ver Productos",
+        hero_title:"Sistemas de<br><span>Suspension</span> Completos",hero_sub:"Control arms, stabilizers, shackles, lift kits, spacers y soporte de carga — todo lo que tu camioneta necesita.",hero_btn:"Ver Productos",
         stat1:"Lineas de Producto",stat2:"Modelos de Vehiculo",stat3:"Categorias",stat4:"Unidades Vendidas",
         about_tag:"Sobre Cougar",about_title:"Soluciones de<br>Suspension Completas.",
-        prod_title:"Nuestros Productos",cat_all:"Todos",cat_bump:"Soporte de Carga",cat_control:"Brazos de Control",cat_stab:"Estabilizadores",cat_spacer:"Espaciadores",cat_shackle:"Grilletes",cat_lift:"Kits de Elevacion",cat_leaf:"Hojas de Resorte",
-        cat_truck:"Amortiguadores Camioneta",cat_moto:"Motocicleta",cat_car:"Autos & SUV",
-        feat_tag:"Tecnologia",feat_title:"Por que Cougar",f1_t:"Resistencia",f2_t:"Sistemas Completos",f3_t:"Instalacion Directa",f4_t:"Todo Terreno",
+        prod_title:"Nuestros Productos",cat_all:"Todos",cat_bump:"Soporte de Carga",cat_control:"Control Arms",cat_stab:"Stabilizers",cat_spacer:"Spacers",cat_shackle:"Shackles",cat_lift:"Lift Kits",cat_leaf:"Leaf Springs",
+        cat_truck:"Shocks Camioneta",cat_moto:"Motos",cat_car:"Autos & SUV",
+        feat_tag:"Tecnologia",feat_title:"Por que Cougar",f1_t:"Resistencia Industrial",f2_t:"Sistemas Completos",f3_t:"Instalacion Bolt-On",f4_t:"Todo Terreno",
         dist_title:"Se Distribuidor Cougar",dist_c1_t:"Margenes de Distribuidor",dist_c2_t:"Lineas de Producto",dist_c3_t:"Compatibilidad",
-        db1_t:"Territorio Exclusivo",db2_t:"Margenes Premium",db3_t:"Soporte de Marketing",db4_t:"Capacitacion y Soporte",db5_t:"Envio Global Rapido",db6_t:"Marca en Crecimiento",
-        dist_cta_t:"Listo para ser Socio de Cougar?",dist_cta_btn:"Solicitar Distribucion",
-        contact_tag:"Contactenos",contact_title:"Escribanos"},
+        db1_t:"Territorio Exclusivo",db2_t:"Margenes Premium",db3_t:"Soporte de Marketing",db4_t:"Capacitacion y Soporte",db5_t:"Envio Global",db6_t:"Marca en Crecimiento",
+        dist_cta_t:"Queres ser Distribuidor Cougar?",dist_cta_btn:"Solicitar Distribucion",
+        contact_tag:"Contacto",contact_title:"Escribinos"},
       pt:{nav_about:"Sobre",nav_products:"Produtos",nav_tech:"Tecnologia",nav_dist:"Distribuidores",nav_contact:"Contato",nav_quote:"Orcamento",
-        hero_title:"Sistemas de<br><span>Suspensao</span> Completos",hero_sub:"Bracos de controle, estabilizadores, jumelos, kits de elevacao, espacadores e suporte de carga — tudo que sua picape precisa.",hero_btn:"Ver Produtos",
+        hero_title:"Sistemas de<br><span>Suspensao</span> Completos",hero_sub:"Control arms, stabilizers, shackles, lift kits, spacers e suporte de carga — tudo que sua picape precisa.",hero_btn:"Ver Produtos",
         stat1:"Linhas de Produto",stat2:"Modelos de Veiculo",stat3:"Categorias",stat4:"Unidades Vendidas",
         about_tag:"Sobre a Cougar",about_title:"Solucoes Completas<br>de Suspensao.",
-        prod_title:"Nossos Produtos",cat_all:"Todos",cat_bump:"Suporte de Carga",cat_control:"Bracos de Controle",cat_stab:"Estabilizadores",cat_spacer:"Espacadores",cat_shackle:"Jumelos",cat_lift:"Kits de Elevacao",cat_leaf:"Molas",
-        cat_truck:"Amortecedores Picape",cat_moto:"Motocicleta",cat_car:"Carros & SUV",
-        feat_tag:"Tecnologia",feat_title:"Por que Cougar",f1_t:"Resistencia",f2_t:"Sistemas Completos",f3_t:"Instalacao Direta",f4_t:"Todo Terreno",
+        prod_title:"Nossos Produtos",cat_all:"Todos",cat_bump:"Suporte de Carga",cat_control:"Control Arms",cat_stab:"Stabilizers",cat_spacer:"Spacers",cat_shackle:"Shackles",cat_lift:"Lift Kits",cat_leaf:"Leaf Springs",
+        cat_truck:"Shocks Picape",cat_moto:"Motos",cat_car:"Carros & SUV",
+        feat_tag:"Tecnologia",feat_title:"Por que Cougar",f1_t:"Resistencia Industrial",f2_t:"Sistemas Completos",f3_t:"Instalacao Bolt-On",f4_t:"Todo Terreno",
         dist_title:"Seja Distribuidor Cougar",dist_c1_t:"Margens do Distribuidor",dist_c2_t:"Linhas de Produto",dist_c3_t:"Compatibilidade",
-        db1_t:"Territorio Exclusivo",db2_t:"Margens Premium",db3_t:"Suporte de Marketing",db4_t:"Treinamento e Suporte",db5_t:"Envio Global Rapido",db6_t:"Marca em Crescimento",
-        dist_cta_t:"Pronto para ser Parceiro Cougar?",dist_cta_btn:"Solicitar Distribuicao",
-        contact_tag:"Fale Conosco",contact_title:"Entre em Contato"}
+        db1_t:"Territorio Exclusivo",db2_t:"Margens Premium",db3_t:"Suporte de Marketing",db4_t:"Treinamento e Suporte",db5_t:"Envio Global",db6_t:"Marca em Crescimento",
+        dist_cta_t:"Quer ser Distribuidor Cougar?",dist_cta_btn:"Solicitar Distribuicao",
+        contact_tag:"Contato",contact_title:"Fale com a Cougar"}
     };
     function setLang(lang){
       document.querySelectorAll('.lang button').forEach(function(b){b.classList.toggle('active',b.id==='lang-'+lang)});
