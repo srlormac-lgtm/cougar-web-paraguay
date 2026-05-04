@@ -432,6 +432,59 @@
         </div>
       </div>
 
+      <!-- ===== VEHICLE DATA (all countries) ===== -->
+      <div id="vehicleSection">
+        <h3 style="font-family:var(--font-display);font-size:1.1rem;text-transform:uppercase;letter-spacing:.1em;color:var(--white);margin:2.5rem 0 1rem" id="vehicleTitle">Datos del Vehiculo</h3>
+
+        <!-- Suspension selector — only if cart has C1 or C2 -->
+        <div id="suspensionGroup" style="display:none;margin-bottom:1.2rem">
+          <div class="form-grid">
+            <div class="form-group form-grid--full">
+              <label id="lblSuspension">Para que suspension es? <span class="req">*</span></label>
+              <select id="vehSuspension">
+                <option value="">Seleccionar...</option>
+                <option value="delantera">Suspension Delantera</option>
+                <option value="trasera">Suspension Trasera</option>
+                <option value="ambos">Ambos (Delantera + Trasera)</option>
+              </select>
+              <span class="error-msg">Selecciona el tipo de suspension</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-grid">
+          <div class="form-group">
+            <label id="lblBrand">Marca del Vehiculo <span class="req">*</span></label>
+            <select id="vehBrand" onchange="toggleOtraMarca()">
+              <option value="">Seleccionar...</option>
+              <option>Toyota</option><option>Ford</option><option>Chevrolet</option>
+              <option>Mitsubishi</option><option>Nissan</option><option>Isuzu</option>
+              <option>Mazda</option><option>Great Wall</option><option>Jeep</option>
+              <option value="otra">Otra</option>
+            </select>
+            <span class="error-msg">Selecciona la marca</span>
+          </div>
+          <div class="form-group" id="vehOtraMarcaGroup" style="display:none">
+            <label id="lblOtraMarca">Cual marca? <span class="req">*</span></label>
+            <input type="text" id="vehOtraMarca" placeholder="Ej: Dodge, RAM, Subaru...">
+            <span class="error-msg">Ingresa la marca</span>
+          </div>
+          <div class="form-group">
+            <label id="lblModel">Modelo <span class="req">*</span></label>
+            <input type="text" id="vehModel" placeholder="Ej: Hilux, Ranger, D-Max">
+            <span class="error-msg">Ingresa el modelo</span>
+          </div>
+          <div class="form-group">
+            <label id="lblYear">Anio <span class="req">*</span></label>
+            <select id="vehYear">
+              <option value="">Seleccionar...</option>
+              <script>for(var y=2026;y>=1990;y--) document.write('<option>'+y+'</option>');</script>
+            </select>
+            <span class="error-msg">Selecciona el anio</span>
+          </div>
+        </div>
+      </div>
+
       <div class="step-actions">
         <button class="btn btn--secondary" onclick="goToStep(1)">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20z"/></svg>
@@ -564,8 +617,7 @@
       updateCartCount();
       renderCart();
       detectCountry();
-      document.getElementById('shCountry').addEventListener('change', toggleRucField);
-      toggleRucField();
+      updateVehicleSection();
     }
 
     function updateCartCount(){
@@ -711,12 +763,67 @@
         Store.setCountry('PY');
       }
       updateSummary();
+      updateVehicleLabels();
     };
 
     window.toggleShippingType = function(type){
       document.getElementById('shFieldsInstalacion').style.display = (type === 'instalacion') ? 'block' : 'none';
       document.getElementById('shFieldsEncomienda').style.display = (type === 'encomienda') ? 'block' : 'none';
       updateSummary();
+    };
+
+    // Vehicle section — suspension selector + brand/model/year
+    function cartHasC1orC2(){
+      var items = getCartItems();
+      return items.some(function(e){
+        return e.product.id === 'bump-stop-c1' || e.product.id === 'bump-stop-c2';
+      });
+    }
+
+    function updateVehicleSection(){
+      // Show suspension selector only if cart has C1 or C2
+      document.getElementById('suspensionGroup').style.display = cartHasC1orC2() ? '' : 'none';
+      updateVehicleLabels();
+    }
+
+    function updateVehicleLabels(){
+      var country = document.getElementById('shCountry').value;
+      var isBR = (country === 'BR');
+      // Bilingual labels
+      var el;
+      el = document.getElementById('vehicleTitle');
+      if(el) el.textContent = isBR ? 'Dados do Veiculo' : 'Datos del Vehiculo';
+      el = document.getElementById('lblSuspension');
+      if(el) el.innerHTML = (isBR ? 'Para qual suspensao?' : 'Para que suspension es?') + ' <span class="req">*</span>';
+      el = document.getElementById('lblBrand');
+      if(el) el.innerHTML = (isBR ? 'Marca do Veiculo' : 'Marca del Vehiculo') + ' <span class="req">*</span>';
+      el = document.getElementById('lblOtraMarca');
+      if(el) el.innerHTML = (isBR ? 'Qual marca?' : 'Cual marca?') + ' <span class="req">*</span>';
+      el = document.getElementById('lblModel');
+      if(el) el.innerHTML = (isBR ? 'Modelo' : 'Modelo') + ' <span class="req">*</span>';
+      el = document.getElementById('lblYear');
+      if(el) el.innerHTML = (isBR ? 'Ano' : 'Anio') + ' <span class="req">*</span>';
+      // Suspension options
+      var sel = document.getElementById('vehSuspension');
+      if(sel){
+        var opts = sel.options;
+        if(isBR){
+          opts[0].text = 'Selecionar...';
+          opts[1].text = 'Suspensao Dianteira';
+          opts[2].text = 'Suspensao Traseira';
+          opts[3].text = 'Ambos (Dianteira + Traseira)';
+        } else {
+          opts[0].text = 'Seleccionar...';
+          opts[1].text = 'Suspension Delantera';
+          opts[2].text = 'Suspension Trasera';
+          opts[3].text = 'Ambos (Delantera + Trasera)';
+        }
+      }
+    }
+
+    window.toggleOtraMarca = function(){
+      var sel = document.getElementById('vehBrand');
+      document.getElementById('vehOtraMarcaGroup').style.display = (sel.value === 'otra') ? '' : 'none';
     };
 
     window.toggleOtraTransp = function(){
@@ -774,9 +881,11 @@
     window.validateAndGoToPayment = function(){
       var valid = true;
       var notEmpty = function(v){return v.trim().length >= 2;};
+      var hasSel = function(v){return v.length > 0;};
       var isEmail = function(v){return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);};
       var isPhone = function(v){return v.replace(/\D/g,'').length >= 7;};
 
+      // Base fields
       if(!validateField('shFullName', notEmpty)) valid = false;
       if(!validateField('shEmail', isEmail)) valid = false;
       if(!validateField('shPhone', isPhone)) valid = false;
@@ -784,6 +893,7 @@
       var country = document.getElementById('shCountry').value;
       var isPY = (country === 'PY');
 
+      // Shipping-specific fields
       if(isPY){
         var shType = getSelectedShippingType();
         if(!shType){ alert('Selecciona un tipo de envio'); return; }
@@ -792,9 +902,9 @@
         }
         if(shType === 'encomienda'){
           if(!validateField('shEncCity', notEmpty)) valid = false;
-          if(!validateField('shEncDept', function(v){return v.length>0;})) valid = false;
+          if(!validateField('shEncDept', hasSel)) valid = false;
           if(!validateField('shEncAddress', notEmpty)) valid = false;
-          if(!validateField('shEncTransport', function(v){return v.length>0;})) valid = false;
+          if(!validateField('shEncTransport', hasSel)) valid = false;
           if(document.getElementById('shEncTransport').value === 'otra'){
             if(!validateField('shEncOtra', notEmpty)) valid = false;
           }
@@ -806,6 +916,17 @@
         if(!validateField('shIntlCity', notEmpty)) valid = false;
         if(!validateField('shIntlState', notEmpty)) valid = false;
       }
+
+      // Vehicle fields (all countries)
+      if(cartHasC1orC2()){
+        if(!validateField('vehSuspension', hasSel)) valid = false;
+      }
+      if(!validateField('vehBrand', hasSel)) valid = false;
+      if(document.getElementById('vehBrand').value === 'otra'){
+        if(!validateField('vehOtraMarca', notEmpty)) valid = false;
+      }
+      if(!validateField('vehModel', notEmpty)) valid = false;
+      if(!validateField('vehYear', hasSel)) valid = false;
 
       if(!valid){
         var firstError = document.querySelector('.form-group.has-error');
@@ -822,6 +943,17 @@
         ruc: (isPY ? document.getElementById('shRuc').value.trim() : '')
       };
 
+      // Vehicle data
+      var brand = document.getElementById('vehBrand').value;
+      if(brand === 'otra') brand = document.getElementById('vehOtraMarca').value.trim();
+      shippingData.vehicleBrand = brand;
+      shippingData.vehicleModel = document.getElementById('vehModel').value.trim();
+      shippingData.vehicleYear = document.getElementById('vehYear').value;
+      if(cartHasC1orC2()){
+        shippingData.suspensionType = document.getElementById('vehSuspension').value;
+      }
+
+      // Shipping type specific
       if(isPY){
         var shType = getSelectedShippingType();
         shippingData.shippingType = shType;
@@ -1124,6 +1256,12 @@
           email: shippingData.email,
           phone: shippingData.phone,
           ruc: shippingData.ruc
+        },
+        vehicle: {
+          brand: shippingData.vehicleBrand,
+          model: shippingData.vehicleModel,
+          year: shippingData.vehicleYear,
+          suspensionType: shippingData.suspensionType || null
         },
         shippingType: shippingData.shippingType,
         shippingLabel: shippingData.shippingLabel,
