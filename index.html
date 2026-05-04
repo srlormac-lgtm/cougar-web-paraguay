@@ -50,6 +50,32 @@
     .hero__scroll svg{width:28px;height:28px;fill:var(--muted);animation:scrollBounce 2s infinite}
     @keyframes scrollBounce{0%,100%{transform:translateY(0)}50%{transform:translateY(8px)}}
 
+    /* FEATURED / MAS VENDIDOS */
+    .featured{background:var(--dark);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:5rem 2rem}
+    .featured__inner{max-width:var(--max-w);margin:0 auto}
+    .featured__grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem}
+    .featured-card{background:var(--card);border:2px solid var(--border);overflow:hidden;transition:all .3s;position:relative}
+    .featured-card:hover{border-color:var(--orange);transform:translateY(-4px);box-shadow:0 12px 40px rgba(240,112,32,0.15)}
+    .featured-card__img{position:relative;overflow:hidden;aspect-ratio:4/3}
+    .featured-card__img img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+    .featured-card:hover .featured-card__img img{transform:scale(1.05)}
+    .featured-card__badge{position:absolute;top:1rem;left:1rem;background:var(--orange);color:#000;padding:.4rem 1rem;font-family:var(--font-display);font-size:.7rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;z-index:1}
+    .featured-card__body{padding:1.5rem 1.8rem 1.8rem}
+    .featured-card__name{font-family:var(--font-display);font-size:1.5rem;font-weight:700;text-transform:uppercase;color:var(--white);margin-bottom:.4rem}
+    .featured-card__desc{font-size:.85rem;color:var(--muted);line-height:1.6;font-weight:300;margin-bottom:.8rem}
+    .featured-card__price{font-family:var(--font-display);font-size:1.5rem;font-weight:700;color:var(--orange);margin-bottom:.3rem}
+    .featured-card__ship{font-size:.7rem;color:#27ae60;margin-bottom:1rem}
+    .featured-card__actions{display:flex;gap:.6rem;align-items:center}
+    .featured-card__actions .qty-select{border:1px solid var(--border);display:flex;align-items:center;flex-shrink:0}
+    .featured-card__actions .qty-select button{background:var(--card);color:var(--white);border:none;width:32px;height:38px;cursor:pointer;font-size:1.1rem;transition:background .2s}
+    .featured-card__actions .qty-select button:hover{background:var(--orange);color:#000}
+    .featured-card__actions .qty-select input{width:38px;text-align:center;font-size:.9rem;color:var(--white);background:var(--dark);border:none;border-left:1px solid var(--border);border-right:1px solid var(--border);height:38px;font-family:var(--font-body);-moz-appearance:textfield}
+    .featured-card__actions .qty-select input::-webkit-outer-spin-button,.featured-card__actions .qty-select input::-webkit-inner-spin-button{-webkit-appearance:none}
+    .featured-card__actions .btn-cart{flex:1;background:var(--orange);color:#000;border:none;padding:.7rem 1.2rem;font-family:var(--font-display);font-weight:700;font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;transition:all .2s}
+    .featured-card__actions .btn-cart:hover{background:#ff8534;transform:translateY(-1px)}
+    .featured-card__actions .btn-cart.added{background:#2d7a2d;color:#fff}
+    @media(max-width:600px){.featured__grid{grid-template-columns:1fr}}
+
     /* SECTIONS */
     .section{padding:6rem 2rem}
     .section__inner{max-width:var(--max-w);margin:0 auto}
@@ -306,6 +332,105 @@
       <div class="stat reveal reveal-d3">
         <div class="stat__num">10K+</div>
         <div class="stat__label" data-i18n="stat4">Unidades Vendidas</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MAS VENDIDOS -->
+  <section class="featured" id="destacados">
+    <div class="featured__inner">
+      <div class="section__header section__header--center">
+        <p class="section__tag reveal">Cougar Suspension</p>
+        <h2 class="section__title reveal reveal-d1">Mas Vendidos</h2>
+        <div class="divider reveal reveal-d1"></div>
+        <p class="section__desc reveal reveal-d2">Nuestros amortiguadores mas populares. Calidad premium, garantia de 5 anos, instalacion disponible en Asuncion.</p>
+      </div>
+      <div class="featured__grid">
+
+        <div class="featured-card reveal" data-product-id="bump-stop-c1">
+          <div class="featured-card__img">
+            <img src="./assets/c1.jpg" alt="Cougar C1">
+            <div class="featured-card__badge">Mas Vendido</div>
+          </div>
+          <div class="featured-card__body">
+            <h3 class="featured-card__name">Cougar C1</h3>
+            <p class="featured-card__desc">Tope de uretano de alta resistencia. 5 anos de rendimiento confiable. Precio por par.</p>
+            <div class="featured-card__price" data-fprice="bump-stop-c1"></div>
+            <div class="featured-card__ship">Envio gratis en Paraguay</div>
+            <div class="featured-card__actions">
+              <div class="qty-select">
+                <button type="button" onclick="qtyChange(this,-1)">-</button>
+                <input type="number" value="1" min="1" max="99">
+                <button type="button" onclick="qtyChange(this,1)">+</button>
+              </div>
+              <button class="btn-cart" onclick="addToCartUI('bump-stop-c1',this)">Agregar al Carrito</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="featured-card reveal reveal-d1" data-product-id="bump-stop-c2">
+          <div class="featured-card__img">
+            <img src="./assets/c2.jpg" alt="Cougar C2">
+            <div class="featured-card__badge">Mas Vendido</div>
+          </div>
+          <div class="featured-card__body">
+            <h3 class="featured-card__name">Cougar C2</h3>
+            <p class="featured-card__desc">Mejora completa de suspension de alto rendimiento. Control total en curvas y frenadas. Precio por par.</p>
+            <div class="featured-card__price" data-fprice="bump-stop-c2"></div>
+            <div class="featured-card__ship">Envio gratis en Paraguay</div>
+            <div class="featured-card__actions">
+              <div class="qty-select">
+                <button type="button" onclick="qtyChange(this,-1)">-</button>
+                <input type="number" value="1" min="1" max="99">
+                <button type="button" onclick="qtyChange(this,1)">+</button>
+              </div>
+              <button class="btn-cart" onclick="addToCartUI('bump-stop-c2',this)">Agregar al Carrito</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="featured-card reveal reveal-d2" data-product-id="bump-stop-extreme">
+          <div class="featured-card__img">
+            <img src="./assets/extreme.jpg" alt="Cougar Extreme">
+            <div class="featured-card__badge">Mas Vendido</div>
+          </div>
+          <div class="featured-card__body">
+            <h3 class="featured-card__name">Cougar Extreme</h3>
+            <p class="featured-card__desc">Soporta hasta 550 kg. Elimina el hundimiento trasero. Maximo rendimiento. Precio por par.</p>
+            <div class="featured-card__price" data-fprice="bump-stop-extreme"></div>
+            <div class="featured-card__ship">Envio gratis en Paraguay</div>
+            <div class="featured-card__actions">
+              <div class="qty-select">
+                <button type="button" onclick="qtyChange(this,-1)">-</button>
+                <input type="number" value="1" min="1" max="99">
+                <button type="button" onclick="qtyChange(this,1)">+</button>
+              </div>
+              <button class="btn-cart" onclick="addToCartUI('bump-stop-extreme',this)">Agregar al Carrito</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="featured-card reveal reveal-d3" data-product-id="bump-stop-extreme-confort">
+          <div class="featured-card__img">
+            <img src="./assets/extreme-confort.jpg" alt="Cougar Extreme Confort">
+            <div class="featured-card__badge">Mas Vendido</div>
+          </div>
+          <div class="featured-card__body">
+            <h3 class="featured-card__name">Cougar Extreme Confort</h3>
+            <p class="featured-card__desc">Disenado para el uso diario, hasta 450 kg de carga extra. Confort y capacidad. Precio por par.</p>
+            <div class="featured-card__price" data-fprice="bump-stop-extreme-confort"></div>
+            <div class="featured-card__ship">Envio gratis en Paraguay</div>
+            <div class="featured-card__actions">
+              <div class="qty-select">
+                <button type="button" onclick="qtyChange(this,-1)">-</button>
+                <input type="number" value="1" min="1" max="99">
+                <button type="button" onclick="qtyChange(this,1)">+</button>
+              </div>
+              <button class="btn-cart" onclick="addToCartUI('bump-stop-extreme-confort',this)">Agregar al Carrito</button>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
   </section>
@@ -964,6 +1089,12 @@
     function updateProductPrices(){
       if(typeof CougarStore==='undefined') return;
       var currency=CougarStore.getCurrency();
+      // Featured cards prices
+      document.querySelectorAll('[data-fprice]').forEach(function(el){
+        var pid=el.getAttribute('data-fprice');
+        var product=CougarStore.getProduct(pid);
+        if(product) el.textContent=CougarStore.formatPrice(product.prices[currency]);
+      });
       document.querySelectorAll('[data-price-id]').forEach(function(el){
         var pid=el.getAttribute('data-price-id');
         var product=CougarStore.getProduct(pid);
