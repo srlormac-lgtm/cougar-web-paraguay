@@ -727,54 +727,69 @@
       var country = shippingData.country || 'PY';
       var totals = getCartTotals();
       var cfg = getDpagoCfg(country);
-      var amount = Math.round(totals.total);
       var publicKey = cfg.publicKey || '';
       var secretKey = cfg.secretKey || '';
 
-      // Generate Dpago security token: SHA256(reference + amount + publicKey)
-      var tokenString = orderReference + amount + publicKey;
-      var token = await sha256(tokenString);
+      // amount MUST be integer (no decimals) for PYG
+      var amount = parseInt(Math.round(totals.total), 10);
 
-      // Build cart items for API
-      var cartItems = getCartItems().map(function(entry){
-        return {
-          name: entry.product.name,
-          quantity: entry.qty,
-          unitPrice: entry.product.prices[Store.getCurrency()] || 0,
-          total: entry.subtotal
-        };
-      });
+      // commerceId MUST be a number
+      var commerceId = parseInt(cfg.commerceId, 10);
 
-      var payload = {
-        commerceId: cfg.commerceId,
-        amount: amount,
-        currency: Store.getCurrency(),
-        reference: orderReference,
-        description: 'Cougar Suspension - Orden ' + orderReference,
-        token: token,
-        paymentMethodId: selectedMethod,
-        returnUrl: window.location.origin + '/checkout.html?order=' + orderReference + '&status=success',
-        cancelUrl: window.location.origin + '/checkout.html?order=' + orderReference + '&status=cancel',
-        notificationUrl: cfg.webhookUrl || '',
-        customer: {
-          name: shippingData.fullName,
-          email: shippingData.email,
-          phone: shippingData.phone,
-          documentId: shippingData.ruc || ''
-        },
-        items: cartItems,
-        metadata: {
-          address: shippingData.address,
-          city: shippingData.city,
-          state: shippingData.state,
-          zip: shippingData.zip,
-          country: country
-        }
+      // platformId MUST be a number (the payment method ID)
+      var platformId = parseInt(selectedMethod, 10);
+
+      // reference as string
+      var reference = String(orderReference);
+
+      // Generate Dpago security token: SHA256(reference + amount + publicToken)
+      // amount here is the EXACT integer that goes in the body
+      var tokenInput = reference + String(amount) + publicKey;
+      var token = await sha256(tokenInput);
+
+      // customer — all 4 fields required as non-empty strings
+      var customer = {
+        email: String(shippingData.email || '').trim(),
+        identification: String(shippingData.ruc || shippingData.phone || '0000000').trim(),
+        name: String(shippingData.fullName || '').trim(),
+        phone: String(shippingData.phone || '').trim()
       };
 
-      console.log('[Dpago] POST https://api.dpago.com/transactions');
-      console.log('[Dpago] Payload:', JSON.stringify(payload, null, 2));
-      console.log('[Dpago] Token generated from: SHA256("' + tokenString + '")');
+      // Payload matching Dpago API spec exactly
+      var payload = {
+        amount: amount,
+        description: 'Cougar Suspension - ' + reference,
+        reference: reference,
+        customer: customer,
+        token: token,
+        platformId: platformId,
+        commerceId: commerceId
+      };
+
+      // ============ DEBUG LOGGING ============
+      console.log('%c[Dpago] ===== TRANSACTION DEBUG =====', 'color:#F07020;font-weight:bold;font-size:14px');
+      console.log('%c[Dpago] Token input string:', 'color:#F07020', JSON.stringify(tokenInput));
+      console.log('%c[Dpago] Token input breakdown:', 'color:#F07020',
+        'reference="' + reference + '"',
+        '+ amount="' + String(amount) + '"',
+        '+ publicKey="' + publicKey + '"'
+      );
+      console.log('%c[Dpago] Token SHA256:', 'color:#F07020', token);
+      console.log('%c[Dpago] Full payload:', 'color:#F07020;font-weight:bold');
+      console.table({
+        amount:       { value: payload.amount,       type: typeof payload.amount },
+        description:  { value: payload.description,  type: typeof payload.description },
+        reference:    { value: payload.reference,     type: typeof payload.reference },
+        token:        { value: payload.token,         type: typeof payload.token },
+        platformId:   { value: payload.platformId,    type: typeof payload.platformId },
+        commerceId:   { value: payload.commerceId,    type: typeof payload.commerceId }
+      });
+      console.log('%c[Dpago] customer:', 'color:#F07020');
+      console.table(payload.customer);
+      console.log('%c[Dpago] JSON body:', 'color:#F07020', JSON.stringify(payload, null, 2));
+      console.log('%c[Dpago] POST https://api.dpago.com/transactions', 'color:#F07020;font-weight:bold');
+      console.log('%c[Dpago] Authorization: Bearer ' + secretKey.substring(0,12) + '...', 'color:#888');
+      // ============ END DEBUG ============
 
       try {
         var res = await fetch('https://api.dpago.com/transactions', {
@@ -786,13 +801,25 @@
           body: JSON.stringify(payload)
         });
 
-        var data = await res.json();
-        console.log('[Dpago] Response:', data);
+        var responseText = await res.text();
+        console.log('%c[Dpago] Response status:', 'color:#F07020;font-weight:bold', res.status, res.statusText);
+        console.log('%c[Dpago] Response body:', 'color:#F07020', responseText);
+
+        var data;
+        try { data = JSON.parse(responseText); } catch(e) { data = { raw: responseText }; }
+
+        if(res.status >= 400){
+          console.error('%c[Dpago] ERROR ' + res.status, 'color:red;font-weight:bold', data);
+          // Show error to user but still allow retry
+          var btn = document.getElementById('btnConfirmPay');
+          btn.disabled = false;
+          btn.innerHTML = 'Pagar Ahora <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zM12 17c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1s3.1 1.39 3.1 3.1v2z"/></svg>';
+          alert('Error Dpago (' + res.status + '): ' + (data.message || data.error || responseText).substring(0,200));
+          return;
+        }
 
         if(data && data.redirectUrl){
-          // Save order before redirect
           saveOrder(data.transactionId || data.id || 'DPAGO-'+Date.now(), 'processing');
-          // Redirect to Dpago payment page
           window.location.href = data.redirectUrl;
           return;
         }
@@ -802,7 +829,6 @@
           return;
         }
 
-        // API returned but no redirect — complete locally
         console.warn('[Dpago] No redirectUrl in response, completing locally');
         completeOrder('LOCAL-'+Date.now());
 
