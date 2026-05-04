@@ -2,4 +2,6 @@ User-agent: *
 Allow: /
 Disallow: /admin.html
 Disallow: /js/
+Disallow: /checkout.html
+
 Sitemap: https://cougarsuspension.com/sitemap.xml
