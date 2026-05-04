@@ -331,19 +331,25 @@
 
         <!-- OPTION A: Instalacion a domicilio -->
         <div id="shFieldsInstalacion" class="shipping-fields" style="display:none">
-          <div class="shipping-note" style="margin-bottom:1rem;border-color:var(--orange)">
-            <span class="shipping-note__icon" style="color:var(--orange)">&#9432;</span>
-            <span>Servicio disponible solo para <strong>Asuncion</strong> y ciudades aleda&ntilde;as: Luque, San Lorenzo, Fernando de la Mora, Lambar&eacute;, Mariano R. Alonso, &Ntilde;emby, Capiat&aacute;, Limpio, San Antonio.</span>
-          </div>
           <div class="shipping-note" style="margin-bottom:1rem;border-color:#27ae60">
             <span class="shipping-note__icon" style="color:#27ae60">&#128736;</span>
             <span><strong>Nuestro equipo de instaladores se comunicar&aacute; con usted para coordinar el horario de visita a su domicilio.</strong></span>
           </div>
           <div class="form-grid">
+            <div class="form-group">
+              <label>Ciudad <span class="req">*</span></label>
+              <select id="shInstCity">
+                <option value="">Seleccionar...</option>
+                <option>Asuncion</option><option>Luque</option><option>San Lorenzo</option>
+                <option>Fernando de la Mora</option><option>Lambare</option><option>Mariano R. Alonso</option>
+                <option>Nemby</option><option>Capiata</option><option>Limpio</option><option>San Antonio</option>
+              </select>
+              <span class="error-msg">Selecciona la ciudad</span>
+            </div>
             <div class="form-group form-grid--full">
-              <label>Direccion de Instalacion <span class="req">*</span></label>
-              <input type="text" id="shInstAddress" placeholder="Calle, numero, barrio, ciudad">
-              <span class="error-msg">Ingresa la direccion de instalacion</span>
+              <label>Direccion del Domicilio <span class="req">*</span></label>
+              <input type="text" id="shInstAddress" placeholder="Calle, numero, barrio">
+              <span class="error-msg">Ingresa la direccion</span>
             </div>
           </div>
         </div>
@@ -769,6 +775,8 @@
     window.toggleShippingType = function(type){
       document.getElementById('shFieldsInstalacion').style.display = (type === 'instalacion') ? 'block' : 'none';
       document.getElementById('shFieldsEncomienda').style.display = (type === 'encomienda') ? 'block' : 'none';
+      // Hide vehicle section for instalacion (installer sees the vehicle on-site)
+      document.getElementById('vehicleSection').style.display = (type === 'instalacion') ? 'none' : '';
       updateSummary();
     };
 
@@ -894,10 +902,13 @@
       var isPY = (country === 'PY');
 
       // Shipping-specific fields
+      var isInstalacion = false;
       if(isPY){
         var shType = getSelectedShippingType();
         if(!shType){ alert('Selecciona un tipo de envio'); return; }
-        if(shType === 'instalacion'){
+        isInstalacion = (shType === 'instalacion');
+        if(isInstalacion){
+          if(!validateField('shInstCity', hasSel)) valid = false;
           if(!validateField('shInstAddress', notEmpty)) valid = false;
         }
         if(shType === 'encomienda'){
@@ -917,16 +928,18 @@
         if(!validateField('shIntlState', notEmpty)) valid = false;
       }
 
-      // Vehicle fields (all countries)
-      if(cartHasC1orC2()){
-        if(!validateField('vehSuspension', hasSel)) valid = false;
+      // Vehicle fields — NOT required for instalacion a domicilio
+      if(!isInstalacion){
+        if(cartHasC1orC2()){
+          if(!validateField('vehSuspension', hasSel)) valid = false;
+        }
+        if(!validateField('vehBrand', hasSel)) valid = false;
+        if(document.getElementById('vehBrand').value === 'otra'){
+          if(!validateField('vehOtraMarca', notEmpty)) valid = false;
+        }
+        if(!validateField('vehModel', notEmpty)) valid = false;
+        if(!validateField('vehYear', hasSel)) valid = false;
       }
-      if(!validateField('vehBrand', hasSel)) valid = false;
-      if(document.getElementById('vehBrand').value === 'otra'){
-        if(!validateField('vehOtraMarca', notEmpty)) valid = false;
-      }
-      if(!validateField('vehModel', notEmpty)) valid = false;
-      if(!validateField('vehYear', hasSel)) valid = false;
 
       if(!valid){
         var firstError = document.querySelector('.form-group.has-error');
@@ -943,14 +956,16 @@
         ruc: (isPY ? document.getElementById('shRuc').value.trim() : '')
       };
 
-      // Vehicle data
-      var brand = document.getElementById('vehBrand').value;
-      if(brand === 'otra') brand = document.getElementById('vehOtraMarca').value.trim();
-      shippingData.vehicleBrand = brand;
-      shippingData.vehicleModel = document.getElementById('vehModel').value.trim();
-      shippingData.vehicleYear = document.getElementById('vehYear').value;
-      if(cartHasC1orC2()){
-        shippingData.suspensionType = document.getElementById('vehSuspension').value;
+      // Vehicle data — only if NOT instalacion
+      if(!isInstalacion){
+        var brand = document.getElementById('vehBrand').value;
+        if(brand === 'otra') brand = document.getElementById('vehOtraMarca').value.trim();
+        shippingData.vehicleBrand = brand;
+        shippingData.vehicleModel = document.getElementById('vehModel').value.trim();
+        shippingData.vehicleYear = document.getElementById('vehYear').value;
+        if(cartHasC1orC2()){
+          shippingData.suspensionType = document.getElementById('vehSuspension').value;
+        }
       }
 
       // Shipping type specific
@@ -959,7 +974,7 @@
         shippingData.shippingType = shType;
         if(shType === 'instalacion'){
           shippingData.address = document.getElementById('shInstAddress').value.trim();
-          shippingData.city = 'Asuncion / Gran Asuncion';
+          shippingData.city = document.getElementById('shInstCity').value;
           shippingData.state = 'Central';
           shippingData.shippingLabel = 'Instalacion a domicilio (gratis)';
           shippingData.shippingCost = 0;
@@ -1038,6 +1053,19 @@
       // Render PY payment methods
       var methods = getActiveMethodsForCountry('PY');
       var html = '';
+
+      // If instalacion, add "Pago en efectivo" as first option
+      var isInstalacion = shippingData.shippingType === 'instalacion';
+      if(isInstalacion){
+        html +=
+          '<div class="payment-method" data-method-id="cash" data-method-name="Pago en efectivo contra entrega" onclick="selectMethod(\'cash\',this)" style="border-color:#27ae60">'+
+            '<div class="payment-method__check"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></div>'+
+            '<div class="payment-method__icon">&#128176;</div>'+
+            '<div class="payment-method__name">Pago en efectivo al finalizar la instalacion</div>'+
+          '</div>';
+      }
+
+      // Dpago methods (always available for PY)
       methods.forEach(function(m){
         var mid = typeof m.id === 'string' ? "'"+m.id+"'" : m.id;
         html +=
@@ -1047,6 +1075,10 @@
             '<div class="payment-method__name">'+m.name+'</div>'+
           '</div>';
       });
+
+      if(isInstalacion){
+        html += '<p style="color:var(--muted);font-size:.75rem;text-align:center;grid-column:1/-1;margin-top:.5rem">O paga online antes de la instalacion con cualquier metodo de arriba</p>';
+      }
       container.innerHTML = html;
 
       // Calculate total with PY encomienda cost if applicable
@@ -1069,9 +1101,18 @@
       if(el) el.classList.add('selected');
 
       // Enable pay button
-      document.getElementById('btnConfirmPay').disabled = false;
+      var payBtn = document.getElementById('btnConfirmPay');
+      payBtn.disabled = false;
 
-      // Show dpago area and render embedded button
+      // Cash: hide dpago area, change button text
+      if(methodId === 'cash'){
+        document.getElementById('dpagoArea').classList.remove('visible');
+        payBtn.innerHTML = 'Confirmar Pedido (Pago contra entrega) <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>';
+        return;
+      }
+
+      // Dpago methods: show dpago area and render button
+      payBtn.innerHTML = 'Pagar Ahora <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zM12 17c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1s3.1 1.39 3.1 3.1v2z"/></svg>';
       document.getElementById('dpagoArea').classList.add('visible');
       renderDpagoButton();
     };
@@ -1108,6 +1149,12 @@
     ============================================================ */
     window.processPayment = function(){
       if(!selectedMethod){ alert('Selecciona un metodo de pago'); return; }
+
+      // Cash payment — no Dpago, just save order
+      if(selectedMethod === 'cash'){
+        completeOrder('CASH-'+Date.now(), 'pending_cash');
+        return;
+      }
 
       var btn = document.getElementById('btnConfirmPay');
       btn.disabled = true;
@@ -1302,8 +1349,8 @@
       return order;
     }
 
-    function completeOrder(paymentId){
-      var order = saveOrder(paymentId, 'pending');
+    function completeOrder(paymentId, status){
+      var order = saveOrder(paymentId, status || 'pending');
       var sd = shippingData;
       var isInstall = sd.shippingType === 'instalacion';
       var deliveryDays = isInstall ? '1-3' : '3-7';
