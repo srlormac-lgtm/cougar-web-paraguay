@@ -5,9 +5,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Finalizar Compra — Cougar Suspension</title>
   <meta name="description" content="Completa tu pedido de Cougar Suspension. Pago seguro con multiples metodos de pago.">
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="canonical" href="https://cougarsuspension.com/checkout.html">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Finalizar Compra — Cougar Suspension">
+  <meta property="og:description" content="Completa tu pedido de Cougar Suspension. Pago seguro con multiples metodos de pago.">
+  <meta property="og:image" content="https://cougarsuspension.com/assets/extreme.jpg">
+  <meta property="og:url" content="https://cougarsuspension.com/checkout.html">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_PY">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="dns-prefetch" href="https://api.dpago.com">
+  <link rel="dns-prefetch" href="https://cdn.dpago.com">
   <style>
     *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
     html{scroll-behavior:smooth}
@@ -198,7 +211,27 @@
       .progress__label{display:none}
       .cart-item__info{min-width:100px}
     }
+    /* WhatsApp Floating Button */
+    .whatsapp-float{position:fixed;bottom:20px;right:20px;width:56px;height:56px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:999;box-shadow:0 4px 12px rgba(37,211,102,0.4);transition:transform .2s,box-shadow .2s;animation:wa-bounce 2s ease-in-out 1s 1}
+    .whatsapp-float:hover{transform:scale(1.1);box-shadow:0 6px 20px rgba(37,211,102,0.5)}
+    .whatsapp-float svg{width:28px;height:28px;fill:#fff}
+    @keyframes wa-bounce{0%,20%,50%,80%,100%{transform:translateY(0)}40%{transform:translateY(-12px)}60%{transform:translateY(-6px)}}
   </style>
+  <!-- Google Analytics 4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXXXXX');
+  </script>
+
+  <!-- Facebook Pixel -->
+  <script>
+    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '000000000000000');
+    fbq('track', 'PageView');
+  </script>
 </head>
 <body>
 
@@ -618,12 +651,24 @@
     /* ============================================================
        INIT
     ============================================================ */
+    // --- Analytics Event Tracking ---
+    function trackEvent(eventName, params) {
+      if(typeof gtag === 'function') gtag('event', eventName, params);
+      if(typeof fbq === 'function') fbq('track', eventName, params);
+      console.log('[Track]', eventName, params);
+    }
+
     function init(){
       Store.init();
       updateCartCount();
       renderCart();
       detectCountry();
       updateVehicleSection();
+      // Fire begin_checkout if cart has items
+      if(Store.cartCount() > 0){
+        var totals = Store.getCartTotal();
+        trackEvent('begin_checkout', {currency: 'PYG', value: totals.total, items: Store.getCart().map(function(i){ return {item_id: i.product.id, item_name: i.product.name, quantity: i.qty}; })});
+      }
     }
 
     function updateCartCount(){
@@ -647,6 +692,7 @@
         if(idx === step) ps.classList.add('active');
         else if(idx < step) ps.classList.add('done');
       });
+      document.getElementById('progressBar').setAttribute('data-step', step);
 
       window.scrollTo({top:0, behavior:'smooth'});
       if(step === 3) setupPaymentStep();
@@ -1371,6 +1417,8 @@
         '<div class="confirmation__row"><span>Subtotal</span><span>'+Store.formatPrice(order.subtotal)+'</span></div>'+
         '<div class="confirmation__row confirmation__row--total"><span>Total</span><span>'+Store.formatPrice(order.total)+'</span></div>';
 
+      // Track purchase event
+      trackEvent('purchase', {transaction_id: orderReference, currency: order.currency || 'PYG', value: order.total, items: (order.items||[]).map(function(i){ return {item_id: i.product.id, item_name: i.product.name, quantity: i.qty, price: i.price}; })});
       Store.clearCart();
       updateCartCount();
       goToStep(4);
@@ -1389,6 +1437,7 @@
           '<div class="confirmation__row"><span>Orden</span><span>'+orderId+'</span></div>'+
           '<div class="confirmation__row"><span>Estado</span><span style="color:var(--success)">Pago recibido</span></div>'+
           '<div class="confirmation__row"><span>Fecha</span><span>'+new Date().toLocaleDateString('es-PY')+'</span></div>';
+        trackEvent('purchase', {transaction_id: orderId, currency: 'PYG', value: 0});
         Store.clearCart();
         updateCartCount();
         currentStep = 4;
@@ -1400,6 +1449,7 @@
           if(idx === 4) ps.classList.add('active');
           else ps.classList.add('done');
         });
+        document.getElementById('progressBar').setAttribute('data-step', 4);
       }
     }
 
@@ -1421,5 +1471,11 @@
 
   })();
   </script>
+
+  <!-- WhatsApp Floating Button -->
+  <a class="whatsapp-float" href="https://wa.me/595981000000?text=Hola!%20Quiero%20consultar%20sobre%20amortiguadores%20Cougar%20Suspension" target="_blank" rel="noopener" aria-label="Chat en WhatsApp">
+    <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><path d="M16.004 0h-.008C7.174 0 0 7.176 0 16c0 3.5 1.128 6.744 3.046 9.378L1.054 31.29l6.118-1.958A15.924 15.924 0 0016.004 32C24.826 32 32 24.822 32 16S24.826 0 16.004 0zm9.338 22.594c-.39 1.1-1.932 2.014-3.164 2.28-.844.18-1.946.324-5.656-1.216-4.746-1.97-7.8-6.78-8.034-7.096-.226-.316-1.882-2.508-1.882-4.784s1.188-3.396 1.612-3.862c.39-.428 1.028-.642 1.64-.642.198 0 .376.01.536.018.424.018.636.042.916.71.35.832 1.2 2.924 1.304 3.138.106.214.214.498.076.79-.128.3-.242.432-.456.678-.214.248-.418.438-.632.704-.196.232-.416.48-.176.918.24.432 1.068 1.762 2.294 2.854 1.578 1.406 2.908 1.842 3.322 2.046.414.204.656.172.898-.104.248-.282 1.06-1.234 1.342-1.66.276-.426.558-.354.94-.214.386.138 2.446 1.154 2.864 1.364.418.214.698.318.8.498.1.178.1 1.038-.29 2.14z"/></svg>
+  </a>
+
 </body>
 </html>

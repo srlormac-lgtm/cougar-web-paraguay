@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /admin.html
+Disallow: /js/
+Sitemap: https://cougarsuspension.com/sitemap.xml

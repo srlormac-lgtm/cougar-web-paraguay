@@ -1,13 +1,109 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Cougar Suspension — Complete Suspension Systems for Trucks & SUVs</title>
-  <meta name="description" content="Control arms, stabilizers, lift kits, shackles, spacers & load support. Complete suspension solutions for trucks and SUVs. Cougar Suspension LLC, New Mexico.">
+  <meta name="description" content="Sistemas de suspension 4x4 para camionetas y SUVs en Paraguay. Brazos de control, estabilizadores, lift kits, grilletes, espaciadores y soporte de carga. Cougar Suspension LLC.">
+  <link rel="canonical" href="https://cougarsuspension.com/">
+  <link rel="alternate" hreflang="es-PY" href="https://cougarsuspension.com/">
+  <link rel="alternate" hreflang="es-AR" href="https://cougarsuspension.com/?lang=es-AR">
+  <link rel="alternate" hreflang="pt-BR" href="https://cougarsuspension.com/?lang=pt-BR">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Cougar Suspension — Sistemas de Suspension para Camionetas y SUVs">
+  <meta property="og:description" content="Sistemas de suspension 4x4 para camionetas y SUVs en Paraguay. Brazos de control, estabilizadores, lift kits, grilletes, espaciadores y soporte de carga.">
+  <meta property="og:image" content="https://cougarsuspension.com/assets/extreme.jpg">
+  <meta property="og:url" content="https://cougarsuspension.com/">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_PY">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Cougar Suspension — Sistemas de Suspension para Camionetas y SUVs">
+  <meta name="twitter:description" content="Sistemas de suspension 4x4 para camionetas y SUVs en Paraguay. Brazos de control, estabilizadores, lift kits, grilletes y espaciadores.">
+  <meta name="twitter:image" content="https://cougarsuspension.com/assets/extreme.jpg">
+
+  <!-- Schema.org JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Cougar Suspension LLC",
+    "url": "https://cougarsuspension.com",
+    "logo": "https://cougarsuspension.com/assets/logo.png",
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "contactType": "sales",
+      "areaServed": ["PY", "AR", "BR"],
+      "availableLanguage": ["es", "pt"]
+    },
+    "sameAs": []
+  }
+  </script>
+  <script type="application/ld+json">
+  [
+    {
+      "@context": "https://schema.org",
+      "@type": "Product",
+      "name": "Cougar C1",
+      "image": "https://cougarsuspension.com/assets/c1.jpg",
+      "description": "Tope de uretano de alta resistencia. 5 anos de rendimiento confiable. Precio por par.",
+      "offers": {
+        "@type": "Offer",
+        "price": "350000",
+        "priceCurrency": "PYG",
+        "availability": "https://schema.org/InStock"
+      }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "Product",
+      "name": "Cougar C2",
+      "image": "https://cougarsuspension.com/assets/c2.jpg",
+      "description": "Mejora completa de suspension de alto rendimiento. Control total en curvas y frenadas. Precio por par.",
+      "offers": {
+        "@type": "Offer",
+        "price": "250000",
+        "priceCurrency": "PYG",
+        "availability": "https://schema.org/InStock"
+      }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "Product",
+      "name": "Cougar Extreme",
+      "image": "https://cougarsuspension.com/assets/extreme.jpg",
+      "description": "Soporta hasta 550 kg. Elimina el hundimiento trasero. Maximo rendimiento. Precio por par.",
+      "offers": {
+        "@type": "Offer",
+        "price": "1800000",
+        "priceCurrency": "PYG",
+        "availability": "https://schema.org/InStock"
+      }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "Product",
+      "name": "Cougar Extreme Confort",
+      "image": "https://cougarsuspension.com/assets/extreme-confort.jpg",
+      "description": "Disenado para el uso diario, hasta 450 kg de carga extra. Confort y capacidad. Precio por par.",
+      "offers": {
+        "@type": "Offer",
+        "price": "1800000",
+        "priceCurrency": "PYG",
+        "availability": "https://schema.org/InStock"
+      }
+    }
+  ]
+  </script>
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="preload" as="image" href="./assets/extreme.jpg">
+  <link rel="dns-prefetch" href="https://api.dpago.com">
+  <link rel="dns-prefetch" href="https://cdn.dpago.com">
   <style>
     *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
     html{scroll-behavior:smooth}
@@ -258,12 +354,98 @@
       .stats__inner{grid-template-columns:repeat(2,1fr);gap:2rem}
     }
     @media(max-width:600px){
-      .products__grid,.features__grid{grid-template-columns:1fr}
+      .products__grid,.features__grid,.testimonials-grid{grid-template-columns:1fr}
       .stats__inner{grid-template-columns:1fr;gap:1.5rem}
       .hero__title{font-size:2.5rem}
       .footer__inner{flex-direction:column;gap:1rem;text-align:center}
     }
+
+    /* TOUCH TARGETS — min 44px on mobile */
+    @media(max-width:992px){
+      .cat-btn{min-height:44px;min-width:44px;display:inline-flex;align-items:center;justify-content:center}
+      .qty-select button{min-width:44px;min-height:44px}
+      .nav__cart{min-width:44px;min-height:44px;display:flex;align-items:center;justify-content:center}
+      .hamburger{min-width:44px;min-height:44px;display:flex;align-items:center;justify-content:center}
+    }
+
+    /* CART ADD ANIMATION */
+    @keyframes addedPulse{
+      0%{box-shadow:0 0 0 0 rgba(39,174,96,0.6)}
+      50%{box-shadow:0 0 0 8px rgba(39,174,96,0)}
+      100%{box-shadow:0 0 0 0 rgba(39,174,96,0)}
+    }
+    .product--added{animation:addedPulse .5s ease-out;border-color:#27ae60 !important}
+    /* WhatsApp Floating Button */
+    .whatsapp-float{position:fixed;bottom:20px;right:20px;width:56px;height:56px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:999;box-shadow:0 4px 12px rgba(37,211,102,0.4);transition:transform .2s,box-shadow .2s;animation:wa-bounce 2s ease-in-out 1s 1}
+    .whatsapp-float:hover{transform:scale(1.1);box-shadow:0 6px 20px rgba(37,211,102,0.5)}
+    .whatsapp-float svg{width:28px;height:28px;fill:#fff}
+    @keyframes wa-bounce{0%,20%,50%,80%,100%{transform:translateY(0)}40%{transform:translateY(-12px)}60%{transform:translateY(-6px)}}
+
+    /* === CONVERSION OPTIMIZATION === */
+
+    /* 1. Exit-intent popup */
+    .exit-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.7);z-index:300;display:none;align-items:center;justify-content:center}
+    .exit-overlay.show{display:flex;animation:exitFadeIn .3s ease}
+    @keyframes exitFadeIn{from{opacity:0}to{opacity:1}}
+    .exit-card{background:var(--dark);border:1px solid var(--border);padding:2.5rem;max-width:440px;width:90%;text-align:center;position:relative;animation:exitSlideUp .4s ease}
+    @keyframes exitSlideUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+    .exit-card__title{font-family:var(--font-display);font-size:1.6rem;font-weight:700;text-transform:uppercase;color:var(--white);margin-bottom:.8rem;line-height:1.2}
+    .exit-card__info{color:var(--muted);font-size:.95rem;margin-bottom:1.5rem;line-height:1.6}
+    .exit-card__info strong{color:var(--orange);font-weight:600}
+    .exit-card__btn{display:inline-block;background:var(--orange);color:#000;padding:.85rem 2.2rem;font-family:var(--font-display);font-weight:700;font-size:.9rem;letter-spacing:.15em;text-transform:uppercase;transition:all .2s;border:none;cursor:pointer;text-decoration:none}
+    .exit-card__btn:hover{background:#ff8534;transform:translateY(-2px)}
+    .exit-card__dismiss{display:block;margin-top:1rem;color:var(--muted);font-size:.85rem;cursor:pointer;background:none;border:none;font-family:var(--font-body);transition:color .2s}
+    .exit-card__dismiss:hover{color:var(--white)}
+
+    /* 2. Return visitor banner */
+    .return-banner{position:fixed;top:0;left:0;right:0;z-index:250;background:linear-gradient(135deg,#1a1206,#1a1000);border-bottom:1px solid rgba(240,112,32,0.3);padding:.8rem 2rem;display:flex;align-items:center;justify-content:center;gap:1.2rem;flex-wrap:wrap;transform:translateY(-100%);transition:transform .4s ease;font-size:.9rem}
+    .return-banner.show{transform:translateY(0)}
+    .return-banner__text{color:var(--text)}
+    .return-banner__text strong{color:var(--orange)}
+    .return-banner__btn{background:var(--orange);color:#000;padding:.45rem 1.2rem;font-family:var(--font-display);font-weight:600;font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;border:none;cursor:pointer;transition:all .2s;text-decoration:none}
+    .return-banner__btn:hover{background:#ff8534}
+    .return-banner__close{background:none;border:none;color:var(--muted);font-size:1.2rem;cursor:pointer;padding:4px 8px;transition:color .2s;line-height:1}
+    .return-banner__close:hover{color:var(--white)}
+
+    /* 3. Cart badge bounce */
+    @keyframes cartBounce{0%{transform:scale(1)}30%{transform:scale(1.5)}60%{transform:scale(0.85)}100%{transform:scale(1)}}
+    .nav__cart-badge.bounce{animation:cartBounce .4s ease}
+
+    /* 4. Stock urgency */
+    .stock-urgency{font-size:.72rem;color:#d4763a;margin-top:.3rem;font-weight:500;letter-spacing:.02em}
+    .featured-card .stock-urgency{font-size:.72rem;color:#d4763a;margin-top:.3rem;margin-bottom:.6rem;font-weight:500;letter-spacing:.02em}
+
+    /* 5. Trust badges */
+    .trust-badges{display:flex;justify-content:center;gap:2.5rem;margin-bottom:2.5rem;flex-wrap:wrap}
+    .trust-badge{display:flex;align-items:center;gap:.6rem;color:var(--muted);font-size:.8rem;font-weight:400}
+    .trust-badge__icon{width:36px;height:36px;background:var(--orange-glow);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+    .trust-badge__icon svg{width:18px;height:18px;fill:var(--orange)}
+    .trust-badge__text{font-family:var(--font-display);font-size:.78rem;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:var(--text)}
+
+    /* 6. Mobile sticky CTA */
+    .mobile-sticky-cta{display:none}
+    @media(max-width:768px){
+      .mobile-sticky-cta{position:fixed;bottom:0;left:0;right:0;z-index:150;background:var(--orange);padding:.75rem 1.5rem;display:none;align-items:center;justify-content:center;transform:translateY(100%);transition:transform .3s ease}
+      .mobile-sticky-cta.show{display:flex;transform:translateY(0)}
+      .mobile-sticky-cta__btn{background:none;border:none;color:#000;font-family:var(--font-display);font-weight:700;font-size:.9rem;letter-spacing:.15em;text-transform:uppercase;cursor:pointer;width:100%;padding:.2rem 0}
+    }
   </style>
+
+  <!-- Google Analytics 4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXXXXX');
+  </script>
+
+  <!-- Facebook Pixel -->
+  <script>
+    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '000000000000000');
+    fbq('track', 'PageView');
+  </script>
 </head>
 <body>
 
@@ -345,11 +527,25 @@
         <div class="divider reveal reveal-d1"></div>
         <p class="section__desc reveal reveal-d2">Nuestros amortiguadores mas populares. Calidad premium, garantia de 5 anos, instalacion disponible en Asuncion.</p>
       </div>
+      <div class="trust-badges reveal">
+        <div class="trust-badge">
+          <div class="trust-badge__icon"><svg viewBox="0 0 24 24"><path d="M20 8h-3V4H3c-1.1 0-2 .9-2 2v11h2c0 1.66 1.34 3 3 3s3-1.34 3-3h6c0 1.66 1.34 3 3 3s3-1.34 3-3h2v-5l-3-4zM6 18.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm13.5-9l1.96 2.5H17V9.5h2.5zm-1.5 9c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/></svg></div>
+          <span class="trust-badge__text">Envio a todo Paraguay</span>
+        </div>
+        <div class="trust-badge">
+          <div class="trust-badge__icon"><svg viewBox="0 0 24 24"><path d="M22.7 19l-9.1-9.1c.9-2.3.4-5-1.5-6.9-2-2-5-2.4-7.4-1.3L9 6 6 9 1.6 4.7C.4 7.1.9 10.1 2.9 12.1c1.9 1.9 4.6 2.4 6.9 1.5l9.1 9.1c.4.4 1 .4 1.4 0l2.3-2.3c.5-.4.5-1.1.1-1.4z"/></svg></div>
+          <span class="trust-badge__text">Instalacion a domicilio</span>
+        </div>
+        <div class="trust-badge">
+          <div class="trust-badge__icon"><svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/></svg></div>
+          <span class="trust-badge__text">Garantia Cougar 5 anos</span>
+        </div>
+      </div>
       <div class="featured__grid">
 
         <div class="featured-card reveal" data-product-id="bump-stop-c1">
           <div class="featured-card__img">
-            <img src="./assets/c1.jpg" alt="Cougar C1">
+            <img loading="lazy" src="./assets/c1.jpg" alt="Cougar C1 - Tope de uretano de alta resistencia para suspension 4x4">
             <div class="featured-card__badge">Mas Vendido</div>
           </div>
           <div class="featured-card__body">
@@ -370,7 +566,7 @@
 
         <div class="featured-card reveal reveal-d1" data-product-id="bump-stop-c2">
           <div class="featured-card__img">
-            <img src="./assets/c2.jpg" alt="Cougar C2">
+            <img loading="lazy" src="./assets/c2.jpg" alt="Cougar C2 - Mejora completa de suspension de alto rendimiento">
             <div class="featured-card__badge">Mas Vendido</div>
           </div>
           <div class="featured-card__body">
@@ -391,7 +587,7 @@
 
         <div class="featured-card reveal reveal-d2" data-product-id="bump-stop-extreme">
           <div class="featured-card__img">
-            <img src="./assets/extreme.jpg" alt="Cougar Extreme">
+            <img loading="lazy" src="./assets/extreme.jpg" alt="Cougar Extreme - Soporte de carga hasta 550kg para camionetas">
             <div class="featured-card__badge">Mas Vendido</div>
           </div>
           <div class="featured-card__body">
@@ -412,7 +608,7 @@
 
         <div class="featured-card reveal reveal-d3" data-product-id="bump-stop-extreme-confort">
           <div class="featured-card__img">
-            <img src="./assets/extreme-confort.jpg" alt="Cougar Extreme Confort">
+            <img loading="lazy" src="./assets/extreme-confort.jpg" alt="Cougar Extreme Confort - Suspension diaria con capacidad de 450kg">
             <div class="featured-card__badge">Mas Vendido</div>
           </div>
           <div class="featured-card__body">
@@ -440,7 +636,7 @@
     <div class="section__inner">
       <div class="about__grid">
         <div class="about__img reveal">
-          <img src="./assets/extreme-confort.jpg" alt="Cougar Suspension">
+          <img loading="lazy" src="./assets/extreme-confort.jpg" alt="Cougar Suspension - Sistema de suspension instalado en camioneta 4x4">
         </div>
         <div class="about__text">
           <p class="section__tag reveal" data-i18n="about_tag">Sobre Cougar</p>
@@ -487,232 +683,232 @@
       <div class="products__grid">
         <!-- BUMP STOPS -->
         <div class="product reveal" data-category="bump" data-product-id="bump-stop-c1">
-          <div class="product__img"><img src="./assets/c1.jpg" alt="Cougar C1"><div class="product__badge">C1</div></div>
+          <div class="product__img"><img loading="lazy" src="./assets/c1.jpg" alt="Cougar C1"><div class="product__badge">C1</div></div>
           <div class="product__body"><h3 class="product__name">Cougar C1</h3><p class="product__desc">Tope de uretano de alta resistencia. 5 anos de rendimiento confiable. Absorbe cada impacto sin perder firmeza.</p><div class="product__price" data-price-id="bump-stop-c1"></div><div class="product__shipping" data-ship-id="bump-stop-c1"></div><div class="product__actions"><div class="qty-select"><button type="button" onclick="qtyChange(this,-1)">-</button><input type="number" value="1" min="1" max="99"><button type="button" onclick="qtyChange(this,1)">+</button></div><button class="btn-cart" onclick="addToCartUI('bump-stop-c1',this)">Agregar</button></div></div>
         </div>
         <div class="product reveal" data-category="bump" data-product-id="bump-stop-c2">
-          <div class="product__img"><img src="./assets/c2.jpg" alt="Cougar C2"><div class="product__badge">C2</div></div>
+          <div class="product__img"><img loading="lazy" src="./assets/c2.jpg" alt="Cougar C2"><div class="product__badge">C2</div></div>
           <div class="product__body"><h3 class="product__name">Cougar C2</h3><p class="product__desc">Mejora completa de suspension de alto rendimiento. Control total en curvas, frenadas y terreno irregular.</p><div class="product__price" data-price-id="bump-stop-c2"></div><div class="product__shipping" data-ship-id="bump-stop-c2"></div><div class="product__actions"><div class="qty-select"><button type="button" onclick="qtyChange(this,-1)">-</button><input type="number" value="1" min="1" max="99"><button type="button" onclick="qtyChange(this,1)">+</button></div><button class="btn-cart" onclick="addToCartUI('bump-stop-c2',this)">Agregar</button></div></div>
         </div>
         <div class="product reveal" data-category="bump" data-product-id="bump-stop-extreme">
-          <div class="product__img"><img src="./assets/extreme.jpg" alt="Cougar Extreme"><div class="product__badge">Extreme</div></div>
+          <div class="product__img"><img loading="lazy" src="./assets/extreme.jpg" alt="Cougar Extreme"><div class="product__badge">Extreme</div></div>
           <div class="product__body"><h3 class="product__name">Cougar Extreme</h3><p class="product__desc">Soporta hasta 550 kg. Elimina el hundimiento trasero y suaviza los viajes mas exigentes. Maximo rendimiento.</p><div class="product__price" data-price-id="bump-stop-extreme"></div><div class="product__shipping" data-ship-id="bump-stop-extreme"></div><div class="product__actions"><div class="qty-select"><button type="button" onclick="qtyChange(this,-1)">-</button><input type="number" value="1" min="1" max="99"><button type="button" onclick="qtyChange(this,1)">+</button></div><button class="btn-cart" onclick="addToCartUI('bump-stop-extreme',this)">Agregar</button></div></div>
         </div>
         <div class="product reveal" data-category="bump" data-product-id="bump-stop-extreme-confort">
-          <div class="product__img"><img src="./assets/extreme-confort.jpg" alt="Extreme Confort"><div class="product__badge">Confort</div></div>
+          <div class="product__img"><img loading="lazy" src="./assets/extreme-confort.jpg" alt="Extreme Confort"><div class="product__badge">Confort</div></div>
           <div class="product__body"><h3 class="product__name">Extreme Confort</h3><p class="product__desc">Disenado para el uso diario, capaz de manejar hasta 450 kg de carga extra. Confort y capacidad.</p><div class="product__price" data-price-id="bump-stop-extreme-confort"></div><div class="product__shipping" data-ship-id="bump-stop-extreme-confort"></div><div class="product__actions"><div class="qty-select"><button type="button" onclick="qtyChange(this,-1)">-</button><input type="number" value="1" min="1" max="99"><button type="button" onclick="qtyChange(this,1)">+</button></div><button class="btn-cart" onclick="addToCartUI('bump-stop-extreme-confort',this)">Agregar</button></div></div>
         </div>
         <!-- CONTROL ARMS -->
         <div class="product reveal" data-product-id="uca-steel" data-category="control">
-          <div class="product__img"><img src="./assets/products/uca-steel.png" alt="Upper Control Arms"><div class="product__badge">UPC</div></div>
+          <div class="product__img"><img loading="lazy" src="./assets/products/uca-steel.png" alt="Upper Control Arms"><div class="product__badge">UPC</div></div>
           <div class="product__body"><h3 class="product__name">Upper Control Arms</h3><p class="product__desc">Steel upper control arms, Lift 0-2". Engineered for stable alignment and extended service life. Fits Hilux, Ranger, Triton, D-Max, Tundra, Silverado & more.</p><div class="product__price" data-price-id="uca-steel"></div><div class="product__shipping" data-ship-id="uca-steel"></div><div class="product__actions"><div class="qty-select"><button type="button" onclick="qtyChange(this,-1)">-</button><input type="number" value="1" min="1" max="99"><button type="button" onclick="qtyChange(this,1)">+</button></div><button class="btn-cart" onclick="addToCartUI(\'uca-steel\',this)">Agregar</button></div></div>
         </div>
         <div class="product reveal" data-product-id="uca-land-cruiser" data-category="control">
-          <div class="product__img"><img src="./assets/products/uca-landcruiser.png" alt="UCA Land Cruiser"><div class="product__badge">UPC-LC</div></div>
+          <div class="product__img"><img loading="lazy" src="./assets/products/uca-landcruiser.png" alt="UCA Land Cruiser"><div class="product__badge">UPC-LC</div></div>
           <div class="product__body"><h3 class="product__name">UCA Land Cruiser</h3><p class="product__desc">High-strength steel upper control arms for Land Cruiser 200 & 300. High-density rubber bushings enhance handling and reduce noise.</p><div class="product__price" data-price-id="uca-land-cruiser"></div><div class="product__shipping" data-ship-id="uca-land-cruiser"></div><div class="product__actions"><div class="qty-select"><button type="button" onclick="qtyChange(this,-1)">-</button><input type="number" value="1" min="1" max="99"><button type="button" onclick="qtyChange(this,1)">+</button></div><button class="btn-cart" onclick="addToCartUI(\'uca-land-cruiser\',this)">Agregar</button></div></div>
         </div>
         <div class="product reveal" data-product-id="forged-aluminum-uca" data-category="control">
-          <div class="product__img"><img src="./assets/products/uca-forged-aluminum.png" alt="Forged Aluminum UCA"><div class="product__badge">A-UPC</div></div>
+          <div class="product__img"><img loading="lazy" src="./assets/products/uca-forged-aluminum.png" alt="Forged Aluminum UCA"><div class="product__badge">A-UPC</div></div>
           <div class="product__body"><h3 class="product__name">Forged Aluminum UCA</h3><p class="product__desc">T6061 forged aluminum upper control arms, Lift 0-2". Durable, long-lasting. Fits 4Runner, Lexus, Tundra, D-Max, Navara, Ranger & more.</p><div class="product__price" data-price-id="forged-aluminum-uca"></div><div class="product__shipping" data-ship-id="forged-aluminum-uca"></div><div class="product__actions"><div class="qty-select"><button type="button" onclick="qtyChange(this,-1)">-</button><input type="number" value="1" min="1" max="99"><button type="button" onclick="qtyChange(this,1)">+</button></div><button class="btn-cart" onclick="addToCartUI(\'forged-aluminum-uca\',this)">Agregar</button></div></div>
         </div>
         <div class="product reveal" data-product-id="billet-delta" data-category="control">
-          <div class="product__img"><img src="./assets/products/uca-billet-delta.png" alt="Billet Delta Joint Kit"><div class="product__badge">A-UPC-GS</div></div>
+          <div class="product__img"><img loading="lazy" src="./assets/products/uca-billet-delta.png" alt="Billet Delta Joint Kit"><div class="product__badge">A-UPC-GS</div></div>
           <div class="product__body"><h3 class="product__name">Billet Delta Joint Control Arm Kit</h3><p class="product__desc">CNC-machined 6061 billet aluminum. Adjustable caster & camber. Matte anodized finish. Fits GMC 1500 / Silverado 1500 2019-2024.</p><div class="product__price" data-price-id="billet-delta"></div><div class="product__shipping" data-ship-id="billet-delta"></div><div class="product__actions"><div class="qty-select"><button type="button" onclick="qtyChange(this,-1)">-</button><input type="number" value="1" min="1" max="99"><button type="button" onclick="qtyChange(this,1)">+</button></div><button class="btn-cart" onclick="addToCartUI(\'billet-delta\',this)">Agregar</button></div></div>
         </div>
         <!-- STABILIZERS -->
         <div class="product reveal" data-product-id="rear-sway-bar" data-category="stabilizer">
-          <div class="product__img"><img src="./assets/products/rear-sway-bar.png" alt="Rear Sway Bar"><div class="product__badge">S-A</div></div>
+          <div class="product__img"><img loading="lazy" src="./assets/products/rear-sway-bar.png" alt="Rear Sway Bar"><div class="product__badge">S-A</div></div>
           <div class="product__body"><h3 class="product__name">Rear Stabilizer Sway Bar</h3><p class="product__desc">Reduces body roll when weight shifts side to side. Keeps vehicle level while maintaining traction and control. Fits Hilux, D-Max, Ranger, Triton, Navara, Fortuner & more.</p><div class="product__price" data-price-id="rear-sway-bar"></div><div class="product__shipping" data-ship-id="rear-sway-bar"></div><div class="product__actions"><div class="qty-select"><button type="button" onclick="qtyChange(this,-1)">-</button><input type="number" value="1" min="1" max="99"><button type="button" onclick="qtyChange(this,1)">+</button></div><button class="btn-cart" onclick="addToCartUI(\'rear-sway-bar\',this)">Agregar</button></div></div>
         </div>
         <div class="product reveal" data-product-id="rear-balance-arm" data-category="stabilizer">
-          <div class="product__img"><img src="./assets/products/rear-balance-arm.png" alt="Rear Balance Arm Kit"><div class="product__badge">B-A</div></div>
+          <div class="product__img"><img loading="lazy" src="./assets/products/rear-balance-arm.png" alt="Rear Balance Arm Kit"><div class="product__badge">B-A</div></div>
           <div class="product__body"><h3 class="product__name">Rear Balance Arm Sport Kit</h3><p class="product__desc">Complete rear stabilizer sport kit with balance arms and mounting hardware. Fits Hilux, D-Max, Ranger, Triton, Navara, Fortuner, Pajero, Land Cruiser & more.</p><div class="product__price" data-price-id="rear-balance-arm"></div><div class="product__shipping" data-ship-id="rear-balance-arm"></div><div class="product__actions"><div class="qty-select"><button type="button" onclick="qtyChange(this,-1)">-</button><input type="number" value="1" min="1" max="99"><button type="button" onclick="qtyChange(this,1)">+</button></div><button class="btn-cart" onclick="addToCartUI(\'rear-balance-arm\',this)">Agregar</button></div></div>
         </div>
         <div class="product reveal" data-product-id="rear-twin-bar" data-category="stabilizer">
-          <div class="product__img"><img src="./assets/products/rear-twin-bar.png" alt="Rear Twin Bar"><div class="product__badge">RTB</div></div>
+          <div class="product__img"><img loading="lazy" src="./assets/products/rear-twin-bar.png" alt="Rear Twin Bar"><div class="product__badge">RTB</div></div>
           <div class="product__body"><h3 class="product__name">Rear Twin Bar</h3><p class="product__desc">High-quality steel, laser-cut for precision. Ensures high-strength joints. Fits Innova Zenix 2024.</p><div class="product__price" data-price-id="rear-twin-bar"></div><div class="product__shipping" data-ship-id="rear-twin-bar"></div><div class="product__actions"><div class="qty-select"><button type="button" onclick="qtyChange(this,-1)">-</button><input type="number" value="1" min="1" max="99"><button type="button" onclick="qtyChange(this,1)">+</button></div><button class="btn-cart" onclick="addToCartUI(\'rear-twin-bar\',this)">Agregar</button></div></div>
         </div>
         <div class="product reveal" data-product-id="front-balance-arm" data-category="stabilizer">
-          <div class="product__img"><img src="./assets/products/front-balance-arm.png" alt="Front Balance Arm Kit"><div class="product__badge">F-B-A</div></div>
+          <div class="product__img"><img loading="lazy" src="./assets/products/front-balance-arm.png" alt="Front Balance Arm Kit"><div class="product__badge">F-B-A</div></div>
           <div class="product__body"><h3 class="product__name">Front Balance Arm Sport Kit</h3><p class="product__desc">Front stabilizer sport kit. Fits Vigo, Fortuner, Revo, Ranger, BT50, Everest, Triton, D-Max, Colorado, MUX, Navara, Pajero Sport.</p><div class="product__price" data-price-id="front-balance-arm"></div><div class="product__shipping" data-ship-id="front-balance-arm"></div><div class="product__actions"><div class="qty-select"><button type="button" onclick="qtyChange(this,-1)">-</button><input type="number" value="1" min="1" max="99"><button type="button" onclick="qtyChange(this,1)">+</button></div><button class="btn-cart" onclick="addToCartUI(\'front-balance-arm\',this)">Agregar</button></div></div>
         </div>
         <!-- SPACERS -->
         <div class="product reveal" data-product-id="aluminum-height-spacer" data-category="spacer">
-          <div class="product__img"><img src="./assets/products/aluminum-height-spacer.png" alt="Aluminum Height Spacer"><div class="product__badge">D21-F</div></div>
+          <div class="product__img"><img loading="lazy" src="./assets/products/aluminum-height-spacer.png" alt="Aluminum Height Spacer"><div class="product__badge">D21-F</div></div>
           <div class="product__body"><h3 class="product__name">Aluminum Height Spacer</h3><p class="product__desc">Precise fit from original car data mold. Improves driving comfort and ensures a safer ride. Fits D-Max 2020-2025 4-door high end.</p><div class="product__price" data-price-id="aluminum-height-spacer"></div><div class="product__shipping" data-ship-id="aluminum-height-spacer"></div><div class="product__actions"><div class="qty-select"><button type="button" onclick="qtyChange(this,-1)">-</button><input type="number" value="1" min="1" max="99"><button type="button" onclick="qtyChange(this,1)">+</button></div><button class="btn-cart" onclick="addToCartUI(\'aluminum-height-spacer\',this)">Agregar</button></div></div>
         </div>
         <div class="product reveal" data-product-id="front-coil-spacer" data-category="spacer">
-          <div class="product__img"><img src="./assets/products/front-coil-spacer.png" alt="Front Coil Spring Shock Spacer"><div class="product__badge">D-F</div></div>
+          <div class="product__img"><img loading="lazy" src="./assets/products/front-coil-spacer.png" alt="Front Coil Spring Shock Spacer"><div class="product__badge">D-F</div></div>
           <div class="product__body"><h3 class="product__name">Front Coil Spring Shock Spacer</h3><p class="product__desc">Precise fit, easy install. Better mechanical properties and longer service life. Fits D-Max, Hilux, Fortuner, Navara, Ranger, Triton & more.</p><div class="product__price" data-price-id="front-coil-spacer"></div><div class="product__shipping" data-ship-id="front-coil-spacer"></div><div class="product__actions"><div class="qty-select"><button type="button" onclick="qtyChange(this,-1)">-</button><input type="number" value="1" min="1" max="99"><button type="button" onclick="qtyChange(this,1)">+</button></div><button class="btn-cart" onclick="addToCartUI(\'front-coil-spacer\',this)">Agregar</button></div></div>
         </div>
         <div class="product reveal" data-product-id="wheel-spacers-25mm" data-category="spacer">
-          <div class="product__img"><img src="./assets/products/wheel-spacers-25mm.png" alt="Wheel Spacers 25mm"><div class="product__badge">GPO-F</div></div>
+          <div class="product__img"><img loading="lazy" src="./assets/products/wheel-spacers-25mm.png" alt="Wheel Spacers 25mm"><div class="product__badge">GPO-F</div></div>
           <div class="product__body"><h3 class="product__name">Wheel Spacers 25mm</h3><p class="product__desc">Hub-centric beveled design. High-strength Grade 10.9-12.9 studs. Anti-corrosion anodized coating. Fits Greatwall, Tundra, Land Cruiser, Prado, X-Terra.</p><div class="product__price" data-price-id="wheel-spacers-25mm"></div><div class="product__shipping" data-ship-id="wheel-spacers-25mm"></div><div class="product__actions"><div class="qty-select"><button type="button" onclick="qtyChange(this,-1)">-</button><input type="number" value="1" min="1" max="99"><button type="button" onclick="qtyChange(this,1)">+</button></div><button class="btn-cart" onclick="addToCartUI(\'wheel-spacers-25mm\',this)">Agregar</button></div></div>
         </div>
         <div class="product reveal" data-product-id="rear-coil-spacer" data-category="spacer">
-          <div class="product__img"><img src="./assets/products/rear-coil-spacer.png" alt="Rear Coil Spring Spacer"><div class="product__badge">RCS</div></div>
+          <div class="product__img"><img loading="lazy" src="./assets/products/rear-coil-spacer.png" alt="Rear Coil Spring Spacer"><div class="product__badge">RCS</div></div>
           <div class="product__body"><h3 class="product__name">Rear Coil Spring & Shock Spacer</h3><p class="product__desc">Aluminum alloy spacer. Fits FJ Cruiser, Montero, Pajero Sport, NP300, Fortuner, MUX, Jimny, Everest, Land Cruiser LC79, Tank 300.</p><div class="product__price" data-price-id="rear-coil-spacer"></div><div class="product__shipping" data-ship-id="rear-coil-spacer"></div><div class="product__actions"><div class="qty-select"><button type="button" onclick="qtyChange(this,-1)">-</button><input type="number" value="1" min="1" max="99"><button type="button" onclick="qtyChange(this,1)">+</button></div><button class="btn-cart" onclick="addToCartUI(\'rear-coil-spacer\',this)">Agregar</button></div></div>
         </div>
         <div class="product reveal" data-product-id="wheel-spacers" data-category="spacer">
-          <div class="product__img"><img src="./assets/wheel-spacers.jpg" alt="Wheel Spacers"><div class="product__badge">Spacers</div></div>
+          <div class="product__img"><img loading="lazy" src="./assets/wheel-spacers.jpg" alt="Wheel Spacers"><div class="product__badge">Spacers</div></div>
           <div class="product__body"><h3 class="product__name">Cougar Wheel Spacers</h3><p class="product__desc">Precision-machined aluminum wheel spacers. Wider stance, better stability, aggressive look.</p><div class="product__price" data-price-id="wheel-spacers"></div><div class="product__shipping" data-ship-id="wheel-spacers"></div><div class="product__actions"><div class="qty-select"><button type="button" onclick="qtyChange(this,-1)">-</button><input type="number" value="1" min="1" max="99"><button type="button" onclick="qtyChange(this,1)">+</button></div><button class="btn-cart" onclick="addToCartUI(\'wheel-spacers\',this)">Agregar</button></div></div>
         </div>
         <!-- SHACKLES -->
         <div class="product reveal" data-product-id="shackle" data-category="shackle">
-          <div class="product__img"><img src="./assets/shackle.jpg" alt="Cougar Shackle"><div class="product__badge">Shackle</div></div>
+          <div class="product__img"><img loading="lazy" src="./assets/shackle.jpg" alt="Cougar Shackle"><div class="product__badge">Shackle</div></div>
           <div class="product__body"><h3 class="product__name">Cougar Shackle</h3><p class="product__desc">High-strength steel suspension shackles. Improves rear suspension travel and ride response.</p><div class="product__price" data-price-id="shackle"></div><div class="product__shipping" data-ship-id="shackle"></div><div class="product__actions"><div class="qty-select"><button type="button" onclick="qtyChange(this,-1)">-</button><input type="number" value="1" min="1" max="99"><button type="button" onclick="qtyChange(this,1)">+</button></div><button class="btn-cart" onclick="addToCartUI(\'shackle\',this)">Agregar</button></div></div>
         </div>
         <div class="product reveal" data-product-id="g-shackles-25" data-category="shackle">
-          <div class="product__img"><img src="./assets/products/g-shackles-25.png" alt="G-Shackles 2.5"><div class="product__badge">R-S2</div></div>
+          <div class="product__img"><img loading="lazy" src="./assets/products/g-shackles-25.png" alt="G-Shackles 2.5"><div class="product__badge">R-S2</div></div>
           <div class="product__body"><h3 class="product__name">G-Shackles 2-1/2" Lift</h3><p class="product__desc">Provide ~2" additional rear suspension lift. Smoother ride on and off road. Fits Hilux, D-Max, Triton, Ranger, Navara, Tundra & more.</p><div class="product__price" data-price-id="g-shackles-25"></div><div class="product__shipping" data-ship-id="g-shackles-25"></div><div class="product__actions"><div class="qty-select"><button type="button" onclick="qtyChange(this,-1)">-</button><input type="number" value="1" min="1" max="99"><button type="button" onclick="qtyChange(this,1)">+</button></div><button class="btn-cart" onclick="addToCartUI(\'g-shackles-25\',this)">Agregar</button></div></div>
         </div>
         <div class="product reveal" data-product-id="g-shackles-2" data-category="shackle">
-          <div class="product__img"><img src="./assets/products/g-shackles-2.png" alt="G-Shackles 2 inch"><div class="product__badge">RZ-S2</div></div>
+          <div class="product__img"><img loading="lazy" src="./assets/products/g-shackles-2.png" alt="G-Shackles 2 inch"><div class="product__badge">RZ-S2</div></div>
           <div class="product__body"><h3 class="product__name">G-Shackles 2" Lift</h3><p class="product__desc">~2" additional rear lift. More linear suspension action. Fits Vigo, Revo, D-Max, Land Cruiser 70/75/79, X-Terra.</p><div class="product__price" data-price-id="g-shackles-2"></div><div class="product__shipping" data-ship-id="g-shackles-2"></div><div class="product__actions"><div class="qty-select"><button type="button" onclick="qtyChange(this,-1)">-</button><input type="number" value="1" min="1" max="99"><button type="button" onclick="qtyChange(this,1)">+</button></div><button class="btn-cart" onclick="addToCartUI(\'g-shackles-2\',this)">Agregar</button></div></div>
         </div>
         <div class="product reveal" data-product-id="g-shackles-comfort" data-category="shackle">
-          <div class="product__img"><img src="./assets/products/g-shackles-comfort-color.png" alt="G-Shackles STD Comfort"><div class="product__badge">R-S1</div></div>
+          <div class="product__img"><img loading="lazy" src="./assets/products/g-shackles-comfort-color.png" alt="G-Shackles STD Comfort"><div class="product__badge">R-S1</div></div>
           <div class="product__body"><h3 class="product__name">G-Shackles STD Comfort</h3><p class="product__desc">Comfort-oriented extended shackles. Fits Hilux Revo, Vigo, D-Max, Triton, Ranger, Navara, Land Cruiser 70/75/79.</p><div class="product__price" data-price-id="g-shackles-comfort"></div><div class="product__shipping" data-ship-id="g-shackles-comfort"></div><div class="product__actions"><div class="qty-select"><button type="button" onclick="qtyChange(this,-1)">-</button><input type="number" value="1" min="1" max="99"><button type="button" onclick="qtyChange(this,1)">+</button></div><button class="btn-cart" onclick="addToCartUI(\'g-shackles-comfort\',this)">Agregar</button></div></div>
         </div>
         <div class="product reveal" data-product-id="g-shackles-silverado" data-category="shackle">
-          <div class="product__img"><img src="./assets/products/g-shackles-silverado.png" alt="G-Shackles Silverado"><div class="product__badge">SIL-R</div></div>
+          <div class="product__img"><img loading="lazy" src="./assets/products/g-shackles-silverado.png" alt="G-Shackles Silverado"><div class="product__badge">SIL-R</div></div>
           <div class="product__body"><h3 class="product__name">G-Shackles STD Silverado</h3><p class="product__desc">Replaces OEM shackle. Built-in bump stop reduces vibration. Eliminates bed bounce. Fits Silverado 1500 / GMC Sierra 1500 2007-2019.</p><div class="product__price" data-price-id="g-shackles-silverado"></div><div class="product__shipping" data-ship-id="g-shackles-silverado"></div><div class="product__actions"><div class="qty-select"><button type="button" onclick="qtyChange(this,-1)">-</button><input type="number" value="1" min="1" max="99"><button type="button" onclick="qtyChange(this,1)">+</button></div><button class="btn-cart" onclick="addToCartUI(\'g-shackles-silverado\',this)">Agregar</button></div></div>
         </div>
         <!-- LIFT KITS -->
         <div class="product reveal" data-product-id="leveling-lift-kit" data-category="lift">
-          <div class="product__img"><img src="./assets/products/leveling-lift-kit.png" alt="Leveling Lift Kit"><div class="product__badge">L-S</div></div>
+          <div class="product__img"><img loading="lazy" src="./assets/products/leveling-lift-kit.png" alt="Leveling Lift Kit"><div class="product__badge">L-S</div></div>
           <div class="product__body"><h3 class="product__name">Front & Rear Leveling Lift Kit 2"</h3><p class="product__desc">2.5" front lift + 2" rear lift. Enhanced ground clearance for better off-road capability. Fits Tundra, Tacoma, Dodge Ram 1500, Nissan Titan, Jeep Wrangler.</p><div class="product__price" data-price-id="leveling-lift-kit"></div><div class="product__shipping" data-ship-id="leveling-lift-kit"></div><div class="product__actions"><div class="qty-select"><button type="button" onclick="qtyChange(this,-1)">-</button><input type="number" value="1" min="1" max="99"><button type="button" onclick="qtyChange(this,1)">+</button></div><button class="btn-cart" onclick="addToCartUI(\'leveling-lift-kit\',this)">Agregar</button></div></div>
         </div>
         <!-- LEAF SPRINGS -->
         <div class="product reveal" data-product-id="helper-leaf" data-category="leaf">
-          <div class="product__img"><img src="./assets/products/helper-leaf-spring.png" alt="Helper Leaf Spring Kit"><div class="product__badge">OR-LP</div></div>
+          <div class="product__img"><img loading="lazy" src="./assets/products/helper-leaf-spring.png" alt="Helper Leaf Spring Kit"><div class="product__badge">OR-LP</div></div>
           <div class="product__body"><h3 class="product__name">Rear Load Plus Helper Leaf Spring</h3><p class="product__desc">Reduces sagging, body roll, and sway when carrying heavy loads or towing. Easy return to factory ride. Universal fit.</p><div class="product__price" data-price-id="helper-leaf"></div><div class="product__shipping" data-ship-id="helper-leaf"></div><div class="product__actions"><div class="qty-select"><button type="button" onclick="qtyChange(this,-1)">-</button><input type="number" value="1" min="1" max="99"><button type="button" onclick="qtyChange(this,1)">+</button></div><button class="btn-cart" onclick="addToCartUI(\'helper-leaf\',this)">Agregar</button></div></div>
         </div>
         <div class="product reveal" data-product-id="add-a-leaf" data-category="leaf">
-          <div class="product__img"><img src="./assets/products/add-a-leaf.png" alt="Add-A-Leaf Kit"><div class="product__badge">OR-LP-3</div></div>
+          <div class="product__img"><img loading="lazy" src="./assets/products/add-a-leaf.png" alt="Add-A-Leaf Kit"><div class="product__badge">OR-LP-3</div></div>
           <div class="product__body"><h3 class="product__name">Heavy Load Add-A-Leaf 2" Lift</h3><p class="product__desc">Helper spring add-a-leaf for heavy load applications. Available in short (550mm) and long (700mm) styles. Fits Ranger Next Gen 2024 & universal pickups.</p><div class="product__price" data-price-id="add-a-leaf"></div><div class="product__shipping" data-ship-id="add-a-leaf"></div><div class="product__actions"><div class="qty-select"><button type="button" onclick="qtyChange(this,-1)">-</button><input type="number" value="1" min="1" max="99"><button type="button" onclick="qtyChange(this,1)">+</button></div><button class="btn-cart" onclick="addToCartUI(\'add-a-leaf\',this)">Agregar</button></div></div>
         </div>
         <!-- TRUCK SHOCKS -->
         <div class="product reveal" data-product-id="truck-apex-hx" data-category="truck">
-          <div class="product__img"><img src="./assets/generated/truck-01-hilux.png" alt="Cougar Apex HX"><div class="product__badge">Hilux</div></div>
+          <div class="product__img"><img loading="lazy" src="./assets/generated/truck-01-hilux.png" alt="Cougar Apex HX"><div class="product__badge">Hilux</div></div>
           <div class="product__body"><h3 class="product__name">Cougar Apex HX</h3><p class="product__desc">Monotube performance shock for Toyota Hilux. Nitrogen-charged, 14-stage compression damping. Built for heavy loads and off-road abuse.</p><div class="product__price" data-price-id="truck-apex-hx"></div><div class="product__shipping" data-ship-id="truck-apex-hx"></div><div class="product__actions"><div class="qty-select"><button type="button" onclick="qtyChange(this,-1)">-</button><input type="number" value="1" min="1" max="99"><button type="button" onclick="qtyChange(this,1)">+</button></div><button class="btn-cart" onclick="addToCartUI(\'truck-apex-hx\',this)">Agregar</button></div></div>
         </div>
         <div class="product reveal" data-product-id="truck-titan-tc" data-category="truck">
-          <div class="product__img"><img src="./assets/generated/truck-02-tacoma.png" alt="Cougar Titan TC"><div class="product__badge">Tacoma</div></div>
+          <div class="product__img"><img loading="lazy" src="./assets/generated/truck-02-tacoma.png" alt="Cougar Titan TC"><div class="product__badge">Tacoma</div></div>
           <div class="product__body"><h3 class="product__name">Cougar Titan TC</h3><p class="product__desc">Remote reservoir shock for Toyota Tacoma. Extended travel, adjustable compression. Ideal for overland and trail use.</p><div class="product__price" data-price-id="truck-titan-tc"></div><div class="product__shipping" data-ship-id="truck-titan-tc"></div><div class="product__actions"><div class="qty-select"><button type="button" onclick="qtyChange(this,-1)">-</button><input type="number" value="1" min="1" max="99"><button type="button" onclick="qtyChange(this,1)">+</button></div><button class="btn-cart" onclick="addToCartUI(\'truck-titan-tc\',this)">Agregar</button></div></div>
         </div>
         <div class="product reveal" data-product-id="truck-ironclad-f1" data-category="truck">
-          <div class="product__img"><img src="./assets/generated/truck-03-f150.png" alt="Cougar Ironclad F1"><div class="product__badge">F-150</div></div>
+          <div class="product__img"><img loading="lazy" src="./assets/generated/truck-03-f150.png" alt="Cougar Ironclad F1"><div class="product__badge">F-150</div></div>
           <div class="product__body"><h3 class="product__name">Cougar Ironclad F1</h3><p class="product__desc">Heavy-duty twin-tube shock for Ford F-150. Progressive valving for towing and payload. Direct bolt-on replacement.</p><div class="product__price" data-price-id="truck-ironclad-f1"></div><div class="product__shipping" data-ship-id="truck-ironclad-f1"></div><div class="product__actions"><div class="qty-select"><button type="button" onclick="qtyChange(this,-1)">-</button><input type="number" value="1" min="1" max="99"><button type="button" onclick="qtyChange(this,1)">+</button></div><button class="btn-cart" onclick="addToCartUI(\'truck-ironclad-f1\',this)">Agregar</button></div></div>
         </div>
         <div class="product reveal" data-product-id="truck-ranger-rl" data-category="truck">
-          <div class="product__img"><img src="./assets/generated/truck-04-ranger.png" alt="Cougar Vortex RG"><div class="product__badge">Ranger</div></div>
+          <div class="product__img"><img loading="lazy" src="./assets/generated/truck-04-ranger.png" alt="Cougar Vortex RG"><div class="product__badge">Ranger</div></div>
           <div class="product__body"><h3 class="product__name">Cougar Vortex RG</h3><p class="product__desc">Adjustable coilover for Ford Ranger. Height adjustable, 24-click rebound tuning. Lifted or leveled applications.</p><div class="product__price" data-price-id="truck-ranger-rl"></div><div class="product__shipping" data-ship-id="truck-ranger-rl"></div><div class="product__actions"><div class="qty-select"><button type="button" onclick="qtyChange(this,-1)">-</button><input type="number" value="1" min="1" max="99"><button type="button" onclick="qtyChange(this,1)">+</button></div><button class="btn-cart" onclick="addToCartUI(\'truck-ranger-rl\',this)">Agregar</button></div></div>
         </div>
         <div class="product reveal" data-product-id="truck-silverado-ss" data-category="truck">
-          <div class="product__img"><img src="./assets/generated/truck-05-silverado.png" alt="Cougar Brute SV"><div class="product__badge">Silverado</div></div>
+          <div class="product__img"><img loading="lazy" src="./assets/generated/truck-05-silverado.png" alt="Cougar Brute SV"><div class="product__badge">Silverado</div></div>
           <div class="product__body"><h3 class="product__name">Cougar Brute SV</h3><p class="product__desc">Rear monotube shock for Chevrolet Silverado 1500. High-pressure nitrogen gas, hardened chrome piston rod. Max payload rated.</p><div class="product__price" data-price-id="truck-silverado-ss"></div><div class="product__shipping" data-ship-id="truck-silverado-ss"></div><div class="product__actions"><div class="qty-select"><button type="button" onclick="qtyChange(this,-1)">-</button><input type="number" value="1" min="1" max="99"><button type="button" onclick="qtyChange(this,1)">+</button></div><button class="btn-cart" onclick="addToCartUI(\'truck-silverado-ss\',this)">Agregar</button></div></div>
         </div>
         <div class="product reveal" data-product-id="truck-ram-hd" data-category="truck">
-          <div class="product__img"><img src="./assets/generated/truck-06-ram.png" alt="Cougar Enforcer RM"><div class="product__badge">RAM</div></div>
+          <div class="product__img"><img loading="lazy" src="./assets/generated/truck-06-ram.png" alt="Cougar Enforcer RM"><div class="product__badge">RAM</div></div>
           <div class="product__body"><h3 class="product__name">Cougar Enforcer RM</h3><p class="product__desc">Extended travel shock with remote reservoir for Dodge RAM 1500. Built for 2-4" lifted trucks. Bypass valving technology.</p><div class="product__price" data-price-id="truck-ram-hd"></div><div class="product__shipping" data-ship-id="truck-ram-hd"></div><div class="product__actions"><div class="qty-select"><button type="button" onclick="qtyChange(this,-1)">-</button><input type="number" value="1" min="1" max="99"><button type="button" onclick="qtyChange(this,1)">+</button></div><button class="btn-cart" onclick="addToCartUI(\'truck-ram-hd\',this)">Agregar</button></div></div>
         </div>
         <div class="product reveal" data-product-id="truck-tundra-tx" data-category="truck">
-          <div class="product__img"><img src="./assets/generated/truck-07-tundra.png" alt="Cougar Summit TD"><div class="product__badge">Tundra</div></div>
+          <div class="product__img"><img loading="lazy" src="./assets/generated/truck-07-tundra.png" alt="Cougar Summit TD"><div class="product__badge">Tundra</div></div>
           <div class="product__body"><h3 class="product__name">Cougar Summit TD</h3><p class="product__desc">Performance shock with piggyback reservoir for Toyota Tundra. Braided stainless line, adjustable compression and rebound.</p><div class="product__price" data-price-id="truck-tundra-tx"></div><div class="product__shipping" data-ship-id="truck-tundra-tx"></div><div class="product__actions"><div class="qty-select"><button type="button" onclick="qtyChange(this,-1)">-</button><input type="number" value="1" min="1" max="99"><button type="button" onclick="qtyChange(this,1)">+</button></div><button class="btn-cart" onclick="addToCartUI(\'truck-tundra-tx\',this)">Agregar</button></div></div>
         </div>
         <div class="product reveal" data-product-id="truck-colorado-cx" data-category="truck">
-          <div class="product__img"><img src="./assets/generated/truck-08-colorado.png" alt="Cougar Ridge CO"><div class="product__badge">Colorado</div></div>
+          <div class="product__img"><img loading="lazy" src="./assets/generated/truck-08-colorado.png" alt="Cougar Ridge CO"><div class="product__badge">Colorado</div></div>
           <div class="product__body"><h3 class="product__name">Cougar Ridge CO</h3><p class="product__desc">Front coilover assembly for Chevrolet Colorado. Complete bolt-on kit with matched spring rate. 0-3" lift capability.</p><div class="product__price" data-price-id="truck-colorado-cx"></div><div class="product__shipping" data-ship-id="truck-colorado-cx"></div><div class="product__actions"><div class="qty-select"><button type="button" onclick="qtyChange(this,-1)">-</button><input type="number" value="1" min="1" max="99"><button type="button" onclick="qtyChange(this,1)">+</button></div><button class="btn-cart" onclick="addToCartUI(\'truck-colorado-cx\',this)">Agregar</button></div></div>
         </div>
         <div class="product reveal" data-product-id="truck-navara-nx" data-category="truck">
-          <div class="product__img"><img src="./assets/generated/truck-09-navara.png" alt="Cougar Patrol NV"><div class="product__badge">Navara</div></div>
+          <div class="product__img"><img loading="lazy" src="./assets/generated/truck-09-navara.png" alt="Cougar Patrol NV"><div class="product__badge">Navara</div></div>
           <div class="product__body"><h3 class="product__name">Cougar Patrol NV</h3><p class="product__desc">Nitrogen-charged monotube shock for Nissan Navara. Velocity-sensitive valving adapts to road conditions automatically.</p><div class="product__price" data-price-id="truck-navara-nx"></div><div class="product__shipping" data-ship-id="truck-navara-nx"></div><div class="product__actions"><div class="qty-select"><button type="button" onclick="qtyChange(this,-1)">-</button><input type="number" value="1" min="1" max="99"><button type="button" onclick="qtyChange(this,1)">+</button></div><button class="btn-cart" onclick="addToCartUI(\'truck-navara-nx\',this)">Agregar</button></div></div>
         </div>
         <div class="product reveal" data-product-id="truck-dmax-dx" data-category="truck">
-          <div class="product__img"><img src="./assets/generated/truck-10-dmax.png" alt="Cougar Enduro DX"><div class="product__badge">D-Max</div></div>
+          <div class="product__img"><img loading="lazy" src="./assets/generated/truck-10-dmax.png" alt="Cougar Enduro DX"><div class="product__badge">D-Max</div></div>
           <div class="product__body"><h3 class="product__name">Cougar Enduro DX</h3><p class="product__desc">Heavy-duty twin-tube shock for Isuzu D-Max. Reinforced dust boot, multi-lip seal. Rated for constant heavy-load applications.</p><div class="product__price" data-price-id="truck-dmax-dx"></div><div class="product__shipping" data-ship-id="truck-dmax-dx"></div><div class="product__actions"><div class="qty-select"><button type="button" onclick="qtyChange(this,-1)">-</button><input type="number" value="1" min="1" max="99"><button type="button" onclick="qtyChange(this,1)">+</button></div><button class="btn-cart" onclick="addToCartUI(\'truck-dmax-dx\',this)">Agregar</button></div></div>
         </div>
         <!-- MOTORCYCLE SHOCKS -->
         <div class="product reveal" data-product-id="moto-razor-sp" data-category="moto">
-          <div class="product__img"><img src="./assets/generated/moto-01-sport.png" alt="Cougar Razor SP"><div class="product__badge">Sport</div></div>
+          <div class="product__img"><img loading="lazy" src="./assets/generated/moto-01-sport.png" alt="Cougar Razor SP"><div class="product__badge">Sport</div></div>
           <div class="product__body"><h3 class="product__name">Cougar Razor SP</h3><p class="product__desc">Sport motorcycle rear shock. Adjustable preload and rebound. CNC aluminum body with gold anodized reservoir. 600-1000cc sportbikes.</p><div class="product__price" data-price-id="moto-razor-sp"></div><div class="product__shipping" data-ship-id="moto-razor-sp"></div><div class="product__actions"><div class="qty-select"><button type="button" onclick="qtyChange(this,-1)">-</button><input type="number" value="1" min="1" max="99"><button type="button" onclick="qtyChange(this,1)">+</button></div><button class="btn-cart" onclick="addToCartUI(\'moto-razor-sp\',this)">Agregar</button></div></div>
         </div>
         <div class="product reveal" data-product-id="moto-expedition-adv" data-category="moto">
-          <div class="product__img"><img src="./assets/generated/moto-02-adventure.png" alt="Cougar Expedition ADV"><div class="product__badge">Adventure</div></div>
+          <div class="product__img"><img loading="lazy" src="./assets/generated/moto-02-adventure.png" alt="Cougar Expedition ADV"><div class="product__badge">Adventure</div></div>
           <div class="product__body"><h3 class="product__name">Cougar Expedition ADV</h3><p class="product__desc">Adventure motorcycle shock with remote reservoir. Extended travel for loaded touring. Fits BMW GS, KTM Adventure, Honda Africa Twin.</p><div class="product__price" data-price-id="moto-expedition-adv"></div><div class="product__shipping" data-ship-id="moto-expedition-adv"></div><div class="product__actions"><div class="qty-select"><button type="button" onclick="qtyChange(this,-1)">-</button><input type="number" value="1" min="1" max="99"><button type="button" onclick="qtyChange(this,1)">+</button></div><button class="btn-cart" onclick="addToCartUI(\'moto-expedition-adv\',this)">Agregar</button></div></div>
         </div>
         <div class="product reveal" data-product-id="moto-crossfire-mx" data-category="moto">
-          <div class="product__img"><img src="./assets/generated/moto-03-mx.png" alt="Cougar Havoc MX"><div class="product__badge">Motocross</div></div>
+          <div class="product__img"><img loading="lazy" src="./assets/generated/moto-03-mx.png" alt="Cougar Havoc MX"><div class="product__badge">Motocross</div></div>
           <div class="product__body"><h3 class="product__name">Cougar Havoc MX</h3><p class="product__desc">Front fork cartridge kit for motocross. Gold anodized tubes, adjustable compression and rebound. Race-ready performance.</p><div class="product__price" data-price-id="moto-crossfire-mx"></div><div class="product__shipping" data-ship-id="moto-crossfire-mx"></div><div class="product__actions"><div class="qty-select"><button type="button" onclick="qtyChange(this,-1)">-</button><input type="number" value="1" min="1" max="99"><button type="button" onclick="qtyChange(this,1)">+</button></div><button class="btn-cart" onclick="addToCartUI(\'moto-crossfire-mx\',this)">Agregar</button></div></div>
         </div>
         <div class="product reveal" data-product-id="moto-cruiser-cl" data-category="moto">
-          <div class="product__img"><img src="./assets/generated/moto-04-cruiser.png" alt="Cougar Classic CR"><div class="product__badge">Cruiser</div></div>
+          <div class="product__img"><img loading="lazy" src="./assets/generated/moto-04-cruiser.png" alt="Cougar Classic CR"><div class="product__badge">Cruiser</div></div>
           <div class="product__body"><h3 class="product__name">Cougar Classic CR</h3><p class="product__desc">Chrome and black shock absorber pair for cruiser motorcycles. Progressive rate springs, classic styling. Harley, Indian, Yamaha V-Star.</p><div class="product__price" data-price-id="moto-cruiser-cl"></div><div class="product__shipping" data-ship-id="moto-cruiser-cl"></div><div class="product__actions"><div class="qty-select"><button type="button" onclick="qtyChange(this,-1)">-</button><input type="number" value="1" min="1" max="99"><button type="button" onclick="qtyChange(this,1)">+</button></div><button class="btn-cart" onclick="addToCartUI(\'moto-cruiser-cl\',this)">Agregar</button></div></div>
         </div>
         <div class="product reveal" data-product-id="moto-enduro-ex" data-category="moto">
-          <div class="product__img"><img src="./assets/generated/moto-05-enduro.png" alt="Cougar Trailblaze EN"><div class="product__badge">Enduro</div></div>
+          <div class="product__img"><img loading="lazy" src="./assets/generated/moto-05-enduro.png" alt="Cougar Trailblaze EN"><div class="product__badge">Enduro</div></div>
           <div class="product__body"><h3 class="product__name">Cougar Trailblaze EN</h3><p class="product__desc">Long-travel rear shock for enduro motorcycles. Fully adjustable high/low speed compression. Built for extreme terrain.</p><div class="product__price" data-price-id="moto-enduro-ex"></div><div class="product__shipping" data-ship-id="moto-enduro-ex"></div><div class="product__actions"><div class="qty-select"><button type="button" onclick="qtyChange(this,-1)">-</button><input type="number" value="1" min="1" max="99"><button type="button" onclick="qtyChange(this,1)">+</button></div><button class="btn-cart" onclick="addToCartUI(\'moto-enduro-ex\',this)">Agregar</button></div></div>
         </div>
         <div class="product reveal" data-product-id="moto-street-st" data-category="moto">
-          <div class="product__img"><img src="./assets/generated/moto-06-street.png" alt="Cougar Urban ST"><div class="product__badge">Street</div></div>
+          <div class="product__img"><img loading="lazy" src="./assets/generated/moto-06-street.png" alt="Cougar Urban ST"><div class="product__badge">Street</div></div>
           <div class="product__body"><h3 class="product__name">Cougar Urban ST</h3><p class="product__desc">Lowering shock kit for street motorcycles. Adjustable ride height, improved handling. Fits most 250-650cc naked and street bikes.</p><div class="product__price" data-price-id="moto-street-st"></div><div class="product__shipping" data-ship-id="moto-street-st"></div><div class="product__actions"><div class="qty-select"><button type="button" onclick="qtyChange(this,-1)">-</button><input type="number" value="1" min="1" max="99"><button type="button" onclick="qtyChange(this,1)">+</button></div><button class="btn-cart" onclick="addToCartUI(\'moto-street-st\',this)">Agregar</button></div></div>
         </div>
         <div class="product reveal" data-product-id="moto-racing-rr" data-category="moto">
-          <div class="product__img"><img src="./assets/generated/moto-07-racing.png" alt="Cougar Apex SD"><div class="product__badge">Racing</div></div>
+          <div class="product__img"><img loading="lazy" src="./assets/generated/moto-07-racing.png" alt="Cougar Apex SD"><div class="product__badge">Racing</div></div>
           <div class="product__body"><h3 class="product__name">Cougar Apex Steering Damper</h3><p class="product__desc">CNC aluminum racing steering damper. 12-position adjustable. Eliminates headshake at high speed. Universal mounting.</p><div class="product__price" data-price-id="moto-racing-rr"></div><div class="product__shipping" data-ship-id="moto-racing-rr"></div><div class="product__actions"><div class="qty-select"><button type="button" onclick="qtyChange(this,-1)">-</button><input type="number" value="1" min="1" max="99"><button type="button" onclick="qtyChange(this,1)">+</button></div><button class="btn-cart" onclick="addToCartUI(\'moto-racing-rr\',this)">Agregar</button></div></div>
         </div>
         <div class="product reveal" data-product-id="moto-trail-tr" data-category="moto">
-          <div class="product__img"><img src="./assets/generated/moto-08-trail.png" alt="Cougar Pathfinder TR"><div class="product__badge">Trail</div></div>
+          <div class="product__img"><img loading="lazy" src="./assets/generated/moto-08-trail.png" alt="Cougar Pathfinder TR"><div class="product__badge">Trail</div></div>
           <div class="product__body"><h3 class="product__name">Cougar Pathfinder TR</h3><p class="product__desc">Front fork spring upgrade kit for trail bikes. Titanium nitride coating, progressive rate. Smoother action, better bottoming resistance.</p><div class="product__price" data-price-id="moto-trail-tr"></div><div class="product__shipping" data-ship-id="moto-trail-tr"></div><div class="product__actions"><div class="qty-select"><button type="button" onclick="qtyChange(this,-1)">-</button><input type="number" value="1" min="1" max="99"><button type="button" onclick="qtyChange(this,1)">+</button></div><button class="btn-cart" onclick="addToCartUI(\'moto-trail-tr\',this)">Agregar</button></div></div>
         </div>
         <div class="product reveal" data-product-id="moto-touring-gt" data-category="moto">
-          <div class="product__img"><img src="./assets/generated/moto-09-touring.png" alt="Cougar Voyage TG"><div class="product__badge">Touring</div></div>
+          <div class="product__img"><img loading="lazy" src="./assets/generated/moto-09-touring.png" alt="Cougar Voyage TG"><div class="product__badge">Touring</div></div>
           <div class="product__body"><h3 class="product__name">Cougar Voyage TG</h3><p class="product__desc">Air-adjustable rear shocks for touring motorcycles. Ride height adjustment for loaded/unloaded. Fits Goldwing, Electra Glide, K1600.</p><div class="product__price" data-price-id="moto-touring-gt"></div><div class="product__shipping" data-ship-id="moto-touring-gt"></div><div class="product__actions"><div class="qty-select"><button type="button" onclick="qtyChange(this,-1)">-</button><input type="number" value="1" min="1" max="99"><button type="button" onclick="qtyChange(this,1)">+</button></div><button class="btn-cart" onclick="addToCartUI(\'moto-touring-gt\',this)">Agregar</button></div></div>
         </div>
         <div class="product reveal" data-product-id="moto-dual-ds" data-category="moto">
-          <div class="product__img"><img src="./assets/generated/moto-10-dual.png" alt="Cougar Crossover DS"><div class="product__badge">Dual Sport</div></div>
+          <div class="product__img"><img loading="lazy" src="./assets/generated/moto-10-dual.png" alt="Cougar Crossover DS"><div class="product__badge">Dual Sport</div></div>
           <div class="product__body"><h3 class="product__name">Cougar Crossover DS</h3><p class="product__desc">Dual-sport shock absorber. Adjustable compression and rebound for street/dirt transitions. Fits DR650, KLR650, CRF300L, Tenere 700.</p><div class="product__price" data-price-id="moto-dual-ds"></div><div class="product__shipping" data-ship-id="moto-dual-ds"></div><div class="product__actions"><div class="qty-select"><button type="button" onclick="qtyChange(this,-1)">-</button><input type="number" value="1" min="1" max="99"><button type="button" onclick="qtyChange(this,1)">+</button></div><button class="btn-cart" onclick="addToCartUI(\'moto-dual-ds\',this)">Agregar</button></div></div>
         </div>
         <!-- CAR & SUV SHOCKS -->
         <div class="product reveal" data-product-id="car-commute-cl" data-category="car">
-          <div class="product__img"><img src="./assets/generated/car-01-corolla.png" alt="Cougar Commute CL"><div class="product__badge">Corolla</div></div>
+          <div class="product__img"><img loading="lazy" src="./assets/generated/car-01-corolla.png" alt="Cougar Commute CL"><div class="product__badge">Corolla</div></div>
           <div class="product__body"><h3 class="product__name">Cougar Commute CL</h3><p class="product__desc">Economy strut assembly for Toyota Corolla. Complete ready-to-install unit with spring and mount. Restores factory ride quality.</p><div class="product__price" data-price-id="car-commute-cl"></div><div class="product__shipping" data-ship-id="car-commute-cl"></div><div class="product__actions"><div class="qty-select"><button type="button" onclick="qtyChange(this,-1)">-</button><input type="number" value="1" min="1" max="99"><button type="button" onclick="qtyChange(this,1)">+</button></div><button class="btn-cart" onclick="addToCartUI(\'car-commute-cl\',this)">Agregar</button></div></div>
         </div>
         <div class="product reveal" data-product-id="car-sport-cv" data-category="car">
-          <div class="product__img"><img src="./assets/generated/car-02-civic.png" alt="Cougar Sport CV"><div class="product__badge">Civic</div></div>
+          <div class="product__img"><img loading="lazy" src="./assets/generated/car-02-civic.png" alt="Cougar Sport CV"><div class="product__badge">Civic</div></div>
           <div class="product__body"><h3 class="product__name">Cougar Sport CV</h3><p class="product__desc">Performance lowering shock for Honda Civic. 30mm drop, firmer damping for spirited driving. Sport-tuned valving.</p><div class="product__price" data-price-id="car-sport-cv"></div><div class="product__shipping" data-ship-id="car-sport-cv"></div><div class="product__actions"><div class="qty-select"><button type="button" onclick="qtyChange(this,-1)">-</button><input type="number" value="1" min="1" max="99"><button type="button" onclick="qtyChange(this,1)">+</button></div><button class="btn-cart" onclick="addToCartUI(\'car-sport-cv\',this)">Agregar</button></div></div>
         </div>
         <div class="product reveal" data-product-id="car-touring-cm" data-category="car">
-          <div class="product__img"><img src="./assets/generated/car-03-camry.png" alt="Cougar Comfort CM"><div class="product__badge">Camry</div></div>
+          <div class="product__img"><img loading="lazy" src="./assets/generated/car-03-camry.png" alt="Cougar Comfort CM"><div class="product__badge">Camry</div></div>
           <div class="product__body"><h3 class="product__name">Cougar Comfort CM</h3><p class="product__desc">Comfort-ride strut cartridge for Toyota Camry. Smooth, quiet operation. Gas-charged for consistent performance. OEM replacement.</p><div class="product__price" data-price-id="car-touring-cm"></div><div class="product__shipping" data-ship-id="car-touring-cm"></div><div class="product__actions"><div class="qty-select"><button type="button" onclick="qtyChange(this,-1)">-</button><input type="number" value="1" min="1" max="99"><button type="button" onclick="qtyChange(this,1)">+</button></div><button class="btn-cart" onclick="addToCartUI(\'car-touring-cm\',this)">Agregar</button></div></div>
         </div>
         <div class="product reveal" data-product-id="car-premium-ac" data-category="car">
-          <div class="product__img"><img src="./assets/generated/car-04-accord.png" alt="Cougar Touring AC"><div class="product__badge">Accord</div></div>
+          <div class="product__img"><img loading="lazy" src="./assets/generated/car-04-accord.png" alt="Cougar Touring AC"><div class="product__badge">Accord</div></div>
           <div class="product__body"><h3 class="product__name">Cougar Touring AC</h3><p class="product__desc">Gas-charged shock absorber for Honda Accord. Twin-tube design, improved handling over OEM. 80,000 mile rated lifespan.</p><div class="product__price" data-price-id="car-premium-ac"></div><div class="product__shipping" data-ship-id="car-premium-ac"></div><div class="product__actions"><div class="qty-select"><button type="button" onclick="qtyChange(this,-1)">-</button><input type="number" value="1" min="1" max="99"><button type="button" onclick="qtyChange(this,1)">+</button></div><button class="btn-cart" onclick="addToCartUI(\'car-premium-ac\',this)">Agregar</button></div></div>
         </div>
         <div class="product reveal" data-product-id="car-dynamic-mz" data-category="car">
-          <div class="product__img"><img src="./assets/generated/car-05-mazda3.png" alt="Cougar Drive MZ"><div class="product__badge">Mazda3</div></div>
+          <div class="product__img"><img loading="lazy" src="./assets/generated/car-05-mazda3.png" alt="Cougar Drive MZ"><div class="product__badge">Mazda3</div></div>
           <div class="product__body"><h3 class="product__name">Cougar Drive MZ</h3><p class="product__desc">Performance strut assembly for Mazda 3. Sport-tuned spring and shock combo. Direct fit, improved cornering response.</p><div class="product__price" data-price-id="car-dynamic-mz"></div><div class="product__shipping" data-ship-id="car-dynamic-mz"></div><div class="product__actions"><div class="qty-select"><button type="button" onclick="qtyChange(this,-1)">-</button><input type="number" value="1" min="1" max="99"><button type="button" onclick="qtyChange(this,1)">+</button></div><button class="btn-cart" onclick="addToCartUI(\'car-dynamic-mz\',this)">Agregar</button></div></div>
         </div>
         <div class="product reveal" data-product-id="car-eco-sn" data-category="car">
-          <div class="product__img"><img src="./assets/generated/car-06-sentra.png" alt="Cougar Daily SN"><div class="product__badge">Sentra</div></div>
+          <div class="product__img"><img loading="lazy" src="./assets/generated/car-06-sentra.png" alt="Cougar Daily SN"><div class="product__badge">Sentra</div></div>
           <div class="product__body"><h3 class="product__name">Cougar Daily SN</h3><p class="product__desc">Front strut assembly for Nissan Sentra. Complete with spring, mount, and bearing. Quick install, no spring compressor needed.</p><div class="product__price" data-price-id="car-eco-sn"></div><div class="product__shipping" data-ship-id="car-eco-sn"></div><div class="product__actions"><div class="qty-select"><button type="button" onclick="qtyChange(this,-1)">-</button><input type="number" value="1" min="1" max="99"><button type="button" onclick="qtyChange(this,1)">+</button></div><button class="btn-cart" onclick="addToCartUI(\'car-eco-sn\',this)">Agregar</button></div></div>
         </div>
         <div class="product reveal" data-product-id="car-rally-im" data-category="car">
-          <div class="product__img"><img src="./assets/generated/car-07-impreza.png" alt="Cougar Rally IMP"><div class="product__badge">Impreza</div></div>
+          <div class="product__img"><img loading="lazy" src="./assets/generated/car-07-impreza.png" alt="Cougar Rally IMP"><div class="product__badge">Impreza</div></div>
           <div class="product__body"><h3 class="product__name">Cougar Rally IMP</h3><p class="product__desc">Full coilover kit for Subaru Impreza/WRX. 4-piece set, 32-step damping adjustment, height adjustable. Track and street ready.</p><div class="product__price" data-price-id="car-rally-im"></div><div class="product__shipping" data-ship-id="car-rally-im"></div><div class="product__actions"><div class="qty-select"><button type="button" onclick="qtyChange(this,-1)">-</button><input type="number" value="1" min="1" max="99"><button type="button" onclick="qtyChange(this,1)">+</button></div><button class="btn-cart" onclick="addToCartUI(\'car-rally-im\',this)">Agregar</button></div></div>
         </div>
         <div class="product reveal" data-product-id="car-evo-lc" data-category="car">
-          <div class="product__img"><img src="./assets/generated/car-08-lancer.png" alt="Cougar Evo LR"><div class="product__badge">Lancer</div></div>
+          <div class="product__img"><img loading="lazy" src="./assets/generated/car-08-lancer.png" alt="Cougar Evo LR"><div class="product__badge">Lancer</div></div>
           <div class="product__body"><h3 class="product__name">Cougar Evo LR</h3><p class="product__desc">Adjustable coilover shocks for Mitsubishi Lancer. Pillow-ball top mounts, camber adjustable. Competition-inspired engineering.</p><div class="product__price" data-price-id="car-evo-lc"></div><div class="product__shipping" data-ship-id="car-evo-lc"></div><div class="product__actions"><div class="qty-select"><button type="button" onclick="qtyChange(this,-1)">-</button><input type="number" value="1" min="1" max="99"><button type="button" onclick="qtyChange(this,1)">+</button></div><button class="btn-cart" onclick="addToCartUI(\'car-evo-lc\',this)">Agregar</button></div></div>
         </div>
         <div class="product reveal" data-product-id="car-offroad-4r" data-category="car">
-          <div class="product__img"><img src="./assets/generated/car-09-4runner.png" alt="Cougar Outback 4R"><div class="product__badge">4Runner</div></div>
+          <div class="product__img"><img loading="lazy" src="./assets/generated/car-09-4runner.png" alt="Cougar Outback 4R"><div class="product__badge">4Runner</div></div>
           <div class="product__body"><h3 class="product__name">Cougar Outback 4R</h3><p class="product__desc">Premium long-travel shock for Toyota 4Runner. Remote reservoir, braided stainless line. Built for serious overland expeditions.</p><div class="product__price" data-price-id="car-offroad-4r"></div><div class="product__shipping" data-ship-id="car-offroad-4r"></div><div class="product__actions"><div class="qty-select"><button type="button" onclick="qtyChange(this,-1)">-</button><input type="number" value="1" min="1" max="99"><button type="button" onclick="qtyChange(this,1)">+</button></div><button class="btn-cart" onclick="addToCartUI(\'car-offroad-4r\',this)">Agregar</button></div></div>
         </div>
         <div class="product reveal" data-product-id="car-expedition-lc" data-category="car">
-          <div class="product__img"><img src="./assets/generated/car-10-landcruiser.png" alt="Cougar Legend LC"><div class="product__badge">Land Cruiser</div></div>
+          <div class="product__img"><img loading="lazy" src="./assets/generated/car-10-landcruiser.png" alt="Cougar Legend LC"><div class="product__badge">Land Cruiser</div></div>
           <div class="product__body"><h3 class="product__name">Cougar Legend LC</h3><p class="product__desc">Premium heavy-duty coilover for Toyota Land Cruiser. Bypass valving, adjustable ride height. The flagship of the Cougar lineup.</p><div class="product__price" data-price-id="car-expedition-lc"></div><div class="product__shipping" data-ship-id="car-expedition-lc"></div><div class="product__actions"><div class="qty-select"><button type="button" onclick="qtyChange(this,-1)">-</button><input type="number" value="1" min="1" max="99"><button type="button" onclick="qtyChange(this,1)">+</button></div><button class="btn-cart" onclick="addToCartUI(\'car-expedition-lc\',this)">Agregar</button></div></div>
         </div>
       </div>
@@ -836,6 +1032,43 @@
     </div>
   </section>
 
+  <!-- TESTIMONIOS -->
+  <section class="section" id="testimonials" style="background:var(--black)">
+    <div class="section__inner">
+      <div class="section__header section__header--center">
+        <p class="section__tag reveal">Testimonios</p>
+        <h2 class="section__title reveal reveal-d1">Lo que dicen nuestros clientes</h2>
+        <div class="divider reveal reveal-d1"></div>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem" class="testimonials-grid">
+        <div class="reveal reveal-d1" style="background:var(--card);border:1px solid var(--border);padding:2rem">
+          <div style="color:#F07020;font-size:1.2rem;margin-bottom:1rem;letter-spacing:2px">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p style="font-size:.9rem;color:var(--text);line-height:1.7;font-weight:300;font-style:italic;margin-bottom:1.5rem">"Excelente producto. Instale los Cougar Extreme en mi Hilux y la diferencia es increible. No mas hundimiento con carga completa."</p>
+          <div style="border-top:1px solid var(--border);padding-top:1rem">
+            <p style="font-family:var(--font-display);font-size:.9rem;font-weight:600;color:var(--white);text-transform:uppercase;letter-spacing:.05em">Carlos M.</p>
+            <p style="font-size:.75rem;color:var(--muted)">Asuncion</p>
+          </div>
+        </div>
+        <div class="reveal reveal-d2" style="background:var(--card);border:1px solid var(--border);padding:2rem">
+          <div style="color:#F07020;font-size:1.2rem;margin-bottom:1rem;letter-spacing:2px">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p style="font-size:.9rem;color:var(--text);line-height:1.7;font-weight:300;font-style:italic;margin-bottom:1.5rem">"El servicio de instalacion a domicilio es muy practico. Vinieron a mi casa, instalaron todo en 1 hora y quedo perfecto."</p>
+          <div style="border-top:1px solid var(--border);padding-top:1rem">
+            <p style="font-family:var(--font-display);font-size:.9rem;font-weight:600;color:var(--white);text-transform:uppercase;letter-spacing:.05em">Roberto G.</p>
+            <p style="font-size:.75rem;color:var(--muted)">San Lorenzo</p>
+          </div>
+        </div>
+        <div class="reveal reveal-d3" style="background:var(--card);border:1px solid var(--border);padding:2rem">
+          <div style="color:#F07020;font-size:1.2rem;margin-bottom:1rem;letter-spacing:2px">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p style="font-size:.9rem;color:var(--text);line-height:1.7;font-weight:300;font-style:italic;margin-bottom:1.5rem">"Compre los C1 para mi Ranger y funcionan de 10. Buenos precios y envio rapido al interior."</p>
+          <div style="border-top:1px solid var(--border);padding-top:1rem">
+            <p style="font-family:var(--font-display);font-size:.9rem;font-weight:600;color:var(--white);text-transform:uppercase;letter-spacing:.05em">Miguel A.</p>
+            <p style="font-size:.75rem;color:var(--muted)">Ciudad del Este</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- CONTACT -->
   <section class="section contact" id="contact">
     <div class="section__inner">
@@ -903,10 +1136,34 @@
   <!-- FOOTER -->
   <footer class="footer">
     <div class="footer__inner">
-      <div class="footer__logo"><img src="./assets/logo.png" alt="Cougar Suspension"></div>
+      <div class="footer__logo"><img src="./assets/logo.png" alt="Cougar Suspension LLC - Logo"></div>
       <p class="footer__copy">&copy; 2025 Cougar Suspension LLC &mdash; Paraguay. Todos los derechos reservados. | <a href="admin.html" style="color:#555;font-size:.7rem">Admin</a></p>
+      <p style="margin-top:.6rem"><a href="terminos.html" style="font-size:.7rem;color:#555;margin:0 .8rem;transition:color .2s">Terminos y Condiciones</a><a href="privacidad.html" style="font-size:.7rem;color:#555;margin:0 .8rem;transition:color .2s">Privacidad</a><a href="devoluciones.html" style="font-size:.7rem;color:#555;margin:0 .8rem;transition:color .2s">Devoluciones</a></p>
     </div>
   </footer>
+
+
+  <!-- EXIT INTENT POPUP -->
+  <div class="exit-overlay" id="exitOverlay" onclick="dismissExitPopup()">
+    <div class="exit-card" onclick="event.stopPropagation()">
+      <h3 class="exit-card__title">Te vas sin completar tu compra?</h3>
+      <p class="exit-card__info" id="exitInfo"></p>
+      <a href="checkout.html" class="exit-card__btn">FINALIZAR COMPRA</a>
+      <button class="exit-card__dismiss" onclick="dismissExitPopup()">Seguir mirando</button>
+    </div>
+  </div>
+
+  <!-- RETURN VISITOR BANNER -->
+  <div class="return-banner" id="returnBanner">
+    <span class="return-banner__text" id="returnBannerText"></span>
+    <a href="checkout.html" class="return-banner__btn">FINALIZAR COMPRA</a>
+    <button class="return-banner__close" onclick="dismissReturnBanner()">&times;</button>
+  </div>
+
+  <!-- MOBILE STICKY CTA -->
+  <div class="mobile-sticky-cta" id="mobileCta">
+    <button class="mobile-sticky-cta__btn" id="mobileCtaBtn" onclick="toggleCart()">VER CARRITO (0)</button>
+  </div>
 
   <script src="js/store.js"></script>
   <script>
@@ -1002,6 +1259,38 @@
       input.value = val;
     }
 
+    // --- Analytics Event Tracking ---
+    function trackEvent(eventName, params) {
+      // GA4
+      if(typeof gtag === 'function') gtag('event', eventName, params);
+      // FB Pixel
+      if(typeof fbq === 'function') fbq('track', eventName, params);
+      console.log('[Track]', eventName, params);
+    }
+
+    // view_item tracking with IntersectionObserver (fire once per product)
+    (function(){
+      var observed = {};
+      var observer = new IntersectionObserver(function(entries){
+        entries.forEach(function(entry){
+          if(entry.isIntersecting){
+            var card = entry.target;
+            var productId = card.getAttribute('data-product-id');
+            if(productId && !observed[productId]){
+              observed[productId] = true;
+              var nameEl = card.querySelector('.featured-card__name, .product__name');
+              var itemName = nameEl ? nameEl.textContent : productId;
+              trackEvent('view_item', {item_id: productId, item_name: itemName});
+              observer.unobserve(card);
+            }
+          }
+        });
+      }, {threshold: 0.5});
+      document.querySelectorAll('.featured-card[data-product-id], .product[data-product-id]').forEach(function(card){
+        observer.observe(card);
+      });
+    })();
+
     // Add to cart with UI feedback — reads qty from sibling input
     function addToCartUI(productId, btn){
       if(typeof CougarStore==='undefined') return;
@@ -1011,8 +1300,12 @@
       var input = actions ? actions.querySelector('.qty-select input') : null;
       var qty = input ? (parseInt(input.value,10) || 1) : 1;
       CougarStore.addToCart(productId, qty);
+      trackEvent('add_to_cart', {item_id: productId, item_name: product.name, price: product.prices[CougarStore.getCurrency()], quantity: qty});
       btn.textContent='Agregado!';
       btn.classList.add('added');
+      // Add green pulse animation to the product card
+      var card = btn.closest('.product, .featured-card');
+      if(card){card.classList.add('product--added');card.addEventListener('animationend',function(){card.classList.remove('product--added')},{once:true})}
       setTimeout(function(){btn.textContent='Agregar';btn.classList.remove('added')},1200);
       if(input) input.value = 1;
     }
@@ -1146,6 +1439,121 @@
       updateCountryUI();
     }
     initEcommerce();
+
+    // === CONVERSION OPTIMIZATION JS ===
+
+    // 1. Exit-intent popup (desktop only)
+    function dismissExitPopup(){
+      document.getElementById('exitOverlay').classList.remove('show');
+      sessionStorage.setItem('cougar_exit_shown','1');
+    }
+    (function(){
+      if('ontouchstart' in window) return; // skip on touch devices
+      document.addEventListener('mouseout',function(e){
+        if(e.clientY > 0) return;
+        if(sessionStorage.getItem('cougar_exit_shown')) return;
+        if(typeof CougarStore==='undefined') return;
+        var count=CougarStore.cartCount();
+        if(count===0) return;
+        var totals=CougarStore.getCartTotal();
+        var info='Tenes <strong>'+count+' producto'+(count>1?'s':'')+
+          '</strong> en tu carrito por un total de <strong>'+CougarStore.formatPrice(totals.total)+'</strong>';
+        document.getElementById('exitInfo').innerHTML=info;
+        document.getElementById('exitOverlay').classList.add('show');
+        sessionStorage.setItem('cougar_exit_shown','1');
+      });
+    })();
+
+    // 2. Return visitor notification
+    (function(){
+      function checkReturnVisitor(){
+        if(typeof CougarStore==='undefined'){setTimeout(checkReturnVisitor,150);return;}
+        var count=CougarStore.cartCount();
+        if(count===0) return;
+        var totals=CougarStore.getCartTotal();
+        var banner=document.getElementById('returnBanner');
+        var text=document.getElementById('returnBannerText');
+        text.innerHTML='Tenes <strong>'+count+' producto'+(count>1?'s':'')+
+          '</strong> en tu carrito &mdash; Total: <strong>'+CougarStore.formatPrice(totals.total)+'</strong>';
+        setTimeout(function(){banner.classList.add('show')},500);
+        setTimeout(function(){banner.classList.remove('show')},8500);
+      }
+      checkReturnVisitor();
+    })();
+    function dismissReturnBanner(){
+      document.getElementById('returnBanner').classList.remove('show');
+    }
+
+    // 3. Animated cart badge bounce
+    (function(){
+      var prevCount=-1;
+      document.addEventListener('cart-updated',function(){
+        if(typeof CougarStore==='undefined') return;
+        var count=CougarStore.cartCount();
+        if(prevCount!==-1 && count!==prevCount){
+          var badge=document.getElementById('cartBadge');
+          badge.classList.remove('bounce');
+          void badge.offsetWidth; // reflow to restart animation
+          badge.classList.add('bounce');
+          badge.addEventListener('animationend',function(){badge.classList.remove('bounce')},{once:true});
+        }
+        prevCount=count;
+      });
+    })();
+
+    // 4. Stock urgency labels
+    (function(){
+      var purchasableIds=['bump-stop-c1','bump-stop-c2','bump-stop-extreme','bump-stop-extreme-confort'];
+      // Featured cards
+      purchasableIds.forEach(function(id){
+        document.querySelectorAll('[data-product-id="'+id+'"]').forEach(function(card){
+          if(card.querySelector('.stock-urgency')) return;
+          // For featured cards
+          var priceEl=card.querySelector('.featured-card__price') || card.querySelector('.product__price');
+          if(priceEl && !priceEl.nextElementSibling?.classList?.contains('stock-urgency')){
+            var urgency=document.createElement('div');
+            urgency.className='stock-urgency';
+            urgency.textContent='Stock limitado — ultimas unidades';
+            priceEl.insertAdjacentElement('afterend',urgency);
+          }
+        });
+      });
+    })();
+
+    // 5. Trust badges are added via HTML (static)
+
+    // 6. Mobile sticky CTA
+    (function(){
+      var cta=document.getElementById('mobileCta');
+      var btn=document.getElementById('mobileCtaBtn');
+      var heroEl=document.querySelector('.hero');
+      var pastHero=false;
+
+      function updateMobileCta(){
+        if(typeof CougarStore==='undefined') return;
+        var count=CougarStore.cartCount();
+        if(count>0 && pastHero){
+          btn.textContent='VER CARRITO ('+count+')';
+          cta.classList.add('show');
+        } else {
+          cta.classList.remove('show');
+        }
+      }
+
+      window.addEventListener('scroll',function(){
+        if(!heroEl) return;
+        pastHero=window.scrollY > heroEl.offsetHeight;
+        updateMobileCta();
+      },{passive:true});
+
+      document.addEventListener('cart-updated',function(){updateMobileCta()});
+    })();
   </script>
+
+  <!-- WhatsApp Floating Button -->
+  <a class="whatsapp-float" href="https://wa.me/595981000000?text=Hola!%20Quiero%20consultar%20sobre%20amortiguadores%20Cougar%20Suspension" target="_blank" rel="noopener" aria-label="Chat en WhatsApp">
+    <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><path d="M16.004 0h-.008C7.174 0 0 7.176 0 16c0 3.5 1.128 6.744 3.046 9.378L1.054 31.29l6.118-1.958A15.924 15.924 0 0016.004 32C24.826 32 32 24.822 32 16S24.826 0 16.004 0zm9.338 22.594c-.39 1.1-1.932 2.014-3.164 2.28-.844.18-1.946.324-5.656-1.216-4.746-1.97-7.8-6.78-8.034-7.096-.226-.316-1.882-2.508-1.882-4.784s1.188-3.396 1.612-3.862c.39-.428 1.028-.642 1.64-.642.198 0 .376.01.536.018.424.018.636.042.916.71.35.832 1.2 2.924 1.304 3.138.106.214.214.498.076.79-.128.3-.242.432-.456.678-.214.248-.418.438-.632.704-.196.232-.416.48-.176.918.24.432 1.068 1.762 2.294 2.854 1.578 1.406 2.908 1.842 3.322 2.046.414.204.656.172.898-.104.248-.282 1.06-1.234 1.342-1.66.276-.426.558-.354.94-.214.386.138 2.446 1.154 2.864 1.364.418.214.698.318.8.498.1.178.1 1.038-.29 2.14z"/></svg>
+  </a>
+
 </body>
 </html>
