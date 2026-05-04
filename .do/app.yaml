@@ -1,0 +1,9 @@
+name: cougar-suspension-py
+region: nyc
+static_sites:
+  - name: cougar-web
+    source_dir: /
+    build_command: echo "Static site - no build needed"
+    output_dir: /
+    index_document: index.html
+    error_document: index.html
