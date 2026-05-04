@@ -612,8 +612,16 @@
     function updateSummary(){
       var totals = getCartTotals();
       document.getElementById('summarySubtotal').textContent = Store.formatPrice(totals.subtotal);
-      var shEl = document.getElementById('summaryShipping');
-      if(shEl) shEl.textContent = Store.formatPrice(totals.shipping);
+      var shRow = document.getElementById('summaryShipping');
+      if(shRow){
+        var row = shRow.closest('.cart-summary__row');
+        if(totals.shipping > 0){
+          shRow.textContent = Store.formatPrice(totals.shipping);
+          if(row) row.style.display = '';
+        } else {
+          if(row) row.style.display = 'none';
+        }
+      }
       document.getElementById('summaryTotal').textContent = Store.formatPrice(totals.total);
     }
 
@@ -746,10 +754,8 @@
       document.getElementById('countryFlag').textContent = COUNTRY_FLAGS[country] || '\uD83C\uDF0D';
       document.getElementById('countryName').textContent = COUNTRY_NAMES[country] || country;
 
-      // Summary
-      var shEl = document.getElementById('summaryShipping');
-      if(shEl) shEl.textContent = Store.formatPrice(totals.shipping);
-      document.getElementById('summaryTotal').textContent = Store.formatPrice(totals.total);
+      // Summary — update and hide shipping row if free
+      updateSummary();
 
       // Render the 9 payment methods
       var methods = getActiveMethodsForCountry(country);

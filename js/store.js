@@ -589,10 +589,15 @@
      2. COUNTRY / CURRENCY CONFIG
      ═══════════════════════════════════════════════════════════════════════════ */
 
+  /* ── Exchange rates & flat shipping ──────────────────────────────────── */
+  var USD_RATES = { ARS: 1200, BRL: 5.5 };  // 1 USD = X local
+  var FLAT_SHIPPING_USD = 30;                // flat per-order shipping in USD
+
   var COUNTRY_CONFIG = {
     PY: {
       currency: 'PYG',
       commerceId: 789,
+      flatShipping: 0,    // GRATIS en Paraguay
       dpago: {
         enabled: true,
         testMode: false,
@@ -616,6 +621,7 @@
     AR: {
       currency: 'ARS',
       commerceId: null,
+      flatShipping: Math.round(FLAT_SHIPPING_USD * USD_RATES.ARS),  // 30 USD → 36.000 ARS
       dpago: { enabled: false, testMode: false, buttonColor: '#F07020', apiKey: '', webhookUrl: '' },
       paymentMethods: [
         { id: 'mp',   name: 'Mercado Pago',  icon: '💳', active: true },
@@ -625,6 +631,7 @@
     BR: {
       currency: 'BRL',
       commerceId: null,
+      flatShipping: Math.round(FLAT_SHIPPING_USD * USD_RATES.BRL * 100) / 100,  // 30 USD → 165 BRL
       dpago: { enabled: false, testMode: false, buttonColor: '#F07020', apiKey: '', webhookUrl: '' },
       paymentMethods: [
         { id: 'pix',    name: 'PIX',    icon: '📷', active: true },
@@ -968,16 +975,19 @@
    */
   function getCartTotal() {
     var currency = getCurrency();
+    var country = getCountry();
+    var cfg = COUNTRY_CONFIG[country] || COUNTRY_CONFIG[DEFAULT_COUNTRY];
     var cart = getCart();
     var subtotal = 0;
-    var shipping = 0;
     var itemCount = 0;
 
     cart.forEach(function (entry) {
       subtotal += entry.subtotal;
-      shipping += (entry.product.shipping[currency] || 0) * entry.qty;
       itemCount += entry.qty;
     });
+
+    // Flat shipping per order (0 for PY, 30 USD equivalent for AR/BR)
+    var shipping = (itemCount > 0) ? (cfg.flatShipping || 0) : 0;
 
     return {
       subtotal: subtotal,

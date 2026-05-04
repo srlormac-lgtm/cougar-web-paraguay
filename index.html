@@ -922,7 +922,13 @@
 
       var totals=CougarStore.getCartTotal();
       document.getElementById('cartSubtotal').textContent=CougarStore.formatPrice(totals.subtotal);
-      document.getElementById('cartShipping').textContent=CougarStore.formatPrice(totals.shipping);
+      var shRow=document.getElementById('cartShipping').closest('.cart-drawer__row');
+      if(totals.shipping > 0){
+        document.getElementById('cartShipping').textContent=CougarStore.formatPrice(totals.shipping);
+        shRow.style.display='';
+      } else {
+        shRow.style.display='none';
+      }
       document.getElementById('cartTotal').textContent=CougarStore.formatPrice(totals.total);
       footerEl.style.display='block';
     }
@@ -961,11 +967,15 @@
           el.textContent=CougarStore.formatPrice(product.prices[currency]);
         }
       });
+      // Hide per-product shipping — shipping is now flat per order or free
+      var totals=CougarStore.getCartTotal();
       document.querySelectorAll('[data-ship-id]').forEach(function(el){
-        var pid=el.getAttribute('data-ship-id');
-        var product=CougarStore.getProduct(pid);
-        if(product){
-          el.textContent='Shipping: '+CougarStore.formatPrice(product.shipping[currency]);
+        if(totals.shipping === 0){
+          el.textContent='Envio gratis';
+          el.style.color='#27ae60';
+        } else {
+          el.textContent='Envio: '+CougarStore.formatPrice(totals.shipping)+' (por pedido)';
+          el.style.color='';
         }
       });
     }
