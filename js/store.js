@@ -22,6 +22,7 @@
       description: 'High-strength urethane bump stop. 5 years of reliable performance. Absorbs every impact without losing firmness. Precio por par.',
       image: 'assets/c1.jpg',
       badge: 'PAR',
+      purchasable: true,
       prices: { PYG: 350000, ARS: 45500, BRL: 244 },
       shipping: { PYG: 150000, ARS: 19500, BRL: 105 }
     },
@@ -32,6 +33,7 @@
       description: 'Complete high-performance suspension upgrade. Total control in curves, brakes, and rough terrain. Precio por par.',
       image: 'assets/c2.jpg',
       badge: 'PAR',
+      purchasable: true,
       prices: { PYG: 250000, ARS: 32500, BRL: 175 },
       shipping: { PYG: 150000, ARS: 19500, BRL: 105 }
     },
@@ -42,6 +44,7 @@
       description: 'Supports up to 1,200 lbs. Eliminates rear sag and smooths out the roughest rides. Maximum performance. Precio por par.',
       image: 'assets/extreme.jpg',
       badge: 'PAR',
+      purchasable: true,
       prices: { PYG: 1800000, ARS: 234000, BRL: 1258 },
       shipping: { PYG: 150000, ARS: 19500, BRL: 105 }
     },
@@ -52,6 +55,7 @@
       description: 'Built for everyday driving, engineered to handle up to 450 kg of extra load. Comfort meets capacity. Precio por par.',
       image: 'assets/extreme-confort.jpg',
       badge: 'BEST SELLER',
+      purchasable: true,
       prices: { PYG: 1800000, ARS: 234000, BRL: 1258 },
       shipping: { PYG: 150000, ARS: 19500, BRL: 105 }
     },
@@ -64,6 +68,7 @@
       description: 'Stamped steel upper control arm. Direct OE replacement with improved geometry for 2-3" lifts.',
       image: 'assets/products/uca-steel.png',
       badge: '',
+      purchasable: false,
       prices: { PYG: 2500000, ARS: 325000, BRL: 1747 },
       shipping: { PYG: 150000, ARS: 19500, BRL: 105 }
     },
@@ -74,6 +79,7 @@
       description: 'Tubular chromoly UCA engineered for Land Cruiser 200 series. Ball joint included.',
       image: 'assets/products/uca-landcruiser.png',
       badge: '',
+      purchasable: false,
       prices: { PYG: 4200000, ARS: 546000, BRL: 2935 },
       shipping: { PYG: 150000, ARS: 19500, BRL: 105 }
     },
@@ -84,6 +90,7 @@
       description: 'CNC-forged 6061 aluminum upper control arm. 40% lighter than steel. Race-spec uniball pivot.',
       image: 'assets/products/uca-forged-aluminum.png',
       badge: 'PREMIUM',
+      purchasable: false,
       prices: { PYG: 6800000, ARS: 884000, BRL: 4752 },
       shipping: { PYG: 150000, ARS: 19500, BRL: 105 }
     },
@@ -94,6 +101,7 @@
       description: 'Full-billet 7075 aluminum delta arm. Maximum caster correction for 4-6" lifts. PTFE bushings.',
       image: 'assets/products/uca-billet-delta.png',
       badge: 'FLAGSHIP',
+      purchasable: false,
       prices: { PYG: 8500000, ARS: 1105000, BRL: 5940 },
       shipping: { PYG: 150000, ARS: 19500, BRL: 105 }
     },
@@ -106,6 +114,7 @@
       description: 'Solid chromoly rear sway bar with adjustable end links. Reduces body roll up to 45%.',
       image: 'assets/products/rear-sway-bar.png',
       badge: '',
+      purchasable: false,
       prices: { PYG: 1200000, ARS: 156000, BRL: 838 },
       shipping: { PYG: 150000, ARS: 19500, BRL: 105 }
     },
@@ -116,6 +125,7 @@
       description: 'Rear anti-roll balance arm. Bolt-on installation with adjustable stiffness settings.',
       image: 'assets/products/rear-balance-arm.png',
       badge: '',
+      purchasable: false,
       prices: { PYG: 1850000, ARS: 240500, BRL: 1293 },
       shipping: { PYG: 150000, ARS: 19500, BRL: 105 }
     },
@@ -126,6 +136,7 @@
       description: 'Dual hollow-tube rear stabilizer system. Independent tuning per side for asymmetric loads.',
       image: 'assets/products/rear-twin-bar.png',
       badge: 'PRO',
+      purchasable: false,
       prices: { PYG: 3500000, ARS: 455000, BRL: 2446 },
       shipping: { PYG: 150000, ARS: 19500, BRL: 105 }
     },
@@ -136,6 +147,7 @@
       description: 'Front anti-roll balance arm with heavy-duty polyurethane bushings. Bolt-on fit.',
       image: 'assets/products/front-balance-arm.png',
       badge: '',
+      purchasable: false,
       prices: { PYG: 1650000, ARS: 214500, BRL: 1153 },
       shipping: { PYG: 150000, ARS: 19500, BRL: 105 }
     },
@@ -148,6 +160,7 @@
       description: '6061 aluminum strut-top spacer. Adds 25-50mm of front lift. Corrosion-resistant anodize.',
       image: 'assets/products/aluminum-height-spacer.png',
       badge: '',
+      purchasable: false,
       prices: { PYG: 450000, ARS: 58500, BRL: 314 },
       shipping: { PYG: 150000, ARS: 19500, BRL: 105 }
     },
@@ -158,6 +171,7 @@
       description: 'Polyurethane front coil spacer. 30mm lift with OE ride quality. UV-stable compound.',
       image: 'assets/products/front-coil-spacer.png',
       badge: '',
+      purchasable: false,
       prices: { PYG: 350000, ARS: 45500, BRL: 244 },
       shipping: { PYG: 150000, ARS: 19500, BRL: 105 }
     },
@@ -168,6 +182,7 @@
       description: '25mm hub-centric wheel spacers. T6 aluminum, thread-locking studs included. Pair.',
       image: 'assets/products/wheel-spacers-25mm.png',
       badge: '',
+      purchasable: false,
       prices: { PYG: 550000, ARS: 71500, BRL: 384 },
       shipping: { PYG: 150000, ARS: 19500, BRL: 105 }
     },
@@ -178,6 +193,7 @@
       description: 'Polyurethane rear coil spacer. Restores ride height on loaded vehicles. 20-40mm options.',
       image: 'assets/products/rear-coil-spacer.png',
       badge: '',
+      purchasable: false,
       prices: { PYG: 250000, ARS: 32500, BRL: 174 },
       shipping: { PYG: 150000, ARS: 19500, BRL: 105 }
     },
@@ -188,6 +204,7 @@
       description: '32mm bolt-on wheel spacers. Wider track for improved stability. Grade 10.9 hardware.',
       image: 'assets/wheel-spacers.jpg',
       badge: '',
+      purchasable: false,
       prices: { PYG: 1500000, ARS: 195000, BRL: 1048 },
       shipping: { PYG: 150000, ARS: 19500, BRL: 105 }
     },
@@ -200,6 +217,7 @@
       description: 'Standard replacement shackle with greaseable bushings. 1" lift over stock.',
       image: 'assets/shackle.jpg',
       badge: '',
+      purchasable: false,
       prices: { PYG: 350000, ARS: 45500, BRL: 244 },
       shipping: { PYG: 150000, ARS: 19500, BRL: 105 }
     },
@@ -210,6 +228,7 @@
       description: '2.5" extended greaseable shackle. High-tensile steel with polyurethane bushings.',
       image: 'assets/products/g-shackles-25.png',
       badge: '',
+      purchasable: false,
       prices: { PYG: 650000, ARS: 84500, BRL: 454 },
       shipping: { PYG: 150000, ARS: 19500, BRL: 105 }
     },
@@ -220,6 +239,7 @@
       description: '2" extended greaseable shackle. Ideal balance of lift and ride quality.',
       image: 'assets/products/g-shackles-2.png',
       badge: '',
+      purchasable: false,
       prices: { PYG: 550000, ARS: 71500, BRL: 384 },
       shipping: { PYG: 150000, ARS: 19500, BRL: 105 }
     },
@@ -230,6 +250,7 @@
       description: 'Comfort-tuned shackle with dual rubber bushings. Minimal NVH for daily drivers.',
       image: 'assets/products/g-shackles-comfort-color.png',
       badge: 'COMFORT',
+      purchasable: false,
       prices: { PYG: 750000, ARS: 97500, BRL: 524 },
       shipping: { PYG: 150000, ARS: 19500, BRL: 105 }
     },
@@ -240,6 +261,7 @@
       description: 'Direct-fit shackle for Silverado/Sierra 1500-3500. Zinc-plated, 2" lift.',
       image: 'assets/products/g-shackles-silverado.png',
       badge: '',
+      purchasable: false,
       prices: { PYG: 900000, ARS: 117000, BRL: 629 },
       shipping: { PYG: 150000, ARS: 19500, BRL: 105 }
     },
@@ -252,6 +274,7 @@
       description: 'Complete front/rear leveling kit with spacers, extended shackles and hardware. 2-3" front, 1-2" rear.',
       image: 'assets/products/leveling-lift-kit.png',
       badge: 'KIT',
+      purchasable: false,
       prices: { PYG: 2800000, ARS: 364000, BRL: 1957 },
       shipping: { PYG: 150000, ARS: 19500, BRL: 105 }
     },
@@ -264,6 +287,7 @@
       description: 'Add-on helper leaf for rear leaf pack. Increases load capacity by ~300kg without stiffening ride.',
       image: 'assets/products/helper-leaf-spring.png',
       badge: '',
+      purchasable: false,
       prices: { PYG: 800000, ARS: 104000, BRL: 559 },
       shipping: { PYG: 150000, ARS: 19500, BRL: 105 }
     },
@@ -274,6 +298,7 @@
       description: 'Progressive-rate add-a-leaf. Restores 25-40mm of rear ride height. Tapered ends.',
       image: 'assets/products/add-a-leaf.png',
       badge: '',
+      purchasable: false,
       prices: { PYG: 1200000, ARS: 156000, BRL: 838 },
       shipping: { PYG: 150000, ARS: 19500, BRL: 105 }
     },
@@ -286,6 +311,7 @@
       description: 'High-performance monotube shock for Hilux/Tacoma. 10-stage adjustable compression and rebound.',
       image: 'assets/generated/truck-01-hilux.png',
       badge: 'BEST SELLER',
+      purchasable: false,
       prices: { PYG: 2200000, ARS: 286000, BRL: 1538 },
       shipping: { PYG: 150000, ARS: 19500, BRL: 105 }
     },
@@ -296,6 +322,7 @@
       description: 'Twin-tube heavy-duty shock for Tacoma/Ranger. Oversized 46mm piston. Dust boot included.',
       image: 'assets/generated/truck-02-tacoma.png',
       badge: '',
+      purchasable: false,
       prices: { PYG: 1800000, ARS: 234000, BRL: 1258 },
       shipping: { PYG: 150000, ARS: 19500, BRL: 105 }
     },
@@ -306,6 +333,7 @@
       description: 'Remote-reservoir shock for F-150. 2.5" body with 8" reservoir. Race-proven valving.',
       image: 'assets/generated/truck-03-f150.png',
       badge: 'PRO',
+      purchasable: false,
       prices: { PYG: 4500000, ARS: 585000, BRL: 3144 },
       shipping: { PYG: 150000, ARS: 19500, BRL: 105 }
     },
@@ -316,6 +344,7 @@
       description: 'Ride-leveling shock for Ford Ranger. Internal floating piston with nitrogen charge.',
       image: 'assets/generated/truck-04-ranger.png',
       badge: '',
+      purchasable: false,
       prices: { PYG: 1950000, ARS: 253500, BRL: 1362 },
       shipping: { PYG: 150000, ARS: 19500, BRL: 105 }
     },
@@ -326,6 +355,7 @@
       description: 'Sport-series shock for Silverado 1500/2500. Velocity-sensitive valving. Zinc-coated body.',
       image: 'assets/generated/truck-05-silverado.png',
       badge: '',
+      purchasable: false,
       prices: { PYG: 2100000, ARS: 273000, BRL: 1468 },
       shipping: { PYG: 150000, ARS: 19500, BRL: 105 }
     },
@@ -336,6 +366,7 @@
       description: 'Heavy-duty monotube for Ram 1500-3500. Extended travel for lifted applications up to 6".',
       image: 'assets/generated/truck-06-ram.png',
       badge: '',
+      purchasable: false,
       prices: { PYG: 2500000, ARS: 325000, BRL: 1747 },
       shipping: { PYG: 150000, ARS: 19500, BRL: 105 }
     },
@@ -346,6 +377,7 @@
       description: 'Full-length monotube shock for Tundra. Heat-treated aluminum body. 36mm bore.',
       image: 'assets/generated/truck-07-tundra.png',
       badge: '',
+      purchasable: false,
       prices: { PYG: 2350000, ARS: 305500, BRL: 1642 },
       shipping: { PYG: 150000, ARS: 19500, BRL: 105 }
     },
@@ -356,6 +388,7 @@
       description: 'Compact monotube for Colorado/Canyon. Perfect for urban + weekend trail duty.',
       image: 'assets/generated/truck-08-colorado.png',
       badge: '',
+      purchasable: false,
       prices: { PYG: 1500000, ARS: 195000, BRL: 1048 },
       shipping: { PYG: 150000, ARS: 19500, BRL: 105 }
     },
@@ -366,6 +399,7 @@
       description: 'Nitrogen-charged shock for Nissan Navara. Progressive damping for loaded tray use.',
       image: 'assets/generated/truck-09-navara.png',
       badge: '',
+      purchasable: false,
       prices: { PYG: 1650000, ARS: 214500, BRL: 1153 },
       shipping: { PYG: 150000, ARS: 19500, BRL: 105 }
     },
@@ -376,6 +410,7 @@
       description: 'Twin-tube shock for Isuzu D-Max. Hardened chrome rod, multi-lip seal. Pair.',
       image: 'assets/generated/truck-10-dmax.png',
       badge: '',
+      purchasable: false,
       prices: { PYG: 1750000, ARS: 227500, BRL: 1223 },
       shipping: { PYG: 150000, ARS: 19500, BRL: 105 }
     },
@@ -388,6 +423,7 @@
       description: 'Sport-performance rear shock. Adjustable preload and rebound. CNC alloy body.',
       image: 'assets/generated/moto-01-sport.png',
       badge: 'SPORT',
+      purchasable: false,
       prices: { PYG: 1200000, ARS: 156000, BRL: 838 },
       shipping: { PYG: 150000, ARS: 19500, BRL: 105 }
     },
@@ -398,6 +434,7 @@
       description: 'Adventure-touring rear shock with piggyback reservoir. 60mm adjustable preload.',
       image: 'assets/generated/moto-02-adventure.png',
       badge: 'ADV',
+      purchasable: false,
       prices: { PYG: 2800000, ARS: 364000, BRL: 1957 },
       shipping: { PYG: 150000, ARS: 19500, BRL: 105 }
     },
@@ -408,6 +445,7 @@
       description: 'Motocross-spec rear shock. High/low speed compression, rebound clickers. Kashima coat.',
       image: 'assets/generated/moto-03-mx.png',
       badge: 'RACE',
+      purchasable: false,
       prices: { PYG: 3500000, ARS: 455000, BRL: 2446 },
       shipping: { PYG: 150000, ARS: 19500, BRL: 105 }
     },
@@ -418,6 +456,7 @@
       description: 'Chrome-bodied rear shock for cruiser bikes. Soft progressive spring. 320mm eye-to-eye.',
       image: 'assets/generated/moto-04-cruiser.png',
       badge: '',
+      purchasable: false,
       prices: { PYG: 800000, ARS: 104000, BRL: 559 },
       shipping: { PYG: 150000, ARS: 19500, BRL: 105 }
     },
@@ -428,6 +467,7 @@
       description: 'Enduro-optimized rear shock with long travel. Sealed bearing mount. Mud-guard boot.',
       image: 'assets/generated/moto-05-enduro.png',
       badge: '',
+      purchasable: false,
       prices: { PYG: 2200000, ARS: 286000, BRL: 1538 },
       shipping: { PYG: 150000, ARS: 19500, BRL: 105 }
     },
@@ -438,6 +478,7 @@
       description: 'Urban street shock for naked and standard bikes. Compact 280mm length. Adjustable preload.',
       image: 'assets/generated/moto-06-street.png',
       badge: '',
+      purchasable: false,
       prices: { PYG: 950000, ARS: 123500, BRL: 663 },
       shipping: { PYG: 150000, ARS: 19500, BRL: 105 }
     },
@@ -448,6 +489,7 @@
       description: 'Track-day rear shock. Full titanium spring, 4-way adjustable damping. Sub-1.8kg.',
       image: 'assets/generated/moto-07-racing.png',
       badge: 'RACE',
+      purchasable: false,
       prices: { PYG: 3200000, ARS: 416000, BRL: 2236 },
       shipping: { PYG: 150000, ARS: 19500, BRL: 105 }
     },
@@ -458,6 +500,7 @@
       description: 'All-terrain trail shock. Dual-rate spring for light trail and fire roads.',
       image: 'assets/generated/moto-08-trail.png',
       badge: '',
+      purchasable: false,
       prices: { PYG: 1500000, ARS: 195000, BRL: 1048 },
       shipping: { PYG: 150000, ARS: 19500, BRL: 105 }
     },
@@ -468,6 +511,7 @@
       description: 'Long-distance touring rear shock with hydraulic preload adjuster. Comfort-rated.',
       image: 'assets/generated/moto-09-touring.png',
       badge: 'TOURING',
+      purchasable: false,
       prices: { PYG: 1800000, ARS: 234000, BRL: 1258 },
       shipping: { PYG: 150000, ARS: 19500, BRL: 105 }
     },
@@ -478,6 +522,7 @@
       description: 'Dual-sport rear shock. Street-legal with off-road capability. Adjustable ride height.',
       image: 'assets/generated/moto-10-dual.png',
       badge: '',
+      purchasable: false,
       prices: { PYG: 1650000, ARS: 214500, BRL: 1153 },
       shipping: { PYG: 150000, ARS: 19500, BRL: 105 }
     },
@@ -490,6 +535,7 @@
       description: 'Daily commuter shock for sedans. Twin-tube with OE-spec valving. Quiet operation.',
       image: 'assets/generated/car-01-corolla.png',
       badge: '',
+      purchasable: false,
       prices: { PYG: 600000, ARS: 78000, BRL: 419 },
       shipping: { PYG: 150000, ARS: 19500, BRL: 105 }
     },
@@ -500,6 +546,7 @@
       description: 'Sport-tuned shock for Civic/Corolla class. Lowered-ready with shorter stroke.',
       image: 'assets/generated/car-02-civic.png',
       badge: 'SPORT',
+      purchasable: false,
       prices: { PYG: 850000, ARS: 110500, BRL: 594 },
       shipping: { PYG: 150000, ARS: 19500, BRL: 105 }
     },
@@ -510,6 +557,7 @@
       description: 'Touring shock for mid-size sedans (Camry, Accord). Premium ride comfort.',
       image: 'assets/generated/car-03-camry.png',
       badge: '',
+      purchasable: false,
       prices: { PYG: 750000, ARS: 97500, BRL: 524 },
       shipping: { PYG: 150000, ARS: 19500, BRL: 105 }
     },
@@ -520,6 +568,7 @@
       description: 'Premium monotube for Accord/Mazda6. Reduced body roll with civilized ride.',
       image: 'assets/generated/car-04-accord.png',
       badge: '',
+      purchasable: false,
       prices: { PYG: 980000, ARS: 127400, BRL: 685 },
       shipping: { PYG: 150000, ARS: 19500, BRL: 105 }
     },
@@ -530,6 +579,7 @@
       description: 'Dynamic-response shock for Mazda3/CX-5. Velocity-sensitive damping.',
       image: 'assets/generated/car-05-mazda3.png',
       badge: '',
+      purchasable: false,
       prices: { PYG: 820000, ARS: 106600, BRL: 573 },
       shipping: { PYG: 150000, ARS: 19500, BRL: 105 }
     },
@@ -540,6 +590,7 @@
       description: 'Economy-line shock for Sentra/Versa class. Reliable twin-tube at an entry price.',
       image: 'assets/generated/car-06-sentra.png',
       badge: 'VALUE',
+      purchasable: false,
       prices: { PYG: 650000, ARS: 84500, BRL: 454 },
       shipping: { PYG: 150000, ARS: 19500, BRL: 105 }
     },
@@ -550,6 +601,7 @@
       description: 'Rally-grade inverted monotube for Impreza/WRX. Adjustable high/low speed compression.',
       image: 'assets/generated/car-07-impreza.png',
       badge: 'RACE',
+      purchasable: false,
       prices: { PYG: 3800000, ARS: 494000, BRL: 2655 },
       shipping: { PYG: 150000, ARS: 19500, BRL: 105 }
     },
@@ -560,6 +612,7 @@
       description: 'Track-focused coilover shock for Lancer Evo/STI. 32-click rebound adjustment.',
       image: 'assets/generated/car-08-lancer.png',
       badge: 'RACE',
+      purchasable: false,
       prices: { PYG: 5000000, ARS: 650000, BRL: 3493 },
       shipping: { PYG: 150000, ARS: 19500, BRL: 105 }
     },
@@ -570,6 +623,7 @@
       description: 'Long-travel monotube for 4Runner/Prado. 2.5" body, remote reservoir ready.',
       image: 'assets/generated/car-09-4runner.png',
       badge: 'OFF-ROAD',
+      purchasable: false,
       prices: { PYG: 3200000, ARS: 416000, BRL: 2236 },
       shipping: { PYG: 150000, ARS: 19500, BRL: 105 }
     },
@@ -580,6 +634,7 @@
       description: 'Expedition-grade shock for Land Cruiser 200/300. Overland-spec with external reservoir.',
       image: 'assets/generated/car-10-landcruiser.png',
       badge: 'EXPEDITION',
+      purchasable: false,
       prices: { PYG: 4500000, ARS: 585000, BRL: 3144 },
       shipping: { PYG: 150000, ARS: 19500, BRL: 105 }
     }
@@ -910,7 +965,9 @@
    */
   function addToCart(productId, qty) {
     qty = Math.max(1, parseInt(qty, 10) || 1);
-    if (!getProduct(productId)) return false;
+    var prod = getProduct(productId);
+    if (!prod) return false;
+    if (prod.purchasable === false) return false;
 
     var items = _readCart();
     var found = false;

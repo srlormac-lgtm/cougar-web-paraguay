@@ -97,6 +97,7 @@
     .btn-cart:hover{background:#ff8534;transform:translateY(-1px)}
     .btn-cart:active{transform:scale(.97)}
     .btn-cart.added{background:#2d7a2d;color:#fff}
+    .product__coming{display:inline-block;background:rgba(240,112,32,0.15);border:1px solid var(--orange);color:var(--orange);padding:.5rem 1.2rem;font-family:var(--font-display);font-size:.75rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;margin-top:1rem;text-align:center;width:100%}
     .qty-select{display:flex;align-items:center;gap:0;border:1px solid var(--border);flex-shrink:0}
     .qty-select button{background:var(--card);color:var(--white);border:none;width:28px;height:34px;cursor:pointer;font-size:1rem;transition:background .2s;line-height:1}
     .qty-select button:hover{background:var(--orange);color:#000}
@@ -878,6 +879,8 @@
     // Add to cart with UI feedback — reads qty from sibling input
     function addToCartUI(productId, btn){
       if(typeof CougarStore==='undefined') return;
+      var product=CougarStore.getProduct(productId);
+      if(!product || product.purchasable===false) return;
       var actions = btn.closest('.product__actions');
       var input = actions ? actions.querySelector('.qty-select input') : null;
       var qty = input ? (parseInt(input.value,10) || 1) : 1;
@@ -963,19 +966,28 @@
       document.querySelectorAll('[data-price-id]').forEach(function(el){
         var pid=el.getAttribute('data-price-id');
         var product=CougarStore.getProduct(pid);
-        if(product){
-          el.textContent=CougarStore.formatPrice(product.prices[currency]);
-        }
-      });
-      // Hide per-product shipping — shipping is now flat per order or free
-      var totals=CougarStore.getCartTotal();
-      document.querySelectorAll('[data-ship-id]').forEach(function(el){
-        if(totals.shipping === 0){
-          el.textContent='Envio gratis';
-          el.style.color='#27ae60';
+        if(!product) return;
+        var card=el.closest('.product');
+        var actionsEl=card?card.querySelector('.product__actions'):null;
+        var shipEl=card?card.querySelector('[data-ship-id]'):null;
+
+        if(product.purchasable===false){
+          // Non-purchasable: hide price, show PROXIMAMENTE
+          el.textContent='';
+          el.style.display='none';
+          if(shipEl){shipEl.textContent='';shipEl.style.display='none';}
+          if(actionsEl && !actionsEl.querySelector('.product__coming')){
+            actionsEl.innerHTML='<div class="product__coming">Proximamente</div>';
+          }
         } else {
-          el.textContent='Envio: '+CougarStore.formatPrice(totals.shipping)+' (por pedido)';
-          el.style.color='';
+          // Purchasable: show price
+          el.style.display='';
+          el.textContent=CougarStore.formatPrice(product.prices[currency]);
+          if(shipEl){
+            shipEl.style.display='';
+            shipEl.textContent='Envio gratis';
+            shipEl.style.color='#27ae60';
+          }
         }
       });
     }
