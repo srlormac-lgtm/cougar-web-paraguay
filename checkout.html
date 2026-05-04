@@ -270,8 +270,8 @@
 
     <!-- STEP 2: SHIPPING INFO -->
     <div class="step" id="step2">
-      <h2 class="step__title">Datos del Comprador</h2>
-      <p class="step__sub">Completa tus datos personales.</p>
+      <h2 class="step__title">Datos del Comprador y Envio</h2>
+      <p class="step__sub">Completa tus datos personales y selecciona el tipo de envio.</p>
       <div class="form-grid">
         <div class="form-group form-grid--full">
           <label>Nombre Completo <span class="req">*</span></label>
@@ -292,105 +292,142 @@
           <label>RUC / CI</label>
           <input type="text" id="shRuc" placeholder="Ej: 1234567-8">
         </div>
-        <div class="form-group" style="display:none">
-          <select id="shCountry"><option value="PY" selected>Paraguay</option></select>
+        <div class="form-group">
+          <label>Pais</label>
+          <select id="shCountry" onchange="onCountryChange()">
+            <option value="PY">Paraguay</option>
+            <option value="AR">Argentina</option>
+            <option value="BR">Brasil</option>
+          </select>
         </div>
       </div>
 
-      <!-- SHIPPING TYPE SELECTOR -->
-      <h3 style="font-family:var(--font-display);font-size:1.1rem;text-transform:uppercase;letter-spacing:.1em;color:var(--white);margin:2.5rem 0 1rem">Tipo de Envio</h3>
+      <!-- ===== PY-ONLY: Shipping type selector ===== -->
+      <div id="pyShippingSection">
+        <h3 style="font-family:var(--font-display);font-size:1.1rem;text-transform:uppercase;letter-spacing:.1em;color:var(--white);margin:2.5rem 0 1rem">Tipo de Envio</h3>
 
-      <div class="shipping-type-options">
-        <label class="shipping-type" id="shTypeA">
-          <input type="radio" name="shippingType" value="instalacion" onclick="toggleShippingType('instalacion')">
-          <div class="shipping-type__card">
-            <div class="shipping-type__icon">&#128736;</div>
-            <div class="shipping-type__info">
-              <div class="shipping-type__title">Instalacion a Domicilio</div>
-              <div class="shipping-type__sub">Solo Asuncion y alrededores &mdash; <strong style="color:var(--orange)">GRATIS</strong></div>
+        <div class="shipping-type-options">
+          <label class="shipping-type" id="shTypeA">
+            <input type="radio" name="shippingType" value="instalacion" onclick="toggleShippingType('instalacion')">
+            <div class="shipping-type__card">
+              <div class="shipping-type__icon">&#128736;</div>
+              <div class="shipping-type__info">
+                <div class="shipping-type__title">Instalacion a Domicilio</div>
+                <div class="shipping-type__sub">Solo Asuncion y alrededores &mdash; <strong style="color:var(--orange)">GRATIS</strong></div>
+              </div>
+            </div>
+          </label>
+          <label class="shipping-type" id="shTypeB">
+            <input type="radio" name="shippingType" value="encomienda" onclick="toggleShippingType('encomienda')">
+            <div class="shipping-type__card">
+              <div class="shipping-type__icon">&#128666;</div>
+              <div class="shipping-type__info">
+                <div class="shipping-type__title">Envio por Encomienda al Interior</div>
+                <div class="shipping-type__sub">Costo de envio: <strong style="color:var(--orange)">Gs. 35.000</strong></div>
+              </div>
+            </div>
+          </label>
+        </div>
+
+        <!-- OPTION A: Instalacion a domicilio -->
+        <div id="shFieldsInstalacion" class="shipping-fields" style="display:none">
+          <div class="shipping-note" style="margin-bottom:1rem;border-color:var(--orange)">
+            <span class="shipping-note__icon" style="color:var(--orange)">&#9432;</span>
+            <span>Servicio disponible solo para <strong>Asuncion</strong> y ciudades aleda&ntilde;as: Luque, San Lorenzo, Fernando de la Mora, Lambar&eacute;, Mariano R. Alonso, &Ntilde;emby, Capiat&aacute;, Limpio, San Antonio.</span>
+          </div>
+          <div class="shipping-note" style="margin-bottom:1rem;border-color:#27ae60">
+            <span class="shipping-note__icon" style="color:#27ae60">&#128736;</span>
+            <span><strong>Nuestro equipo de instaladores se comunicar&aacute; con usted para coordinar el horario de visita a su domicilio.</strong></span>
+          </div>
+          <div class="form-grid">
+            <div class="form-group form-grid--full">
+              <label>Direccion de Instalacion <span class="req">*</span></label>
+              <input type="text" id="shInstAddress" placeholder="Calle, numero, barrio, ciudad">
+              <span class="error-msg">Ingresa la direccion de instalacion</span>
             </div>
           </div>
-        </label>
-        <label class="shipping-type" id="shTypeB">
-          <input type="radio" name="shippingType" value="encomienda" onclick="toggleShippingType('encomienda')">
-          <div class="shipping-type__card">
-            <div class="shipping-type__icon">&#128666;</div>
-            <div class="shipping-type__info">
-              <div class="shipping-type__title">Envio por Encomienda al Interior</div>
-              <div class="shipping-type__sub">El costo del envio corre por cuenta del comprador</div>
+        </div>
+
+        <!-- OPTION B: Encomienda al interior -->
+        <div id="shFieldsEncomienda" class="shipping-fields" style="display:none">
+          <div class="shipping-note" style="margin-bottom:1rem">
+            <span class="shipping-note__icon">&#9432;</span>
+            <span>Costo de envio al interior: <strong style="color:var(--orange)">Gs. 35.000</strong>. Se suma al total del pedido.</span>
+          </div>
+          <div class="form-grid">
+            <div class="form-group">
+              <label>Ciudad de Destino <span class="req">*</span></label>
+              <input type="text" id="shEncCity" placeholder="Ej: Ciudad del Este">
+              <span class="error-msg">Ingresa la ciudad</span>
+            </div>
+            <div class="form-group">
+              <label>Departamento <span class="req">*</span></label>
+              <select id="shEncDept">
+                <option value="">Seleccionar...</option>
+                <option>Concepcion</option><option>San Pedro</option><option>Cordillera</option>
+                <option>Guaira</option><option>Caaguazu</option><option>Caazapa</option>
+                <option>Itapua</option><option>Misiones</option><option>Paraguari</option>
+                <option>Alto Parana</option><option>Central</option><option>Neembucu</option>
+                <option>Amambay</option><option>Canindeyu</option><option>Presidente Hayes</option>
+                <option>Boqueron</option><option>Alto Paraguay</option>
+              </select>
+              <span class="error-msg">Selecciona un departamento</span>
+            </div>
+            <div class="form-group form-grid--full">
+              <label>Direccion de Entrega o Sucursal de Retiro <span class="req">*</span></label>
+              <input type="text" id="shEncAddress" placeholder="Direccion o nombre de sucursal">
+              <span class="error-msg">Ingresa la direccion o sucursal</span>
+            </div>
+            <div class="form-group">
+              <label>Transportadora <span class="req">*</span></label>
+              <select id="shEncTransport" onchange="toggleOtraTransp()">
+                <option value="">Seleccionar...</option>
+                <option>La Encomendera</option><option>NSA</option><option>El Practico</option>
+                <option>Rysa</option><option>La Santaniana</option><option value="otra">Otra</option>
+              </select>
+              <span class="error-msg">Selecciona una transportadora</span>
+            </div>
+            <div class="form-group" id="shEncOtraGroup" style="display:none">
+              <label>Cual transportadora? <span class="req">*</span></label>
+              <input type="text" id="shEncOtra" placeholder="Nombre de la transportadora">
+              <span class="error-msg">Ingresa el nombre</span>
+            </div>
+            <div class="form-group">
+              <label>Nombre del Destinatario <span class="req">*</span></label>
+              <input type="text" id="shEncRecipient" placeholder="Nombre de quien recibe">
+              <span class="error-msg">Ingresa el nombre</span>
+            </div>
+            <div class="form-group">
+              <label>Telefono del Destinatario <span class="req">*</span></label>
+              <input type="tel" id="shEncPhone" placeholder="+595 981 123456">
+              <span class="error-msg">Ingresa un telefono</span>
             </div>
           </div>
-        </label>
+        </div>
       </div>
 
-      <!-- OPTION A: Instalacion a domicilio -->
-      <div id="shFieldsInstalacion" class="shipping-fields" style="display:none">
-        <div class="shipping-note" style="margin-bottom:1rem;border-color:var(--orange)">
-          <span class="shipping-note__icon" style="color:var(--orange)">&#9432;</span>
-          <span>Servicio disponible solo para <strong>Asuncion</strong> y ciudades aleda&ntilde;as: Luque, San Lorenzo, Fernando de la Mora, Lambar&eacute;, Mariano R. Alonso, &Ntilde;emby, Capiat&aacute;, Limpio, San Antonio.</span>
+      <!-- ===== AR/BR: Normal address form ===== -->
+      <div id="intlShippingSection" style="display:none">
+        <h3 style="font-family:var(--font-display);font-size:1.1rem;text-transform:uppercase;letter-spacing:.1em;color:var(--white);margin:2.5rem 0 1rem">Direccion de Envio</h3>
+        <div class="shipping-note" style="margin-bottom:1rem">
+          <span class="shipping-note__icon">&#9432;</span>
+          <span>Costo de envio: <strong style="color:var(--orange)" id="intlShipCost">30 USD</strong> (unico por pedido).</span>
         </div>
         <div class="form-grid">
           <div class="form-group form-grid--full">
-            <label>Direccion de Instalacion <span class="req">*</span></label>
-            <input type="text" id="shInstAddress" placeholder="Calle, numero, barrio, ciudad">
-            <span class="error-msg">Ingresa la direccion de instalacion</span>
+            <label>Direccion <span class="req">*</span></label>
+            <input type="text" id="shIntlAddress" placeholder="Calle, numero, barrio">
+            <span class="error-msg">Ingresa la direccion</span>
           </div>
-        </div>
-      </div>
-
-      <!-- OPTION B: Encomienda al interior -->
-      <div id="shFieldsEncomienda" class="shipping-fields" style="display:none">
-        <div class="shipping-note" style="margin-bottom:1rem">
-          <span class="shipping-note__icon">&#9432;</span>
-          <span>El costo del envio por encomienda corre por cuenta del comprador. Se le informar&aacute; el monto antes del despacho.</span>
-        </div>
-        <div class="form-grid">
           <div class="form-group">
-            <label>Ciudad de Destino <span class="req">*</span></label>
-            <input type="text" id="shEncCity" placeholder="Ej: Ciudad del Este">
+            <label>Ciudad <span class="req">*</span></label>
+            <input type="text" id="shIntlCity" placeholder="Buenos Aires">
             <span class="error-msg">Ingresa la ciudad</span>
           </div>
           <div class="form-group">
-            <label>Departamento <span class="req">*</span></label>
-            <select id="shEncDept">
-              <option value="">Seleccionar...</option>
-              <option>Concepcion</option><option>San Pedro</option><option>Cordillera</option>
-              <option>Guaira</option><option>Caaguazu</option><option>Caazapa</option>
-              <option>Itapua</option><option>Misiones</option><option>Paraguari</option>
-              <option>Alto Parana</option><option>Central</option><option>Neembucu</option>
-              <option>Amambay</option><option>Canindeyu</option><option>Presidente Hayes</option>
-              <option>Boqueron</option><option>Alto Paraguay</option>
-            </select>
-            <span class="error-msg">Selecciona un departamento</span>
-          </div>
-          <div class="form-group form-grid--full">
-            <label>Direccion de Entrega o Sucursal de Retiro <span class="req">*</span></label>
-            <input type="text" id="shEncAddress" placeholder="Direccion o nombre de sucursal">
-            <span class="error-msg">Ingresa la direccion o sucursal</span>
-          </div>
-          <div class="form-group">
-            <label>Transportadora <span class="req">*</span></label>
-            <select id="shEncTransport" onchange="toggleOtraTransp()">
-              <option value="">Seleccionar...</option>
-              <option>La Encomendera</option><option>NSA</option><option>El Practico</option>
-              <option>Rysa</option><option>La Santaniana</option><option value="otra">Otra</option>
-            </select>
-            <span class="error-msg">Selecciona una transportadora</span>
-          </div>
-          <div class="form-group" id="shEncOtraGroup" style="display:none">
-            <label>Cual transportadora? <span class="req">*</span></label>
-            <input type="text" id="shEncOtra" placeholder="Nombre de la transportadora">
-            <span class="error-msg">Ingresa el nombre</span>
-          </div>
-          <div class="form-group">
-            <label>Nombre del Destinatario <span class="req">*</span></label>
-            <input type="text" id="shEncRecipient" placeholder="Nombre de quien recibe">
-            <span class="error-msg">Ingresa el nombre</span>
-          </div>
-          <div class="form-group">
-            <label>Telefono del Destinatario <span class="req">*</span></label>
-            <input type="tel" id="shEncPhone" placeholder="+595 981 123456">
-            <span class="error-msg">Ingresa un telefono</span>
+            <label>Estado / Provincia <span class="req">*</span></label>
+            <input type="text" id="shIntlState" placeholder="Provincia">
+            <span class="error-msg">Ingresa la provincia</span>
           </div>
         </div>
       </div>
@@ -642,14 +679,44 @@
     /* ============================================================
        STEP 2: SHIPPING
     ============================================================ */
+    var PY_ENCOMIENDA_COST = 35000; // Gs
+
     function detectCountry(){
-      document.getElementById('shCountry').value = 'PY';
+      var c = Store.getCountry();
+      var sel = document.getElementById('shCountry');
+      if(c && sel.querySelector('option[value="'+c+'"]')) sel.value = c;
+      onCountryChange();
     }
 
-    // Shipping type toggle
+    window.onCountryChange = function(){
+      var country = document.getElementById('shCountry').value;
+      var isPY = (country === 'PY');
+      document.getElementById('pyShippingSection').style.display = isPY ? '' : 'none';
+      document.getElementById('intlShippingSection').style.display = isPY ? 'none' : '';
+      document.getElementById('rucGroup').style.display = isPY ? '' : 'none';
+      // Reset PY radios when switching away
+      if(!isPY){
+        document.querySelectorAll('input[name="shippingType"]').forEach(function(r){r.checked=false;});
+        document.getElementById('shFieldsInstalacion').style.display = 'none';
+        document.getElementById('shFieldsEncomienda').style.display = 'none';
+      }
+      // Update intl shipping cost display
+      if(!isPY){
+        var cfg = Store.getCountryConfig ? Store.getCountryConfig() : {};
+        Store.setCountry(country);
+        var t = Store.getCartTotal();
+        var el = document.getElementById('intlShipCost');
+        if(el && t.shipping > 0) el.textContent = Store.formatPrice(t.shipping);
+      } else {
+        Store.setCountry('PY');
+      }
+      updateSummary();
+    };
+
     window.toggleShippingType = function(type){
       document.getElementById('shFieldsInstalacion').style.display = (type === 'instalacion') ? 'block' : 'none';
       document.getElementById('shFieldsEncomienda').style.display = (type === 'encomienda') ? 'block' : 'none';
+      updateSummary();
     };
 
     window.toggleOtraTransp = function(){
@@ -657,12 +724,44 @@
       document.getElementById('shEncOtraGroup').style.display = (sel.value === 'otra') ? '' : 'none';
     };
 
+    function getSelectedShippingType(){
+      var r = document.querySelector('input[name="shippingType"]:checked');
+      return r ? r.value : null;
+    }
+
+    // Override updateSummary to include PY encomienda cost
+    var _origUpdateSummary = updateSummary;
+    updateSummary = function(){
+      var totals = getCartTotals();
+      var country = document.getElementById('shCountry').value;
+      var shType = getSelectedShippingType();
+      var extraShip = 0;
+      // PY encomienda adds 35,000 Gs
+      if(country === 'PY' && shType === 'encomienda') extraShip = PY_ENCOMIENDA_COST;
+      var totalShipping = totals.shipping + extraShip;
+
+      document.getElementById('summarySubtotal').textContent = Store.formatPrice(totals.subtotal);
+      var shRow = document.getElementById('summaryShipping');
+      if(shRow){
+        var row = shRow.closest('.cart-summary__row');
+        if(totalShipping > 0){
+          shRow.textContent = Store.formatPrice(totalShipping);
+          if(row) row.style.display = '';
+        } else {
+          if(row) row.style.display = 'none';
+        }
+      }
+      document.getElementById('summaryTotal').textContent = Store.formatPrice(totals.subtotal + totalShipping);
+    };
+
     function validateField(id, test){
       var el = document.getElementById(id);
       if(!el) return true;
       var group = el.closest('.form-group');
       if(!group) return true;
-      if(group.style.display === 'none' || group.closest('.shipping-fields[style*="display: none"]') || group.closest('.shipping-fields[style*="display:none"]')) return true;
+      // Skip hidden fields
+      var parent = group.closest('[style*="display: none"]') || group.closest('[style*="display:none"]');
+      if(parent) return true;
       var val = el.value || '';
       if(!test(val)){
         group.classList.add('has-error');
@@ -678,33 +777,34 @@
       var isEmail = function(v){return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);};
       var isPhone = function(v){return v.replace(/\D/g,'').length >= 7;};
 
-      // Base fields
       if(!validateField('shFullName', notEmpty)) valid = false;
       if(!validateField('shEmail', isEmail)) valid = false;
       if(!validateField('shPhone', isPhone)) valid = false;
 
-      // Shipping type selected?
-      var shType = document.querySelector('input[name="shippingType"]:checked');
-      if(!shType){
-        alert('Selecciona un tipo de envio');
-        return;
-      }
-      var shippingType = shType.value;
+      var country = document.getElementById('shCountry').value;
+      var isPY = (country === 'PY');
 
-      // Validate fields based on shipping type
-      if(shippingType === 'instalacion'){
-        if(!validateField('shInstAddress', notEmpty)) valid = false;
-      }
-      if(shippingType === 'encomienda'){
-        if(!validateField('shEncCity', notEmpty)) valid = false;
-        if(!validateField('shEncDept', function(v){return v.length > 0;})) valid = false;
-        if(!validateField('shEncAddress', notEmpty)) valid = false;
-        if(!validateField('shEncTransport', function(v){return v.length > 0;})) valid = false;
-        if(document.getElementById('shEncTransport').value === 'otra'){
-          if(!validateField('shEncOtra', notEmpty)) valid = false;
+      if(isPY){
+        var shType = getSelectedShippingType();
+        if(!shType){ alert('Selecciona un tipo de envio'); return; }
+        if(shType === 'instalacion'){
+          if(!validateField('shInstAddress', notEmpty)) valid = false;
         }
-        if(!validateField('shEncRecipient', notEmpty)) valid = false;
-        if(!validateField('shEncPhone', isPhone)) valid = false;
+        if(shType === 'encomienda'){
+          if(!validateField('shEncCity', notEmpty)) valid = false;
+          if(!validateField('shEncDept', function(v){return v.length>0;})) valid = false;
+          if(!validateField('shEncAddress', notEmpty)) valid = false;
+          if(!validateField('shEncTransport', function(v){return v.length>0;})) valid = false;
+          if(document.getElementById('shEncTransport').value === 'otra'){
+            if(!validateField('shEncOtra', notEmpty)) valid = false;
+          }
+          if(!validateField('shEncRecipient', notEmpty)) valid = false;
+          if(!validateField('shEncPhone', isPhone)) valid = false;
+        }
+      } else {
+        if(!validateField('shIntlAddress', notEmpty)) valid = false;
+        if(!validateField('shIntlCity', notEmpty)) valid = false;
+        if(!validateField('shIntlState', notEmpty)) valid = false;
       }
 
       if(!valid){
@@ -718,26 +818,38 @@
         fullName: document.getElementById('shFullName').value.trim(),
         email: document.getElementById('shEmail').value.trim(),
         phone: document.getElementById('shPhone').value.trim(),
-        country: 'PY',
-        ruc: document.getElementById('shRuc').value.trim(),
-        shippingType: shippingType
+        country: country,
+        ruc: (isPY ? document.getElementById('shRuc').value.trim() : '')
       };
 
-      if(shippingType === 'instalacion'){
-        shippingData.address = document.getElementById('shInstAddress').value.trim();
-        shippingData.city = 'Asuncion / Gran Asuncion';
-        shippingData.state = 'Central';
-        shippingData.shippingLabel = 'Instalacion a domicilio (gratis)';
+      if(isPY){
+        var shType = getSelectedShippingType();
+        shippingData.shippingType = shType;
+        if(shType === 'instalacion'){
+          shippingData.address = document.getElementById('shInstAddress').value.trim();
+          shippingData.city = 'Asuncion / Gran Asuncion';
+          shippingData.state = 'Central';
+          shippingData.shippingLabel = 'Instalacion a domicilio (gratis)';
+          shippingData.shippingCost = 0;
+        } else {
+          var transp = document.getElementById('shEncTransport').value;
+          if(transp === 'otra') transp = document.getElementById('shEncOtra').value.trim();
+          shippingData.city = document.getElementById('shEncCity').value.trim();
+          shippingData.state = document.getElementById('shEncDept').value;
+          shippingData.address = document.getElementById('shEncAddress').value.trim();
+          shippingData.transportadora = transp;
+          shippingData.recipientName = document.getElementById('shEncRecipient').value.trim();
+          shippingData.recipientPhone = document.getElementById('shEncPhone').value.trim();
+          shippingData.shippingLabel = 'Encomienda al interior via ' + transp;
+          shippingData.shippingCost = PY_ENCOMIENDA_COST;
+        }
       } else {
-        var transp = document.getElementById('shEncTransport').value;
-        if(transp === 'otra') transp = document.getElementById('shEncOtra').value.trim();
-        shippingData.city = document.getElementById('shEncCity').value.trim();
-        shippingData.state = document.getElementById('shEncDept').value;
-        shippingData.address = document.getElementById('shEncAddress').value.trim();
-        shippingData.transportadora = transp;
-        shippingData.recipientName = document.getElementById('shEncRecipient').value.trim();
-        shippingData.recipientPhone = document.getElementById('shEncPhone').value.trim();
-        shippingData.shippingLabel = 'Encomienda al interior via ' + transp;
+        shippingData.shippingType = 'international';
+        shippingData.address = document.getElementById('shIntlAddress').value.trim();
+        shippingData.city = document.getElementById('shIntlCity').value.trim();
+        shippingData.state = document.getElementById('shIntlState').value.trim();
+        shippingData.shippingLabel = 'Envio internacional (30 USD)';
+        shippingData.shippingCost = Store.getCartTotal().shipping;
       }
 
       goToStep(3);
@@ -748,32 +860,51 @@
     ============================================================ */
     function setupPaymentStep(){
       var country = shippingData.country || Store.getCountry() || 'PY';
-      var totals = getCartTotals();
+      var isPY = (country === 'PY');
 
       // Country display
       document.getElementById('countryFlag').textContent = COUNTRY_FLAGS[country] || '\uD83C\uDF0D';
       document.getElementById('countryName').textContent = COUNTRY_NAMES[country] || country;
 
-      // Summary — update and hide shipping row if free
+      // Summary
       updateSummary();
 
-      // Render the 9 payment methods
-      var methods = getActiveMethodsForCountry(country);
       var container = document.getElementById('paymentMethods');
       selectedMethod = null;
       selectedMethodName = '';
       document.getElementById('btnConfirmPay').disabled = true;
+      document.getElementById('dpagoArea').classList.remove('visible');
 
-      if(methods.length === 0){
+      // Generate order reference
+      orderReference = 'CG-' + Date.now();
+
+      if(!isPY){
+        // AR/BR: show WhatsApp message instead of payment methods
+        var whatsappNum = '595981000000'; // Replace with real number
+        var orderText = encodeURIComponent('Hola! Quiero comprar en Cougar Suspension. Mi pedido es ' + orderReference + '. Pais: ' + (COUNTRY_NAMES[country]||country));
         container.innerHTML =
-          '<div style="grid-column:1/-1;text-align:center;padding:2rem;background:var(--card);border:1px solid var(--border)">'+
-            '<p style="color:var(--muted)">No hay metodos de pago disponibles para este pais.</p>'+
-            '<p style="color:var(--orange);margin-top:.5rem">ventas@cougarsuspension.com</p>'+
+          '<div style="grid-column:1/-1;text-align:center;padding:2.5rem 1.5rem;background:var(--card);border:1px solid var(--border)">'+
+            '<div style="font-size:2.5rem;margin-bottom:1rem">&#128172;</div>'+
+            '<p style="font-family:var(--font-display);font-size:1rem;text-transform:uppercase;letter-spacing:.1em;color:var(--white);margin-bottom:.5rem">Metodos de pago para tu pais proximamente</p>'+
+            '<p style="color:var(--muted);font-size:.85rem;margin-bottom:1.5rem">Contactanos por WhatsApp para coordinar tu compra.</p>'+
+            '<a href="https://wa.me/'+whatsappNum+'?text='+orderText+'" target="_blank" '+
+              'style="display:inline-flex;align-items:center;gap:.6rem;background:#25D366;color:#fff;padding:.8rem 2rem;font-family:var(--font-display);font-weight:600;font-size:.85rem;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;transition:all .2s">'+
+              '<svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>'+
+              'Contactar por WhatsApp'+
+            '</a>'+
           '</div>';
-        document.getElementById('dpagoArea').classList.remove('visible');
+        // Hide dpago area and pay button for non-PY
+        document.getElementById('dpagoArea').style.display = 'none';
+        document.getElementById('btnConfirmPay').style.display = 'none';
         return;
       }
 
+      // PY: show Dpago area and pay button
+      document.getElementById('dpagoArea').style.display = '';
+      document.getElementById('btnConfirmPay').style.display = '';
+
+      // Render PY payment methods
+      var methods = getActiveMethodsForCountry('PY');
       var html = '';
       methods.forEach(function(m){
         var mid = typeof m.id === 'string' ? "'"+m.id+"'" : m.id;
@@ -786,13 +917,13 @@
       });
       container.innerHTML = html;
 
-      // Generate order reference
-      orderReference = 'CG-' + Date.now();
+      // Calculate total with PY encomienda cost if applicable
+      var totals = getCartTotals();
+      var extraShip = (shippingData.shippingType === 'encomienda') ? PY_ENCOMIENDA_COST : 0;
+      var grandTotal = totals.subtotal + extraShip;
 
-      // Update dpago area (hidden until method selected)
-      document.getElementById('dpagoAmount').textContent = Store.formatPrice(totals.total);
+      document.getElementById('dpagoAmount').textContent = Store.formatPrice(grandTotal);
       document.getElementById('dpagoRef').textContent = 'Ref: ' + orderReference;
-      document.getElementById('dpagoArea').classList.remove('visible');
     }
 
     window.selectMethod = function(methodId, el){
@@ -817,7 +948,8 @@
       var country = shippingData.country || 'PY';
       var totals = getCartTotals();
       var cfg = getDpagoCfg(country);
-      var amount = Math.round(totals.total);
+      var extraShip = (country === 'PY' && shippingData.shippingType === 'encomienda') ? PY_ENCOMIENDA_COST : 0;
+      var amount = Math.round(totals.subtotal + totals.shipping + extraShip);
 
       var btnContainer = document.getElementById('dpagoBtnContainer');
       btnContainer.innerHTML =
@@ -860,7 +992,9 @@
       var secretKey = cfg.secretKey || '';
 
       // amount MUST be integer (no decimals) for PYG
-      var amount = parseInt(Math.round(totals.total), 10);
+      // Add encomienda cost if PY + encomienda
+      var extraShip = (country === 'PY' && shippingData.shippingType === 'encomienda') ? PY_ENCOMIENDA_COST : 0;
+      var amount = parseInt(Math.round(totals.subtotal + totals.shipping + extraShip), 10);
 
       // commerceId MUST be a number
       var commerceId = parseInt(cfg.commerceId, 10);
@@ -997,7 +1131,7 @@
           type: 'instalacion',
           address: shippingData.address,
           city: shippingData.city
-        } : {
+        } : shippingData.shippingType === 'encomienda' ? {
           type: 'encomienda',
           city: shippingData.city,
           department: shippingData.state,
@@ -1005,13 +1139,18 @@
           transportadora: shippingData.transportadora,
           recipientName: shippingData.recipientName,
           recipientPhone: shippingData.recipientPhone
+        } : {
+          type: 'international',
+          address: shippingData.address,
+          city: shippingData.city,
+          state: shippingData.state
         },
         items: getCartItems().map(function(e){
           return {id:e.product.id, name:e.product.name, qty:e.qty, price:e.product.prices[Store.getCurrency()], subtotal:e.subtotal, image:e.product.image};
         }),
         subtotal: totals.subtotal,
-        shipping: totals.shipping,
-        total: totals.total,
+        shipping: (shippingData.shippingCost || 0) + totals.shipping,
+        total: totals.subtotal + (shippingData.shippingCost || 0) + totals.shipping,
         currency: Store.getCurrency(),
         paymentMethod: selectedMethodName,
         paymentMethodId: selectedMethod,
