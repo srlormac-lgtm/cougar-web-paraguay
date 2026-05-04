@@ -753,8 +753,8 @@
         description: 'Cougar Suspension - Orden ' + orderReference,
         token: token,
         paymentMethodId: selectedMethod,
-        returnUrl: window.location.origin + window.location.pathname + '?order=' + orderReference + '&status=success',
-        cancelUrl: window.location.origin + window.location.pathname + '?order=' + orderReference + '&status=cancel',
+        returnUrl: window.location.origin + '/checkout.html?order=' + orderReference + '&status=success',
+        cancelUrl: window.location.origin + '/checkout.html?order=' + orderReference + '&status=cancel',
         notificationUrl: cfg.webhookUrl || '',
         customer: {
           name: shippingData.fullName,
